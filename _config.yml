@@ -1,6 +1,0 @@
-markdown: rdiscount
-pygments: true
-permalink: /blog/:title
-auto: true
-rdiscount:
-  extensions: [smart]
