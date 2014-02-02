@@ -1,4 +1,4 @@
 biomadeira.github.io
 ====================
 
-homepage powered by jekyll and github
+homepage powered by jekyll and github pages

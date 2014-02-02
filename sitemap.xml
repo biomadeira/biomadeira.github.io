@@ -1,0 +1,21 @@
+---
+layout: nil
+rooturl: http://biomadeira.github.io
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://biomadeira.github.io/</loc>
+      <lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+   </url>
+{% for post in site.posts %}
+   <url>
+      <loc>{{ page.rooturl }}{{ post.url }}</loc>
+      <lastmod>{{ post.date | date: '%Y-%m-%d' }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
+   </url>
+{% endfor %}
+</urlset>
