@@ -44,3 +44,12 @@ body {
  height: auto;
  max-width: 100%;
 }
+.navbar-static-top {
+  margin-bottom: 10px;
+}
+.panel-default h4{
+  text-align: left;
+  margin-top: 30px;
+  line-height: 30px;
+  font-size: 18px;
+}

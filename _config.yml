@@ -1,9 +1,4 @@
-markdown: rdiscount
-pygments: true
-permalink: /:year/:month/:day/:title.html
 auto: true
-rdiscount:
-  extensions: [smart]
 safe: false
-paginate: 5
 port: 3000
+url: http://biomadeira.github.io/
