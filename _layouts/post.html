@@ -1,0 +1,30 @@
+---
+layout: layout
+---
+<div class="container">
+</br></br>
+<h3>
+  <strong><a href="{{ page.url }}">{{ page.title }}</a></strong>
+</h3>
+<h4>
+{{ page.date | date: "%B %e, %Y" }}&nbsp;&nbsp; 
+{% for tag in page.tags %}
+ <span class="label label-info">{{ tag }}</span>
+{% endfor %}
+</h4>
+<div class="panel panel-default">
+  <div class="panel-body">
+	<h4>
+      {{ content }}
+  	<div id="social"> 
+  			<a href="https://twitter.com/share" class="twitter-share-button" data-via="biomadeira">Tweet</a>
+			<g:plusone size="medium"></g:plusone>
+  	</div>
+	<div class="fb-like" data-href="http://biomadeira.github.com{{ page.url }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </h4>
+  </div>
+</div>
+{% include disqus.html %}
+</br></br>
+{% include social.html %}
+</div><!-- /.container -->

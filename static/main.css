@@ -53,3 +53,9 @@ body {
   line-height: 30px;
   font-size: 18px;
 }
+.panel-default h5{
+  text-align: left;
+  margin-top: 30px;
+  line-height: 30px;
+  font-size: 18px;
+}
