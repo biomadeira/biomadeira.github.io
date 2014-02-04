@@ -9,9 +9,10 @@ tags:
 
 **BibYAML** stands for Bibliographic YAML, and aims to be a new standard for managing, formatting and storing bibliographies. Inheriting the advantages of [BibTeX](http://www.bibtex.org/) and [YAML](http://yaml.org/), it provides human and machine readable bibliographic records that can populate your database and documents. Let's see how it works!
 
-As a simple tool I provide a naive BibTeX parser for converting between the two formats. It can be accessed at [bibyaml.appspot.com](http://bib2yaml.appspot.com/). 
+As a simple tool I provide a naive BibTeX parser for converting between the two formats. It can be accessed at [bib2yaml.appspot.com](http://bib2yaml.appspot.com/). 
 
 Imagine the hypotetical **BibTeX** bibliography below:
+	
 	@BOOK{Book-Title,
 	    author    = "Author's Name",
 	    publisher = "Fancy Publisher",
@@ -29,6 +30,7 @@ Imagine the hypotetical **BibTeX** bibliography below:
 	}
 
 the resultant **BibYAML** would be: 
+	
 	BOOK:
 	    - name: Book-Title
 	    author: Author's Name
