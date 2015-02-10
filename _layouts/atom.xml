@@ -1,22 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  {% if page.grouptype == 'tag' %}
-    <title type="text" xml:lang="en">Posts Tagged “{{ page.tag }}” – {{ site.title }}</title>
-    <link type="application/atom+xml" rel="self" href="{{ site.url }}/tag/{{ page.tag | replace:' ','-' | downcase }}/atom.xml"/>
-  {% elsif page.grouptype == 'category' %}
-    <title type="text" xml:lang="en">Posts Categorized “{{ page.category | titlecase }}” – {{ site.title }}</title>
-    <link type="application/atom+xml" rel="self" href="{{ site.url }}/category/{{ page.category | replace:' ','-' | downcase }}/atom.xml"/>
-  {% else %}
-    <title type="text" xml:lang="en">{{ site.title }}</title>
-    <link type="application/atom+xml" rel="self" href="{{ site.url }}/atom.xml"/>
-  {% endif %}
-  <link href="{{ site.url }}/"/>
-  <id>{{ site.url }}/</id>
-  <updated>{{ site.time | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
-  <author>
-    <name>{{ site.author }}</name>
-    <email>{{ site.email }}</email>
-  </author>
-  <rights type="text">Copyright © {{ site.time | date: "%Y" }} {{ site.author }}. All rights reserved.</rights>
-  {{ content }}
-</feed>
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   {% if page.grouptype == 'category' %}
+      <title>{{ site.short_url }} - Category: {{ page.category }}</title>
+   {% else %}
+      <title>{{ site.short_url }}</title>
+   {% endif %}
+   <link>{{ site.url }}</link>
+   <description>{{ site.description }}</description>
+   <language>{{ site.language }}</language>
+   <managingEditor> {{ site.author }}</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   {{content}}
+</channel>
+</rss>
