@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 highlighter: pygments
 markdown: rdiscount
 rdiscount:
@@ -8,8 +9,31 @@ port: 3000
 safe: true
 url: http://biomadeira.github.io/
 title: Fábio Madeira
+=======
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               Lanyon
+tagline:             'A Jekyll theme'
+description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:                 http://lanyon.getpoole.com
+baseurl:             /
+paginate:            5
+
+# About/contact
+>>>>>>> 4f2d271c90c52c1cea91ad7d07478e45c819dcc2
 author:
-    name: Fábio Madeira
-    email: fabiomadeira@me.com
-    github: biomadeira
-    twitter: biomadeira
+  name:              Mark Otto
+  url:               https://twitter.com/mdo
+  email:             markdotto@gmail.com
+
+# Custom vars
+version:             1.0.0
