@@ -3,3 +3,6 @@
 
 # Jekyll build
 /_site
+
+#
+.idea
