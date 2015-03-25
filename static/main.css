@@ -63,6 +63,9 @@ body {
   font-size: 18px;
 }
 
+.panel{
+  border-style: none;
+}
 
 /*.nav ul {
     list-style: none;
