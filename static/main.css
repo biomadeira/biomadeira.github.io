@@ -9,6 +9,7 @@ body {
   background-color: #fff;
   font-family: 'Source Sans Pro', sans-serif;
   /* The html and body elements cannot have any padding or margin. */
+  border-top: 3px solid #58a5f7;
 }
 
 /* Wrapper for page content to push down footer */
@@ -22,13 +23,18 @@ body {
 }
 
 /* Set the fixed height of the footer here */
-.footer {
+/*.footer {
   height: 50px;
-}
+  padding-bottom: 15px;
+  
+}*/
 .footer a{
   text-decoration: none !important;
 }
 
+div.footer{
+  border-bottom: 5px solid #58a5f7;  
+}
 
 /* Custom page CSS
 -------------------------------------------------- */
@@ -36,7 +42,7 @@ body {
 
 .container {
   width: auto;
-  max-width: 900px;
+  max-width: 800px;
   text-align: center;
 }
 .container .text-muted {
