@@ -8,7 +8,7 @@
     <meta name="description" content="{{ site.description }}">
     <link rel="favicon" href="{{ site.baseurl }}static/img/favicon.ico">
 
-    <title>{{ site.title }}</title>
+    <title>{{ page.title }}</title>
 	
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
@@ -25,6 +25,7 @@
 	<!-- Custom styles for this template -->
     <link href="{{ site.baseurl }}static/css/main.css" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="{{ site.baseurl }}static/css/bootstrap.icon-large.min.css" rel="stylesheet">
 
     <!-- Google Analytics -->
@@ -34,14 +35,15 @@
   <body>
   <!-- Wrap all page content here -->
   <div id="wrap">
+    <!-- Navbar header -->
+    {% include header.html %}
 
-  {% include header.html %}
-
-  {{ content }}
+    {{ content }}
 
   </div>
-
+  <!-- Footer -->
   {% include footer.html %}
+  
     <!-- Bootstrap core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
     integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="

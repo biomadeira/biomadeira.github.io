@@ -1,23 +1,23 @@
-# # Dependencies
-# markdown:         redcarpet
-# pygments:         true
+ # Dependencies
+ markdown:         redcarpet
+ pygments:         true
 
-# # Permalinks
-# permalink:        /post/:title
+ # Permalinks
+ permalink:        /post/:title
 
-# # Setup
-# title:            "Tyler Benziger"
-# description:      "Tyler Benziger writes about things"
-# url:              http://tybenz.com
-# baseurl:          "/"
-# paginate:         5
+ # Setup
+ title:            "Your Nme"
+ description:      "Cool stuff"
+ url:              http://web.com
+ baseurl:          "/"
+ paginate:         5
 
-# author:
-#   name:           "Tyler Benziger"
+ author:
+   name:           "Your Name"
 
-# # Custom vars
-# twitter:        https://twitter.com/tybenz
-# github:         https://github.com/tybenz
+ # Custom vars
+ twitter:        https://twitter.com/user
+ github:         https://github.com/user
 
 # Where things are
 source:      .

@@ -1,4 +1,4 @@
-biomadeira.github.io
-====================
+#### My personal blog and resume
 
-homepage powered by jekyll and github pages
+Powered by [jekyll](http://jekyllrb.com/), [github pages](https://pages.github.com/) and [sustain](https://github.com/biomadeira/sustain).
+

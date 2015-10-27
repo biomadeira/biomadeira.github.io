@@ -1,8 +1,11 @@
 ---
 layout: post
-title: Hello Jekyll!
+title: Hello Jekyll and Github Pages!
 tags:
 - News
+- Jekyll
+- Github
+- Blog
 ---
 Hello folks!
 
@@ -12,4 +15,4 @@ What will be the scope of this Blog? In short, I am going to share some of the t
 
 Stay tuned :) 
 
-PS. Older posts were imported from an deprecated blog.
+PS. Older posts were imported from an old blog.

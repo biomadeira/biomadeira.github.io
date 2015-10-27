@@ -1,4 +1,4 @@
-
+# top level stuff you probably don't need to touch
 highlighter: pygments
 markdown: rdiscount
 rdiscount:
@@ -9,11 +9,13 @@ port: 3000
 safe: true
 
 
+# edit here to achieve your personal greatness
 url: http://biomadeira.github.io/
 basurl: /
 title: Fábio Madeira
 author: Fábio Madeira
 description: Personal blog and resume
+avatar: fabio.png
 email: fabiomadeira@me.com
 github: biomadeira
 twitter: biomadeira

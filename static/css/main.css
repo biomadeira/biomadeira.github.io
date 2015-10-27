@@ -4,16 +4,14 @@ html,
 body {
   position: relative;
   height: 100%;
-  /*padding-left: 40px;*/
-  /*background-color: #f5f5f5;*/
   background-color: #fff;
   font-family: 'Source Sans Pro', sans-serif;
   /* The html and body elements cannot have any padding or margin. */
   border-top: 3px solid #58a5f7;
 }
-
 /* Wrapper for page content to push down footer */
 #wrap {
+  padding-bottom: 50px;	
   min-height: 100%;
   height: auto;
   /* Negative indent footer by its height */
@@ -22,23 +20,73 @@ body {
   /*padding: 0 0 60px;*/
 }
 
-/* Set the fixed height of the footer here */
-/*.footer {
-  height: 50px;
-  padding-bottom: 15px;
-  
-}*/
-.footer a{
-  text-decoration: none !important;
-}
+/* Navbar
+-------------------------------------------------- */
 
-div.footer{
-  border-bottom: 5px solid #58a5f7;  
+.navbar-static-top {
+  margin-bottom: 10px;
+}
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.navbar-default .navbar-brand {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-text {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #6b6b6b;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #6b6b6b;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-toggle {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #6b6b6b;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #6b6b6b;
+}
+.navbar-default .navbar-link {
+  color: #6b6b6b;
+}
+.navbar-default .navbar-link:hover {
+  color: #6b6b6b;
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #6b6b6b;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #6b6b6b;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #6b6b6b;
+    background-color: #ffffff;
+  }
 }
 
 /* Custom page CSS
 -------------------------------------------------- */
-/* Not required for template or sticky footer method. */
 
 .container {
   width: auto;
@@ -53,22 +101,67 @@ div.footer{
  height: auto;
  max-width: 100%;
 }
-.navbar-static-top {
-  margin-bottom: 10px;
-}
-.panel-default h4{
+.panel-default h4 {
   text-align: left;
   margin-top: 30px;
   line-height: 30px;
   font-size: 18px;
 }
-.panel-default h5{
+.panel-default h5 {
   text-align: left;
-  margin-top: 30px;
   line-height: 30px;
   font-size: 18px;
 }
-
+.panel-default h6 {
+  font-size: 15px;
+}
 .panel{
   border-style: none;
 }
+.panel-body {
+  padding-top: -10px;
+}
+.social {
+  padding-top: 12px;
+  word-spacing: 25px;
+}
+.social h4 > a {
+  color: #000000;
+}
+.avatar {
+  padding-top: 5%;
+}
+.blog-post{
+  padding-top: 15px;
+}
+.blog-title{
+  padding-top: 2px;
+}
+.related-posts h4 {
+  text-align: center;
+}
+.page-not-found {
+  padding-top: 20%;
+}
+.disqus {
+  padding-bottom: 15px;
+}
+
+/* Footer 
+-------------------------------------------------- */
+
+.footer {
+  text-decoration: none !important;
+}
+.text-muted {
+	color: #6b6b6b;
+}
+div.footer{
+  border-bottom: 5px solid #58a5f7;  
+}
+/* Set the fixed height of the footer here */
+/*.footer {
+  height: 50px;
+  padding-bottom: 15px;
+  
+}*/
