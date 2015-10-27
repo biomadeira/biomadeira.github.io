@@ -26,13 +26,17 @@
 	<link href="static/bootstrap.icon-large.min.css" rel="stylesheet">
   </head>
   <!-- Main Body-->
-  <body data-spy="scroll" data-target="#navbar">
+  <body>
   <!-- Wrap all page content here -->
   <div id="wrap">
-  {% include header.html %}
+  <!--{% include header.html %}-->
+
   {{ content }}
+
   </div><!-- /.wrapper -->
+
   {% include footer.html %}
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -41,6 +45,5 @@
     <script src="static/jquery.easing.min.js"></script>
     <script src="static/main.js"></script>
     <script src="static/bootstrap-scrollspy.js"></script>
-    <script type="text/javascript">$('body').scrollspy({ target: '#navbar' })</script>
   </body>
 </html>
