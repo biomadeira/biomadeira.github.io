@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Fábio Madeira" />
-    <title>Fábio Madeira</title>
+	<meta name="author" content="{{ site.author }}" />
+    <meta name="description" content="{{ site.description }}">
+    <link rel="favicon" href="{{ site.baseurl }}static/img/favicon.ico">
+
+    <title>{{ site.title }}</title>
 	
     <!-- Bootstrap -->
-    <link href="static/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,34 +21,37 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<link rel="favicon" href="favicon.ico">
-	<!-- Google Analytics -->
-	{% include analytics.html %}
+
 	<!-- Custom styles for this template -->
-    <link href="static/main.css" rel="stylesheet">
-    <!-- <link href="static/timeline.css" rel="stylesheet"> -->
+    <link href="{{ site.baseurl }}static/css/main.css" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" rel="stylesheet" type="text/css">
-	<link href="static/bootstrap.icon-large.min.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}static/static/css/bootstrap.icon-large.min.css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    {% include analytics.html %}
   </head>
   <!-- Main Body-->
   <body>
   <!-- Wrap all page content here -->
   <div id="wrap">
-  <!--{% include header.html %}-->
+
+  {% include header.html %}
 
   {{ content }}
 
-  </div><!-- /.wrapper -->
+  </div>
 
   {% include footer.html %}
-
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="static/bootstrap.min.js"></script>
-	<script src="static/docs.min.js"></script>
-    <script src="static/jquery.easing.min.js"></script>
-    <script src="static/main.js"></script>
-    <script src="static/bootstrap-scrollspy.js"></script>
+	<script src="{{ site.baseurl }}static/js/docs.min.js"></script>
+    <script src="{{ site.baseurl }}static/js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ site.baseurl }}static/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
