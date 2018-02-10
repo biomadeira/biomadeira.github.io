@@ -1,22 +1,35 @@
-# top level stuff you probably don't need to touch
+###############################################################################
+# Jekyll Configuration
 highlighter: rouge
 markdown: kramdown
-rdiscount:
-  extensions: [smart]
 permalink: /:title.html
 #paginate: 5
 port: 3000
 safe: true
+language: 'en-uk'
+plugins: [jekyll-feed]
 
-
-# edit here to achieve your personal greatness
+###############################################################################
+# Page Personal Details
 url: http://biomadeira.github.io/
-basurl: /
-title: Fábio Madeira
+baseurl: /
 author: Fábio Madeira
-description: Personal blog and resume
+title: Fábio Madeira | Welcome to my homepage
+description: Personal Landing Page
 avatar: fabio.png
+
+# Contacts
 email: fabiomadeira@me.com
-github: biomadeira
-twitter: biomadeira
+
+# Upon Request for Phone, Skype, Hangouts, etc.
+urequest: Upon request
+
+# Social Usernames for Twitter, Github, Medium, Linkedin
+username: biomadeira
+
+# Research Outputs
+google_scholar: BrDL99cAAAAJ
+orcid: 0000-0001-8728-9449
+
+# Google Analytics
 google_analytics: UA-47728743-1
