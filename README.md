@@ -1,9 +1,12 @@
-#### My personal homepage
+# My personal homepage
 
-Powered by [Jekyll](http://jekyllrb.com/) and [Github Pages](https://pages.github.com/)
+Powered by [Jekyll](http://jekyllrb.com/), [Github Pages](https://pages.github.com/) and others.
 
 
-Usage:
+**Usage**:
 ```
 bundle exec jekyll serve
 ```
+
+--------
+Fábio Madeira, 2015-2018 | Some rights reserved.
