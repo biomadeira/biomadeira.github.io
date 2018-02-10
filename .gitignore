@@ -1,9 +1,8 @@
-# OS X
 .DS_Store
-
-# Jekyll build
+.idea
 /_site
 .jekyll-metadata
-
-#
-.idea
+.sass-cache/
+Gemfile.lock
+package-lock.json
+node_modules/
