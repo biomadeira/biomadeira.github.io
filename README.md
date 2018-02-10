@@ -1,4 +1,9 @@
-#### My personal blog and resume
+#### My personal homepage
 
-Powered by [jekyll](http://jekyllrb.com/), [github pages](https://pages.github.com/) and [sustain](https://github.com/biomadeira/sustain).
+Powered by [Jekyll](http://jekyllrb.com/) and [Github Pages](https://pages.github.com/)
 
+
+Usage:
+```
+bundle exec jekyll serve
+```
