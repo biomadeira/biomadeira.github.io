@@ -1,19 +1,29 @@
 ---
-layout: home
+layout: layout
 ---
-
-<section id="about">
-	<div class="container">
-	  <div class="avatar">
-		<img class="img-circle" src="{{ site.baseurl }}static/img/{{ site.avatar }}" alt="Responsive image">
-	  </div>
-	  <h3>I'm <strong>Fábio Madeira</strong>, a Postdoctoral
-			<a href="https://orcid.org/0000-0001-8728-9449">researcher</a> in Computational Biology</h3>
-	  <h3>working in the <a href="http://www.compbio.dundee.ac.uk/">Barton group</a> at the University of Dundee, Scotland.</h3>
-	  <h3>My interests span software development and machine learning, </h3>
-	  <h3> science communication writing and jazz piano improvisation. </h3>
-		<h3>Check out my academic &amp; professional <a href="{{ site.baseurl }}/static/resume.pdf">resume</a>.</h3>
-	  <h3>Feel free to contact me at <a href="http://twitter.com/biomadeira">@biomadeira</a> or by <a href="mailto:fabiomadeira@me.com">email</a>.</h3>
-	  {% include social.html %}
-	</div>
-</section>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align:center;">
+      <div class="avatar">
+    	   <img class="rounded-circle" src="{{ site.baseurl }}static/img/{{ site.avatar }}" alt="Responsive image">
+      </div>
+      <h5>Fábio Madeira, PhD</h5>
+      {% include social.html %}
+    </div>
+    <div class="col-md-9">
+      <h1><strong>Hi! I'm Fábio</strong></h1>
+      <p>I am a Software Engineer at the <a href="https://www.ebi.ac.uk/">European Bioinformatics Institute</a>, in Cambridge.
+      I was previously a PhD/Postdoc in Geoff Barton's <a href="http://www.compbio.dundee.ac.uk/">Computational Biology Group</a>
+      at the University of Dundee, Scotland.</p>
+      <p>My interests span Software Development, Data Science and Machine Learning, Bioinformatics Training
+        Science Communication, Writing and Piano Improvisation.</p>
+    	<p>Check out my <a href="http://github.com/{{ site.username }}">Coding Projects</a>,
+        my <a href="https://scholar.google.co.uk/citations?user={{ site.google_scholar }}">Research Publications</a>,
+        or my <em><a href="{{ site.baseurl }}static/resume.pdf">Curriculum Vitae</a></em>.
+        Feel free to contact me at <a href="http://twitter.com/{{ site.username }}">@biomadeira</a>
+        or by <a href="mailto:fabiomadeira@me.com">Email</a>.</p>
+      <h4><strong>Latest Articles:</strong></h4>
+      <p><a href="https://medium.com/@{{ site.username }}/3d-printing-protein-models-made-simple-dd902cd627ce">3D printing protein models made simple</a></p>
+    </div>
+  </div>
+</div>
