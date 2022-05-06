@@ -1,0 +1,65 @@
+---
+layout: default
+current: author
+title: Author Page
+cover: false
+class: author-template
+navigation: True
+label: Author
+logo: 'assets/images/ghost.png'
+---
+
+{% include dynamic-author-info.html %}
+<header class="blog-header{% if cover %} has-cover{% endif %}">
+	<div class="inner">
+		<div class="archive archive-author box archive-box">
+			<span class="archive-info">
+				<span class="archive-type">Author</span>
+				<span class="archive-count">{% if paginator.total_posts == 0 %}No posts{% elsif paginator.total_posts == 1 %}1 Post{% else %}{{ paginator.total_posts }} Posts{% endif %}</span>
+			</span>
+			<figure class="archive-avatar avatar">
+				{% if author_image %}
+					<img src="{{ site.baseurl }}{{ author_image }}" alt="{{ page.author }}" />
+				{% endif %}
+			</figure>
+			<h2 class="archive-title">{{ author_name }}</h2>
+			{% if author_bio %}
+				<span class="archive-description">{{ author_bio }}</span>
+			{% endif %}
+			<span class="archive-links">
+				{% if author_url_full %}
+					<a target="_blank" href="{{ author_url_full }}" title="Website"><i class="icon icon-globe"></i><span>"Website"</span></a>
+				{% endif %}
+				{% if author_twitter %}
+					<a target="_blank" href="https://twitter.com/{{ author_twitter }}" title="Twitter"><i class="icon icon-twitter"></i><span>"Twitter"</span></a>
+				{% endif %}
+				{% if author_facebook %}
+					<a target="_blank" href="https://facebook.com/{{ author_facebook }}" title="Facebook"><i class="icon icon-facebook"></i><span>"Facebook"</span></a>
+				{% endif %}
+			</span>
+		</div>
+
+		{% if author[1].cover %}
+		<div class="blog-cover cover">
+			<img
+			srcset="{{ cover_s }} 320w,
+                    {{ cover_m }} 640w,
+                    {{ cover_l }} 960w,
+                    {{ cover_xl }} 1920w"
+            src="{{ cover_xl }}"
+			alt="{{ page.title }}" />
+		</div>
+		{% endif %}
+	</div>
+</header>
+
+
+<div id="index" class="container">
+
+	<main class="content" role="main">
+
+		{% include loop.html %}
+
+	</main>
+
+</div>
