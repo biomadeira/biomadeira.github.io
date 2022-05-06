@@ -1,0 +1,50 @@
+---
+layout: default
+current: tag
+title: Tag Page
+cover: false
+class: tag-template
+navigation: True
+logo: 'assets/images/ghost.png'
+disqus: false
+---
+
+{% include dynamic-tag-info.html %}
+<header class="blog-header{% if tag[1].cover %} has-cover{% endif %}">
+	<div class="inner">
+		<div class="archive archive-tag box archive-box">
+			<span class="archive-info">
+				<span class="archive-type">Topic</span>
+				<span class="archive-count">{% if paginator.total_posts == 0 %}No posts{% elsif paginator.total_posts == 1 %}1 Post{% else %}{{ paginator.total_posts }} Posts{% endif %}</span>
+			</span>
+			<h2 class="archive-title">{{ tag.name }}</h2>
+			{% if tag_description %}
+				<span class="archive-description">{{ tag_description }}</span>
+			{% elsif page.tag %}
+				<span class="archive-description">A collection of {{ paginator.total_posts }} posts</span>
+			{% endif %}
+		</div>
+
+		{% if tag[1].cover %}
+		<div class="blog-cover cover">
+			<img
+			ssrcset="{{ cover_s }} 320w,
+					 {{ cover_m }} 640w,
+					 {{ cover_l }} 960w,
+					 {{ cover_xl }} 1920w"
+      		src="{{ cover_xl }}"
+			alt="{{ page.title }}" />
+		</div>
+		{% endif %}
+	</div>
+</header>
+
+<div id="index" class="container">
+
+	<main class="content" role="main">
+
+		{% include loop.html %}
+
+	</main>
+
+</div>
