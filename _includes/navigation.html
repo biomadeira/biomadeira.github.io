@@ -1,0 +1,7 @@
+{% assign links = site.data.navigation %}
+<ul>
+    {% for link in links %}
+        <li class="nav-{{ link.slug }} {% if page.url == link.url %}active{% endif %}"><a href="{{ site.url }}{{ site.baseurl | remove_first: '/'}}{{ link.url }}"><span>{{ link.name }}</span></a></li>
+    {% endfor %}
+    <!-- <li class="nav-try-ghost" ><a href="https://ghost.org"><span>Try Ghost</span></a></li> -->
+</ul>

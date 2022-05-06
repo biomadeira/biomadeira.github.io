@@ -1,0 +1,25 @@
+<ul class="nav-meta">
+  {% if site.twitter %}
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/{{ site.twitter }}" title="{{ site.twitter }}" target="_blank">
+      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <span>{{ site.twitter }}</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if site.facebook %}
+  <li class="nav-facebook">
+    <a aria-label="Facebook" href="https://facebook.com/{{ site.facebook }}" title="{{ site.facebook }}" target="_blank">
+      <i class="icon icon-facebook" aria-hidden="true"></i>
+      <span>{{ site.facebook }}</span>
+    </a>
+  </li>
+  {% endif %}
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+</ul>
+

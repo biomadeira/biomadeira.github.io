@@ -1,0 +1,17 @@
+<nav class="pagination" aria-label="Pagination">
+	<div class="inner">
+		<div class="box pagination-box">
+			{% if paginator.previous_page %}
+                {% if paginator.previous_page == 1 %}
+            <a title="Newer Posts" class="pagination-next" href="{{ site.baseurl }}author/{{ page.author | slugify: 'latin' }}"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+                {% else %}
+            <a title="Newer Posts" class="pagination-next" href="{{ site.baseurl }}author/{{ page.author | slugify: 'latin' }}/page{{ paginator.previous_page }}/"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+                {% endif %}
+            {% endif %}
+			<span class="pagination-info">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+			{% if paginator.next_page %} 
+            <a title="Older Posts" class="pagination-prev" href="{{ site.baseurl }}author/{{ page.author | slugify: 'latin' }}/page{{ paginator.next_page }}/"><span class="pagination-label">Older Posts</span> <i class="icon icon-arrow-right"></i></a>
+			{% endif %}
+		</div>
+	</div>
+</nav>
