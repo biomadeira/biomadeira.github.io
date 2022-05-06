@@ -1,0 +1,11 @@
+fabio:
+  username: fabio
+  name: Fábio Madeira
+  url_full: http://biomadeira.github.io/
+  url: biomadeira.github.io/
+  bio: Technical Project Lead at EMBL-EBI working on EBI Tools and APIs
+  image: assets/images/ghost.png
+  facebook: fmmarquesmadeira
+  twitter: biomadeira
+  cover: False
+  location: Cambridge, UK
