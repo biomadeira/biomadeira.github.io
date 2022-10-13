@@ -1,7 +1,11 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Amino Acids in Structural Bioinformatics
-author: Fabio Madeira
+author: fabio
 tags:
 - Proteins
 - Bioinformatics

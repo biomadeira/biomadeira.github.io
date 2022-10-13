@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Moved to Dundee, Scotland
+author: fabio
 tags:
 - News
+- Academia
 - Dundee
 - PhD
 - Bioinformatics

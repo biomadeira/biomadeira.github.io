@@ -1422,7 +1422,7 @@ textarea {
 	}
 }
 
-.cover-active .nav-header .nav-wrapper-control {
+.image-active .nav-header .nav-wrapper-control {
 	color: white;
 }
 
@@ -1634,6 +1634,8 @@ textarea {
 		}
 
 		&.nav-twitter,
+		&.nav-github,
+		&.nav-mode,
 		&.nav-facebook {
 			@media only screen and (max-width: $breakpoint-medium) {
 				display: none;
@@ -1667,7 +1669,7 @@ textarea {
 	}
 }
 
-.cover-active {
+.image-active {
 
 	.nav-wrapper-control a {
 		color: rgba(255,255,255,0.8);

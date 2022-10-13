@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: ANIA paper is finally out in Database Journal!
+author: fabio
 tags:
 - News
+- Academia
 - Paper
 - Bioinformatics
 - Database

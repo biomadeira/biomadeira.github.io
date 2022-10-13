@@ -1,5 +1,36 @@
 ---
-layout: layout
+layout: default
+current: page
+image: False
+class: page-template
+disqus: false
 ---
 
-{{ content }}
+<header class="post-header {% if page.image %} has-cover {% endif %}">
+	<div class="inner">
+		<h1 class="post-title">{{ page.title }}</h1>
+		{% if page.image %}
+		<div class="post-cover cover">
+			<img
+			srcset="{{ page.image_s }} 320w,
+					{{ page.image_m }} 640w,
+					{{ page.image_l }} 960w,
+					{{ page.image_xl }} 1920w"
+			src="{{ page.image_xl }}"
+			alt="{{ page.title }}" />
+		</div>
+		{% endif %}
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="{{ page.class }}">
+		<div class="inner">
+
+			<section class="post-content">
+				{{ content }}
+			</section>
+
+		</div>
+	</article>
+</main>

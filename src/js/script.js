@@ -215,7 +215,7 @@ jQuery(function($) {
    Parallax cover
    ========================================================================== */
 
-  var cover = $('.cover');
+  var cover = $('.image');
   var coverPosition = 0;
 
   function prlx() {
@@ -270,11 +270,11 @@ jQuery(function($) {
     var toggle = $('.js-theme');
     var toggleText = toggle.find('.theme-text');
 
-    function system() {
-      html.removeClass(['theme-dark', 'theme-light']);
-      localStorage.removeItem('biomadeira_attila_theme');
-      toggleText.text(toggle.attr('data-system'));
-    }
+    // function system() {
+    //   html.removeClass(['theme-dark', 'theme-light']);
+    //   localStorage.removeItem('biomadeira_attila_theme');
+    //   toggleText.text(toggle.attr('data-system'));
+    // }
 
     function dark() {
       html.removeClass('theme-light').addClass('theme-dark');
@@ -296,7 +296,7 @@ jQuery(function($) {
         light();
       break;
       default:
-        system();
+        light();
       break;
     }
 
@@ -308,7 +308,7 @@ jQuery(function($) {
       } else if (html.hasClass('theme-dark')) {
         light();
       } else {
-        system();
+        light();
       }
     });
   }

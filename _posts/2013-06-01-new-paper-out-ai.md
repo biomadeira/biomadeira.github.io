@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: New paper out on AI and Protein Docking
+author: fabio
 tags:
 - News
+- Academia
 - AI
 - Paper
 - Protein Docking

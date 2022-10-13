@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: After good rotations it is time to move to the Barton Group
+author: fabio
 tags:
 - News
+- Academia
 - PhD
 - Barton
 - Bioinformatics

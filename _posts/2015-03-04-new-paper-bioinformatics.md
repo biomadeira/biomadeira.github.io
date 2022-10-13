@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Paper on new methods to predict 14-3-3-binding sites out!
+author: fabio
 tags:
 - News
+- Academia
 - Paper
 - Bioinformatics
 - AI

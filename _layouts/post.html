@@ -1,40 +1,140 @@
 ---
-layout: layout
+layout: default
+current: post
+class: post-template
+disqus: false
 ---
 
-<div class="container">
-	<div class="blog-post">
-		<h3>
-		  <strong><a href="{{ page.url }}">{{ page.title }}</a></strong>
-		</h3>
-	</div>
-	<div class="blog-title">
-		<h4>
-		{{ page.date | date: "%B %e, %Y" }}
-			&nbsp;&nbsp;
-			{% for tag in page.tags %}
-			 <span class="label label-info">{{ tag }}</span>
-			{% endfor %}
-		</h4>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<h4>
-			  {{ content }}
-			   <hr>
-			   <div class="related-posts">
-				   <h4>Related Posts</h4>
-				   {% for post in site.related_posts limit:3 %}
-						<div class="row">
-							 <div class="col-sm-4 col-md-4 col-lg-4"><h6 style="text-align: right">
-								 {{ post.date | date: "%B %e, %Y" }}</h6></div>
-							 <div class="col-sm-8 col-md-8 col-lg-8"><h6 style="text-align: left">
-								 <strong><a href="{{ post.url }}">{{ post.title }}</a></strong></h6></div>
-						</div>
-					{% endfor %}
-			   </div>
-			</h4>
-		</div>
-	</div>
-	{% include disqus.html %}
+<div class="progress-container">
+	<span class="progress-bar"></span>
 </div>
+
+<header class="post-header {% if page.image %} has-cover{% endif %}">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			{% if page.tags.size > 0 %}
+			<span class="post-count">{{ page.tags[0] }}</span>
+			{% endif %}
+
+		</span>
+		<h1 class="post-title">{{ page.title }}</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				{% for author in site.data.authors %}
+                    {% if author[1].username == page.author %}
+					<figure class="post-meta-avatar avatar">
+						{% if author[1].picture %}
+						<a href="{{ site.baseurl }}author/{{ page.author }}" class="author-avatar">
+								<img class="author-profile-image" src="{{ site.baseurl }}{{ author[1].picture }}" alt="{{ page.author }}" />
+						</a>
+						{% endif %}
+					</figure>
+					{% endif %}
+                {% endfor %}
+			</div>
+			{% for author in site.data.authors %}
+			{% if author[1].username == page.author %}
+			<h4 class="post-meta-author"><a href="{{ site.baseurl }}author/{{ page.author }}">{{ author[1].name }}</a></h4>
+			{% endif %}
+			{% endfor %}
+			<time datetime="{{ page.date | date:'%e %B %Y' }}">{{ page.date | date:'%e %B %Y' }}</time> &bull; 
+			{% assign words = post.content | strip_html | number_of_words %}
+			{% assign words_per_minute = site.words_per_minute | default: 200 %}
+			{% if words <= words_per_minute %}
+				1 min read
+			{% else %}
+				{{ words | divided_by:words_per_minute }} min read
+			{% endif %}
+                    
+		</div>
+		{% if page.image %}
+		<div class="post-cover cover">
+			<img src="{{ page.image }}" 
+			alt="{{ page.title }}" />
+		</div>
+		{% endif %}
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="{{post_class}}">
+		<div class="inner">
+
+			<section class="post-content">
+				{{content}}
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text={{title}}&url={{ site.url }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url  }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}&amp;title={{ page.title | strip_html }}" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject={{ page.title | strip_html }}&amp;body={{ site.url }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				{% if page.tags.size > 0 %}
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					{% for tag in page.tags %}
+						<a href="{{ site.baseurl }}tag/{{ tag | slugify: 'latin' }}/">{{ tag }}</a>
+					{% endfor %}
+				</aside>
+				{% endif %}
+
+			</section>
+
+			{% if site.disqus or page.disqus %}
+			<section class="post-comments">
+				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
+			   <div id="disqus_thread"></div>
+			</section>
+			{% endif %}
+
+	  {% if site.subscribers %}
+	  <section class="post-subscribe">
+		<p>Get the latest posts delivered right to your inbox.</p>
+		{% include subscribe-form.html placeholder="Your email address" form_class="post-subscribe-form" input_class="post-subscribe-input" button_class="post-subscribe-button" %}
+	  </section>
+	  {% endif %}
+
+
+			<aside class="post-nav">
+
+				{% if page.next %}
+					<a class="post-nav-next" href="{{ site.baseurl }}{{ page.next.url | remove_first: '/' }}">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">{{ page.next.title }}</h2>
+							<p class="post-nav-excerpt">{{ page.next.content | strip_html | truncatewords: 12, "" }}&hellip;</p>
+							<p class="post-nav-meta"><time datetime="{{ page.next.date | date:'%e %B %Y' }}">{{ page.next.date | date:'%e %B %Y' }}</time></p>
+						</section>
+					</a>
+				{% endif %}
+
+				{% if page.previous %}
+					<a class="post-nav-prev" href="{{ site.baseurl }}{{ page.previous.url | remove_first: '/' }}">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">{{ page.previous.title }}</h2>
+							<p class="post-nav-excerpt">{{ page.previous.content | strip_html | truncatewords: 12, "" }}&hellip;</p>
+							<p class="post-nav-meta"><time datetime="{{ page.previous.date | date:'%e %B %Y' }}">{{ page.previous.date | date:'%e %B %Y' }}</time></p>
+						</section>
+					</a>
+				{% endif %}
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>

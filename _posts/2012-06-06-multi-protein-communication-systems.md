@@ -1,7 +1,11 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Multi-protein Communication Systems
-author: Fabio Madeira
+author: fabio
 tags:
 - Paper
 - Proteins

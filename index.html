@@ -1,33 +1,38 @@
 ---
-layout: layout
+layout: default
+current: home
+class: home-template
+navigation: True
 ---
-<div class="container">
-  <div class="row">
-    <div class="col-md-3" style="text-align:center;">
-      <div class="avatar">
-    	   <img class="rounded-circle" src="{{ site.baseurl }}static/img/{{ site.avatar }}" alt="Responsive image" style="max-width: 70%; height: auto;">
-      </div>
-      <h5>Fábio Madeira, PhD</h5>
-      {% include social.html %}
-    </div>
-    <div class="col-md-9">
-      <h1><strong>Hi! I'm Fábio</strong></h1>
-      <p>I am a Software Engineer at the <a href="https://www.ebi.ac.uk/">European Bioinformatics Institute</a>, in Cambridge.
-      I was previously a PhD/Postdoc in Geoff Barton's <a href="http://www.compbio.dundee.ac.uk/">Computational Biology Group</a>
-      at the University of Dundee, Scotland.</p>
-      <p>My interests span Software Development, Data Science, Machine Learning, Bioinformatics Training,
-        Science Communication, Writing, and Piano Improvisation.</p>
-    	<p>Check out my <a href="http://github.com/{{ site.username }}">Coding Projects</a>,
-        my <a href="https://scholar.google.co.uk/citations?user={{ site.google_scholar }}">Research Publications</a>,
-        or my <em><a href="{{ site.baseurl }}static/resume.pdf">Curriculum Vitae</a></em>.
-        Feel free to contact me at <a href="http://twitter.com/{{ site.username }}">@biomadeira</a>
-        or by <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#97;&#98;&#105;&#111;&#109;&#97;&#100;&#101;&#105;&#114;&#97;&#64;&#109;&#101;&#46;&#99;&#111;&#109;">&#69;&#109;&#97;&#105;&#108;</a>.</p>
-      </br>
-      <h4><strong>Latest Publications</strong></h4>
-      <p><a href="https://academic.oup.com/nar/article/49/D1/D480/6006196">
-        UniProt: the universal protein knowledgebase in 2021</a></p>
-      <h4><strong>Latest Articles</strong></h4>
-      <p><a href="https://medium.com/@{{ site.username }}/3d-printing-protein-models-made-simple-dd902cd627ce">3D printing protein models made simple</a></p>
-    </div>
-  </div>
+
+<header class="blog-header {%- if site.image %} has-cover{% endif -%}">
+	<div class="inner">
+		<div class="box blog-box">
+			<h1 class="blog-name">{{ site.title }}</h1>
+			{% if site.description %}
+			<span class="blog-description">{{ site.description }}</span>
+			{% endif %}
+		</div>
+		{% if site.image %}
+		<div class="blog-cover cover">
+			<img
+				srcset="{{ site.image }} 320w,
+						{{ site.image }} 640w, 
+						{{ site.image }} 960w,
+						{{ site.image }} 1920w"
+				src="{{ site.image }}"
+				alt="{{ site.title }}" />
+		</div>
+		{% endif %}
+	</div>
+</header>
+
+<div id="index" class="container">
+
+	<main class="content" role="main">
+
+		{% include loop.html %}
+
+	</main>
+
 </div>

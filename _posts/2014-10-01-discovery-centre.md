@@ -1,8 +1,14 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Computational Biology now in the Discovery Centre
+author: fabio
 tags:
 - News
+- Academia
 - Dundee
 - Discovery Centre
 - Life Sciences

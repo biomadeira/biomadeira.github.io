@@ -1,6 +1,11 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Participated with IntelliGene in BiotechYES competition
+author: fabio
 tags:
 - News
 - BiotechYES

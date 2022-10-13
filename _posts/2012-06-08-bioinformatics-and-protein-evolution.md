@@ -1,7 +1,11 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Bioinformatics and Protein Evolution
-author: Fabio Madeira
+author: fabio
 tags:
 - Evolution
 - Proteins

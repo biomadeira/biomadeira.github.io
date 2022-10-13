@@ -2,8 +2,16 @@
   {% if site.twitter %}
   <li class="nav-twitter">
     <a aria-label="Twitter" href="https://twitter.com/{{ site.twitter }}" title="{{ site.twitter }}" target="_blank">
-      <i class="icon icon-twitter" aria-hidden="true"></i>
+      <i class="bi bi-twitter" aria-hidden="true"></i>
       <span>{{ site.twitter }}</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if site.github %}
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/{{ site.github }}" title="{{ site.github }}" target="_blank">
+      <i class="bi bi-github" aria-hidden="true"></i>
+      <span>{{ site.github }}</span>
     </a>
   </li>
   {% endif %}
@@ -15,11 +23,16 @@
     </a>
   </li>
   {% endif %}
-  <li class="nav-search" style="display: none;">
+  <li class="nav-search">
     <a title="Search">
       <i class="icon icon-search" aria-hidden="true"></i>
       <span>Search</span>
     </a>
+  </li>
+  <li class="nav-mode">
+      <a aria-label="Mode" class="menu-item js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+        <span class="theme-icon"><span>Mode</span></span>
+      </a>
   </li>
 </ul>
 

@@ -36,7 +36,7 @@ Thanks to [Tables Generator](https://www.tablesgenerator.com/markdown_tables) we
 
 ## Compiling CSS styles
 
-Jasper2 styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need Node and Gulp installed globally. After that, from the theme's root directory:
+Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need Node and Gulp installed globally. After that, from the theme's root directory:
 
 ```bash
 $ npm install

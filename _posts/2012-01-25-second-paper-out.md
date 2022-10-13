@@ -1,7 +1,11 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Another paper out in Bioinformatics 2012
-author: Fabio Madeira
+author: fabio
 tags:
 - News
 - Paper

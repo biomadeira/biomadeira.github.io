@@ -1,12 +1,13 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: My first ever paper is out!!
-author: Fabio Madeira
+author: fabio
 tags:
-- News
-- Paper
-- Constraint Programming
-- Artificial Intelligence
+- Academia
 ---
 
 Big times for me! 

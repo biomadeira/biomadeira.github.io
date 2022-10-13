@@ -2,7 +2,7 @@
 layout: default
 current: tag
 title: Tag Page
-cover: false
+image: false
 class: tag-template
 navigation: True
 logo: 'assets/images/ghost.png'
@@ -10,7 +10,7 @@ disqus: false
 ---
 
 {% include dynamic-tag-info.html %}
-<header class="blog-header{% if tag[1].cover %} has-cover{% endif %}">
+<header class="blog-header{% if tag[1].image %} has-cover{% endif %}">
 	<div class="inner">
 		<div class="archive archive-tag box archive-box">
 			<span class="archive-info">
@@ -25,15 +25,16 @@ disqus: false
 			{% endif %}
 		</div>
 
-		{% if tag[1].cover %}
+		{% if tag[1].image %}
 		<div class="blog-cover cover">
-			<img
+			<!-- <img
 			ssrcset="{{ cover_s }} 320w,
 					 {{ cover_m }} 640w,
 					 {{ cover_l }} 960w,
 					 {{ cover_xl }} 1920w"
       		src="{{ cover_xl }}"
-			alt="{{ page.title }}" />
+			alt="{{ page.title }}" /> -->
+			<img class="blog-cover cover" src="{{ site.baseurl }}{{ tag[1].image }}" alt="page.title" />
 		</div>
 		{% endif %}
 	</div>

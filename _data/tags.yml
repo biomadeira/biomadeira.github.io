@@ -1,0 +1,13 @@
+academia:
+  name: academia
+  image: False
+news:
+  name: news
+  description: News and updates
+  image: False
+tech:
+  name: tech
+  image: False
+bioinformatics:
+  name: bioinformatics
+  image: False

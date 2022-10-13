@@ -8,3 +8,9 @@ package-lock.json
 node_modules/
 vendor/
 .bundle/
+_posts_test/
+biomadeira.github.io-pages
+attila
+cache/
+ghost/
+new_version/

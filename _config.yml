@@ -2,34 +2,70 @@
 # Jekyll Configuration
 highlighter: rouge
 markdown: kramdown
-permalink: /:title.html
 #paginate: 5
 port: 3000
-safe: true
+paginate: 10 # it will paginate after this number
 language: 'en-uk'
-plugins: [jekyll-feed]
+words_per_minute: 200
+color_scheme: Dark #Dark #Light 
+darkmode_accent_color: "#ff6633"
+search: True
 
 ###############################################################################
-# Page Personal Details
-url: http://biomadeira.github.io/
-baseurl: /
-author: Fábio Madeira
-title: Fábio Madeira | Welcome to my homepage
-description: Personal Landing Page
-avatar: fabio.jpg
+# Permalinks
+permalink: /:year-:month-:day-:title
+# permalink: /author/:author
+# permalink: /tag/:tag
 
+# Authors' info in `_data/authors.yml`
+# Tags' info in `_data/tags_info.yml`
+
+# gems and other configs
+plugins_dir: [_plugins]
+plugins: [jekyll-paginate, jekyll-feed] #, jekyll-seo-tag, jekyll-resize, jekyll-admin]
+
+feed:
+  path: feed.xml
+
+# Page Personal Details
+baseurl: /
+url: http://biomadeira.github.io/
+author: Fábio Madeira
+title: biom.dev
+description: Welcome to my blog
+image: False
 # Contacts
 email: fabiomadeira@me.com
-
-# Upon Request for Phone, Skype, Hangouts, etc.
-urequest: Upon request
-
 # Social Usernames for Twitter, Github, Medium, Linkedin
-username: biomadeira
+twitter: biomadeira # replace by your username
+facebook: False # replace by your username
+github: biomadeira
 
-# Research Outputs
-google_scholar: BrDL99cAAAAJ
-orcid: 0000-0001-8728-9449
+# Social info
+navigation: True # show the navbar links
+subscribers: False # you need to connect an external service for this to work,
+# if 'True' the submit button is disabled for now, but you can change that
+# by editing `_includes/subscribe-form.html`
 
-# Google Analytics
-google_analytics: UA-47728743-1
+# Disqus
+disqus: False
+disqus_shortname: username # replace with your disqus username
+
+# Google Analytics 4
+google_analytics: G-R9654BB9RP
+
+# Settings for deploy rake task
+# Username and repo of Github repo, e.g.
+# https://github.com/USERNAME/REPO.git
+# username defaults to ENV['GIT_NAME'] used by Travis
+# repo defaults to USERNAME.github.io
+# Branch defaults to "source" for USERNAME.github.io
+# or "master" otherwise
+safe: False
+lsi: False
+repo: biomadeira.github.io
+branch: master
+relative_source: /
+destination: ./biomadeira.github.io-pages/
+production_url:  https://biomadeira.github.io/biomadeira.github.io/
+source_url:  https://github.com/biomadeira/biomadeira.github.io/

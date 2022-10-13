@@ -1,12 +1,13 @@
 ---
 layout: post
+current: post
+class: post-template
+image: False
+navigation: True
 title: Useful Python Modules
-author: Fabio Madeira
+author: fabio
 tags:
-- Python
-- Constraint Programming
-- Artificial Intelligence
-- Web Framework
+- Tech
 ---
 
 A tiny collection of useful python modules for Constraint Programming, Artificial Intelligence and Data Mining, as well as Web Frameworks:

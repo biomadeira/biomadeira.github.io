@@ -2,11 +2,7 @@
 {% assign decoded_url = page.url | url_decode %}
 {% for tag in site.data.tags %}
     {% if decoded_url contains tag[1].name %}
-        {% assign cover = tag[1].cover %}
-        {% assign cover_s = tag[1].cover_s %}
-        {% assign cover_m = tag[1].cover_m %}
-        {% assign cover_l = tag[1].cover_l %}
-        {% assign cover_xl = tag[1].cover_xl %}
+        {% assign image = tag[1].image %}
         {% assign tag_description = tag[1].description %}
     {% endif %}
 {% endfor %}

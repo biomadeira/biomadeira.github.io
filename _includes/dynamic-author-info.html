@@ -2,16 +2,16 @@
 {% assign decoded_url = page.url | url_decode %}
 {% for author in site.data.authors %}
     {% if decoded_url contains author[1].username %}
-        {% assign cover = author[1].cover %}
-        {% assign cover_s = author[1].cover_s %}
-        {% assign cover_m = author[1].cover_m %}
-        {% assign cover_l = author[1].cover_l %}
-        {% assign cover_xl = author[1].cover_xl %}
+        {% assign image = author[1].image %}
         {% assign author_bio = author[1].bio %}
         {% assign author_name = author[1].name %}
-        {% assign author_image = author[1].image %}
+        {% assign author_picture = author[1].picture %}
         {% assign author_url_full = author[1].url_full %}
         {% assign author_twitter = author[1].twitter %}
         {% assign author_facebook = author[1].facebook %}
+        {% assign author_github = author[1].github %}
+        {% assign author_linkedin = author[1].linkedin %}
+        {% assign author_google_scholar = author[1].google_scholar %}
+        {% assign author_orcid = author[1].google_orcid %}
     {% endif %}
 {% endfor %}

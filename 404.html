@@ -1,11 +1,13 @@
 ---
-layout: layout
-title: Page not found!
+layout: page
+current: error
+title: "404 - Page Not Found"
+permalink: 404.html
 ---
-<div class="container">
-  <div class="page-not-found">
-    <h3>Oooopss 🙁 </h3>
-    <h3>Nothing here 🤔</h3>
-    <h3><a href="/">Take me back home</a> 😬 </h3>
-  </div>
-</div>
+
+        <section class="error-message">
+            <h1 class="error-code">404</h1>
+            <p class="error-description">Page not found</p>
+            <a class="error-link" href="{{ site.baseurl }}">Go to the front page →</a>
+        </section>
+
