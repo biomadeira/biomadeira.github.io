@@ -5,11 +5,13 @@ fabio:
   url: biomadeira.github.io/
   bio: Technical Project Lead at EMBL-EBI working on EBI Tools and APIs
   picture: assets/images/fabio.jpeg
-  facebook: False
+  github: biomadeira
   twitter: biomadeira
   linkedin: biomadeira
   medium: False
+  facebook: False
   google_scholar: BrDL99cAAAAJ
   orcid: 0000-0001-8728-9449
-  image: False
+  email: fabiomadeira@me.com
   location: Cambridge, UK
+  

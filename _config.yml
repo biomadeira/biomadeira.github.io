@@ -2,14 +2,13 @@
 # Jekyll Configuration
 highlighter: rouge
 markdown: kramdown
-#paginate: 5
 port: 3000
-paginate: 10 # it will paginate after this number
+paginate: 5 # it will paginate after this number
 language: 'en-uk'
 words_per_minute: 200
-color_scheme: Dark #Dark #Light 
+color_scheme: Light #Dark #Light 
 darkmode_accent_color: "#ff6633"
-search: True
+search: False
 
 ###############################################################################
 # Permalinks
@@ -32,13 +31,13 @@ baseurl: /
 url: http://biomadeira.github.io/
 author: Fábio Madeira
 title: biom.dev
-description: Welcome to my blog
-image: False
+description: Bioinformatics and other digressions
+image: assets/images/marek-piwnicki-ab8lDEFYJ74-unsplash.jpg
 # Contacts
 email: fabiomadeira@me.com
-# Social Usernames for Twitter, Github, Medium, Linkedin
-twitter: biomadeira # replace by your username
-facebook: False # replace by your username
+# Social Usernames for Twitter, Facebook, Github
+twitter: biomadeira 
+facebook: False 
 github: biomadeira
 
 # Social info
