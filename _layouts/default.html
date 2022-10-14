@@ -33,28 +33,19 @@
 			{% endif %}
 	</script>
 
-	<!-- {% if site.color_scheme == "Dark" %}
-		<script>localStorage.setItem('biomadeira_attila_theme', 'dark');</script>
-		<style>.js-theme {display:none!important;}</style>
-	{% elsif site.color_scheme == "Light" %}
-		<script>localStorage.setItem('biomadeira_attila_theme', 'light');</script>
-		<style>.js-theme {display:none!important;}</style>
-	{% endif %} -->
-
-	{% if site.color_scheme != "Light" %}
-		{% if site.darkmode_accent_color %}
-			<style>
-				.theme-dark:root {
-				  --ghost-accent-color: {{ site.darkmode_accent_color }};
-				}
-				@media (prefers-color-scheme: dark) {
-				  html:not(.theme-light):root {
-				    --ghost-accent-color: {{ site.darkmode_accent_color }};
-				  }
-				}
-			</style>
-		{% endif %}
-	{% endif %}
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: {{ site.darkmode_accent_color }};
+		}
+		.theme-light:root {
+			--ghost-accent-color: {{ site.darkmode_accent_color }};
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: {{ site.darkmode_accent_color }};
+			}
+		}
+	</style>
 
 	{% include ghost-head.html %}
 </head>
@@ -75,7 +66,7 @@
 		<div class="nav-wrapper-control">
 			<div class="inner">
 				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
-				<a class="nav-search" style="display: none;" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i>
+				<!-- <a class="nav-search" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i> -->
 				</a>
 			</div>
 		</div>
@@ -87,7 +78,7 @@
         {{ content }}
 
 
-		<div class="search-wrapper">
+		<!-- <div class="search-wrapper">
 			<div class="search">
 		    <form class="search-form">
           <input class="search-field" type="text" placeholder="Search…">
@@ -106,7 +97,7 @@
 				<div class="search-result"></div>
 			</div>
 			<button class="search-wrapper-close" aria-label="Close"></button>
-		</div>
+		</div> -->
 
 		<div class="nav-footer">
 			<nav class="nav-wrapper" aria-label="Footer">
@@ -213,12 +204,12 @@
 			// Format code blocks and add line numbers
 			function codestyling() {
 			$('pre code').each(function(i, e) {
-					// Code highlight
+			// Code highlight
 			hljs.highlightBlock(e);
 			// No lines for plain text blocks
 			if (!$(this).hasClass('language-text')) {
 				var code = $(this);
-						// Calculate amount of lines
+				// Calculate amount of lines
 				var lines = code.html().split(/\n(?!$)/g).length;
 				var numbers = [];
 				if (lines > 1) {

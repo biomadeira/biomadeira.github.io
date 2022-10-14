@@ -14,7 +14,7 @@ disqus: false
 		<span class="post-info">
 			<span class="post-type">Article</span>
 			{% if page.tags.size > 0 %}
-			<span class="post-count">{{ page.tags[0] }}</span>
+			<span class="post-count"><a href="{{ site.baseurl }}tag/{{ page.tags[0] | slugify: 'latin' }}/">{{ page.tags[0] }}</a></span>
 			{% endif %}
 
 		</span>
@@ -48,12 +48,6 @@ disqus: false
 			{% endif %}
                     
 		</div>
-		{% if page.image %}
-		<div class="post-cover cover">
-			<img src="{{ page.image }}" 
-			alt="{{ page.title }}" />
-		</div>
-		{% endif %}
 	</div>
 </header>
 
