@@ -34,7 +34,7 @@
 				on
 				<time datetime="{{ post.date | date:'%e %B %Y' }}">{{ post.date | date:'%e %B %Y' }}</time>
 			</span>
-			<p class="post-excerpt">{{ post.content | strip_html | truncatewords: 33, "" }}&hellip;</p>
+			<p class="post-excerpt">{{ post.content | strip_html | truncatewords: 50, "" }}&hellip;</p>
 		</div>
 	</div>
 </article>

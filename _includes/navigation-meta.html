@@ -23,14 +23,16 @@
     </a>
   </li>
   {% endif %}
+  {% if site.search %}
   <li class="nav-search">
     <a title="Search">
       <i class="icon icon-search" aria-hidden="true"></i>
       <span>Search</span>
     </a>
   </li>
+  {% endif %}
   <li class="nav-mode">
-      <a aria-label="Mode" class="menu-item js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
         <span class="theme-icon"><span>Mode</span></span>
       </a>
   </li>

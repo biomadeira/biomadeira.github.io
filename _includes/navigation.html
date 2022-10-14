@@ -1,12 +1,12 @@
 <ul>
 {% if page.url contains '/page' %}
      {% if page.url contains '/author' or page.url contains '/tag' %}
-     <li class="nav-page" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-page {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
      {% else %}
-     <li class="nav-home active" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-home active {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
      {% endif %}
 {% else %}
-     <li class="nav-home {% if page.url == site.baseurl %}active{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-home {% if page.image %}has-cover{% endif %} {% if page.url == site.baseurl %}active{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
 {% endif %}
-     <li class="nav-about {% if page.url contains '/about/' %}active{% endif %}" ><a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/about/"><span>About</span></a></li>
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/author/fabio' %}active{% endif %}" ><a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/author/fabio"><span>About</span></a></li>
 </ul>
