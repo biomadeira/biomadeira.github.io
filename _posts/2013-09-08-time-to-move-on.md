@@ -7,12 +7,7 @@ navigation: True
 title: After good rotations it is time to move to the Barton Group
 author: fabio
 tags:
-- News
-- Academia
-- PhD
-- Barton
-- Bioinformatics
-- Compbio
+- Archived
 ---
 
 I have spent some nice time over the last months rotating in 3 labs as part of the first year of my PhD programme in Dundee. I rotated in the labs of Prof. Carol MacKintosh, Prof. Geoff Barton and Prof. Ron Hay. 

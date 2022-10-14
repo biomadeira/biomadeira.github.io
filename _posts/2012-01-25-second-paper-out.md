@@ -7,10 +7,7 @@ navigation: True
 title: Another paper out in Bioinformatics 2012
 author: fabio
 tags:
-- News
-- Paper
-- Python
-- Protein Coevolution
+- Archived
 ---
 
 Time to celebrate again! 

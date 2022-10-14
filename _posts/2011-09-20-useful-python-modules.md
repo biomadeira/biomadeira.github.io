@@ -7,7 +7,7 @@ navigation: True
 title: Useful Python Modules
 author: fabio
 tags:
-- Tech
+- Archived
 ---
 
 A tiny collection of useful python modules for Constraint Programming, Artificial Intelligence and Data Mining, as well as Web Frameworks:

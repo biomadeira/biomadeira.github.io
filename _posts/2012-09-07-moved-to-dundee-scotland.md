@@ -7,13 +7,7 @@ navigation: True
 title: Moved to Dundee, Scotland
 author: fabio
 tags:
-- News
-- Academia
-- Dundee
-- PhD
-- Bioinformatics
-- Life Sciences
-- Research
+- Archived
 ---
 
 I recently move to Dundee, the 4rd biggest city in Scotland, to do my PhD in Life Sciences at the University of Dundee.

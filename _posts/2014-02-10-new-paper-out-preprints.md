@@ -7,12 +7,7 @@ navigation: True
 title: Preprints of my new submitted paper available online
 author: fabio
 tags:
-- News
-- Academia
-- AI
-- Paper
-- Protein Docking
-- Coevolution
+- Archived
 ---
 
 Just submitted a paper to an undisclosed journal and the good news is that it has been also made available through a new preprints server for biology, [bioRxiv](http://biorxiv.org/) that is.

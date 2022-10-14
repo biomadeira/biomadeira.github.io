@@ -7,12 +7,7 @@ navigation: True
 title: New paper out on AI and Protein Docking
 author: fabio
 tags:
-- News
-- Academia
-- AI
-- Paper
-- Protein Docking
-- Coevolution
+- Archived
 ---
 
 Great news! Our paper submitted to the [Conference in Artificial Intelligence in Medicine](http://www.aimedicine.info/aime13/) hosted in Murcia, Spain, has been accepted!

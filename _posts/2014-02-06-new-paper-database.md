@@ -7,11 +7,7 @@ navigation: True
 title: ANIA paper is finally out in Database Journal!
 author: fabio
 tags:
-- News
-- Academia
-- Paper
-- Bioinformatics
-- Database
+- Archived
 ---
 
 Great news! 

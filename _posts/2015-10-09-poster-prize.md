@@ -7,12 +7,7 @@ navigation: True
 title: I seem to be doing good at poster sessions
 author: fabio
 tags:
-- News
-- Academia
-- Poster
-- Bioinformatics
-- PhD
-- Compbio
+- Archived
 ---
 
 

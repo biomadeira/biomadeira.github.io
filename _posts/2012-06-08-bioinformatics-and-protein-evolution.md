@@ -7,9 +7,7 @@ navigation: True
 title: Bioinformatics and Protein Evolution
 author: fabio
 tags:
-- Evolution
-- Proteins
-- Bioinformatics
+- Archived
 ---
 
 *"Nothing in bioinformatics makes sense except in the light of evolution"*, by Paul G. Higgs and Teresa K. Attwood, in adaptation of the famous Theodosius Dobzhansky's [remark](http://en.wikipedia.org/wiki/Nothing_in_Biology_Makes_Sense_Except_in_the_Light_of_Evolution).

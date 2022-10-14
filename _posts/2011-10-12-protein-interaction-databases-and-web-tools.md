@@ -7,8 +7,7 @@ navigation: True
 title: Protein Interaction Databases and Web Tools
 author: fabio
 tags:
-- Proteins
-- Database
+- Archived
 ---
 
 A highly comprehensive collection of protein interactions databases, predictors as well as web tools can be found [here](http://ppi.fli-leibniz.de/jcb_ppi_databases.html)!

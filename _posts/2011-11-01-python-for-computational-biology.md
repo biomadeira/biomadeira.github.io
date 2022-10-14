@@ -7,8 +7,7 @@ navigation: True
 title: Python for Computational Biology
 author: fabio
 tags:
-- Python
-- Computational Biology
+- Archived
 ---
 
 There are several software packages and modules developed in [Python](http://www.python.org/). If some provided extended facilities and full-featured Graphical User Interfaces, others work on the language environment extending python native methods and attributes. Below you find a small list of such packages.  

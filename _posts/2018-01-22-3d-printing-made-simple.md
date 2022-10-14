@@ -7,8 +7,7 @@ navigation: True
 title: 3D printing protein models made simple
 author: fabio
 tags:
-- Tech
-- Bioinformatics
+- Archived
 ---
 
 

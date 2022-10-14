@@ -7,11 +7,7 @@ navigation: True
 title: Participated with IntelliGene in BiotechYES competition
 author: fabio
 tags:
-- News
-- BiotechYES
-- Entrepreneurship 
-- Competition
-- Business plan
+- Archived
 ---
 
 I have enjoyed every minute of the last two days where me and my friends participated in the [Biotechnology YES 2013 competition](http://www.biotechnologyyes.co.uk/biotechnologyyes/index.aspx) hosted in the Biocity venue in Glasgow. It was a great learning experience though very stressful as well. We literally didn't sleep finishing our business plan and presentation for the big day!

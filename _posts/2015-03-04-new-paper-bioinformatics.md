@@ -7,12 +7,7 @@ navigation: True
 title: Paper on new methods to predict 14-3-3-binding sites out!
 author: fabio
 tags:
-- News
-- Academia
-- Paper
-- Bioinformatics
-- AI
-- Compbio
+- Archived
 ---
 
 After many months of hard work, the day is here! Our new paper on methods to predict 14-3-3-binding sites is out in Bioinformatics Journal. This project originated as a collaboration between the Barton Group and the MacKintosh Group on the quest for improving the quality of predictions on 14-3-3-binding sites.

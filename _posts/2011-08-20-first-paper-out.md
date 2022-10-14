@@ -7,7 +7,7 @@ navigation: True
 title: My first ever paper is out!!
 author: fabio
 tags:
-- Academia
+- Archived
 ---
 
 Big times for me! 

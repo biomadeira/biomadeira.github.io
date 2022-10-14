@@ -7,7 +7,7 @@ navigation: True
 title: Hello Jekyll and Github Pages!
 author: fabio
 tags:
-- News
+- Archived
 ---
 Hello folks!
 

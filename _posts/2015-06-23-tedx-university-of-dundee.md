@@ -7,11 +7,7 @@ navigation: True
 title: Organized the first ever TEDx University of Dundee
 author: fabio
 tags:
-- News
-- PiCLS
-- Symposium
-- Dundee
-- Life Sciences
+- Archived
 ---
 
 Me and a bunch of other students and staff members of the University of Dundee organized the first ever [TEDx University of Dundee](http://tedxuod.co.uk/). Together with my buddy Thiago, my main task was to design and develop the event's website and organize ticket sale.

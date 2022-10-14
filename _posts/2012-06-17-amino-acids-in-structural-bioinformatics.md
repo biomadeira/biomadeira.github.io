@@ -7,8 +7,7 @@ navigation: True
 title: Amino Acids in Structural Bioinformatics
 author: fabio
 tags:
-- Proteins
-- Bioinformatics
+- Archived
 ---
 
 A long-standing goal in Bioinformatics has been to predict protein structure from sequence. One aspect that obviously matters is amino acids' physico-chemical properties.

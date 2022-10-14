@@ -7,12 +7,7 @@ navigation: True
 title: The PiCLS symposium 2014 was a success
 author: fabio
 tags:
-- News
-- Academia
-- PiCLS
-- Symposium
-- Dundee
-- Life Sciences
+- Archived
 ---
 
 Together with a bunch of PhD students from the College of Life Sciences at University of Dundee I organized the [PiCLS symposium 2014](http://piclssymposium.org/2014/). My main task was to develop the website, which I did with [wordpress](https://wordpress.org/).

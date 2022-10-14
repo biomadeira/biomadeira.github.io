@@ -7,9 +7,7 @@ navigation: True
 title: Multi-protein Communication Systems
 author: fabio
 tags:
-- Paper
-- Proteins
-- Bioinformatics
+- Archived
 ---
 
 On a recent paper, *"Structural insights into multi-protein communication systems"* [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/22659012?dopt=Abstract), Christine Orengo and James Whisstock discuss how individual protein components participate in complex multi-protein machines, achieving specific functional outcomes.

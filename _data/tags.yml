@@ -11,3 +11,7 @@ tech:
 bioinformatics:
   name: bioinformatics
   image: False
+archived:
+  name: archived
+  image: False
+  description: Old posts including some migrated from other platforms

@@ -6,12 +6,7 @@ image: False
 navigation: True
 title: I am now officially a PhD student in Bioinformatics 
 tags:
-- News
-- Academia
-- PhD
-- Bioinformatics
-- Compbio
-- Dundee
+- Archived
 ---
 
 Hello folks again!

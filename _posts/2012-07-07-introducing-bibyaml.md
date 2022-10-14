@@ -7,7 +7,7 @@ navigation: True
 title: Introducing BibYAML
 author: fabio
 tags:
-- Tech
+- Archived
 ---
 
 **BibYAML** stands for Bibliographic YAML, and aims to be a new standard for managing, formatting and storing bibliographies. Inheriting the advantages of [BibTeX](http://www.bibtex.org/) and [YAML](http://yaml.org/), it provides human and machine readable bibliographic records that can populate your database and documents. Let's see how it works!
