@@ -4,7 +4,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
     {% if page.content and page.current == 'post' or page.current == 'about' %}
-        {% assign excerpt = page.content | strip_html | truncatewords: 75, "" %}
+        {% assign excerpt = page.content | strip_html | truncatewords: 50, "" %}
      {% endif %} 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="{{ site.title }}" />
