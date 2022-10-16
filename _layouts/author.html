@@ -97,7 +97,44 @@ label: Author
 			</section>
 		</div> -->
 
-		{% include loop.html %}
+		<!-- {% include loop.html %} -->
+
+		 <div class="inner">
+			<!-- {% if site.tags.size > 0 %}
+			<aside class="post-tags">
+				<span class="post-info-label">Topic</span>
+				{% for tag in site.tags %}
+				<a href="{{ site.baseurl }}tag/{{ tag[0] | slugify: 'latin' }}/">{{ tag[0] }}</a>
+				{% endfor %}
+			</aside>
+			{% endif %} -->
+ 
+			{% assign posts = paginator.posts %}
+			<aside class="post-nav">
+				{% if posts[0] %}
+				{% if site.tags.size > 0 %}
+				<div class="archive-tags">
+					<aside class="post-tags">
+						<span class="post-info-label">Topics</span>
+						{% for tag in site.tags %}
+						<a href="{{ site.baseurl }}tag/{{ tag[0] | slugify: 'latin' }}/">{{ tag[0] }}</a>
+						{% endfor %}
+					</aside>
+				</div>
+				{% endif %}
+				<a class="post-nav-prev" href="{{ site.baseurl }}{{ posts[0].url | remove_first: '/' }}">
+					<section class="post-nav-teaser">
+						<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+						<h2 class="post-nav-title">{{ posts[0].title }}</h2>
+						<p class="post-nav-excerpt">{{ posts[0].content | strip_html | truncatewords: 12, "" }}&hellip;</p>
+						<p class="post-nav-meta"><time datetime="{{ posts[0].date | date:'%e %B %Y' }}">{{ posts[0].date |
+								date:'%e %B %Y' }}</time></p>
+					</section>
+				</a>
+				{% endif %}
+				<div class="clear"></div>
+			</aside>
+		</div>
 
 	</main>
 
