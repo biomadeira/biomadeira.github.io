@@ -1447,11 +1447,30 @@ textarea {
     color: var(--color-content-secondary)
 }
 
+.archive .archive-extra {
+    display: block;
+    font-size: 1.75em;
+    line-height: 1.5em;
+    margin: 1rem 0;
+    font-family: var(--font-secondary)
+}
+
+.archive-tags {
+    position: relative;
+    top: 3.5rem;
+}
+
 .archive .archive-links {
     display: block;
     font-size: 2em;
     line-height: 1.5em;
-    margin-top: 1rem
+    margin-top: 1rem;
+
+}
+
+.archive .archive-links a {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .archive .archive-links a span {
@@ -1540,7 +1559,7 @@ textarea {
 }
 
 .inner {
-    max-width: calc(64rem + 8vw);
+    max-width: calc(80rem + 15vw);
     margin: 0 auto;
     padding: 0 8rem
 }
@@ -1769,6 +1788,11 @@ textarea {
     font-weight: 500
 }
 
+.nav-header li.active.has-cover a {
+    color: white;
+    font-weight: 500;
+}
+
 @media only screen and (max-width: 640px) {
     .nav-header li.active a {
         color: white
@@ -1842,6 +1866,14 @@ textarea {
 
 .nav-meta li span {
     display: none
+}
+
+.nav-mode {
+    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-right: 0px;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
 }
 
 .image-active .nav-wrapper-control a {
@@ -2058,6 +2090,7 @@ textarea {
 
 .theme-dark .theme-icon:after {
     left: -25%;
+    top: 0%;
     border-radius: 2rem;
     background: #229
 }
@@ -2175,6 +2208,11 @@ textarea {
     position: relative;
     margin-left: 3.5rem;
     color: var(--color-content-secondary)
+}
+
+.post-info .post-count a {
+    color: inherit;
+    font-weight: 500
 }
 
 .post-info .post-count:after {
