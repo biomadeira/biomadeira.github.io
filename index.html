@@ -3,6 +3,7 @@ layout: default
 current: home
 class: home-template
 navigation: True
+image: True
 ---
 
 <header class="blog-header {%- if site.image %} has-cover{% endif -%}">
@@ -15,13 +16,14 @@ navigation: True
 		</div>
 		{% if site.image %}
 		<div class="blog-cover cover">
-			<img
+			<!-- <img
 				srcset="{{ site.image }} 320w,
 						{{ site.image }} 640w, 
 						{{ site.image }} 960w,
 						{{ site.image }} 1920w"
 				src="{{ site.image }}"
-				alt="{{ site.title }}" />
+				alt="{{ site.title }}" /> -->
+				<img src="{{ site.baseurl }}{{ site.image }}" alt="{{ site.title }}" />
 		</div>
 		{% endif %}
 	</div>
