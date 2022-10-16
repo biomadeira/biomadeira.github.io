@@ -8,7 +8,7 @@ navigation: True
 <header class="blog-header {%- if site.image %} has-cover{% endif -%}">
 	<div class="inner">
 		<div class="box blog-box">
-			<h1 class="blog-name">{{ site.title }}</h1>
+			<h1 class="blog-name">{{ site.title }}<em>.{{ site.domain }}</em></h1>
 			{% if site.description %}
 			<span class="blog-description">{{ site.description }}</span>
 			{% endif %}

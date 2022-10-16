@@ -30,7 +30,8 @@ feed:
 baseurl: /
 url: http://biomadeira.github.io/
 author: Fábio Madeira
-title: biom.dev
+title: biom
+domain: dev
 description: Bioinformatics and other digressions
 image: assets/images/marek-piwnicki-ab8lDEFYJ74-unsplash.jpg
 # Contacts
