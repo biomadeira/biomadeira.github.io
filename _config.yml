@@ -4,6 +4,7 @@ highlighter: rouge
 markdown: kramdown
 port: 3000
 paginate: 5 # it will paginate after this number
+per_page: 5
 language: 'en-uk'
 words_per_minute: 200
 color_scheme: Light #Dark #Light 
