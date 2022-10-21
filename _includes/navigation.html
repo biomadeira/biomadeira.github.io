@@ -1,12 +1,36 @@
 <ul>
 {% if page.url contains '/page' %}
      {% if page.url contains '/author' or page.url contains '/tag' %}
-     <li class="nav-page {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-page {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>FM</span></a></li>
      {% else %}
-     <li class="nav-home active {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-home active {% if page.image %}has-cover{% endif %}" ><a href="{{ site.url }}"><span>FM</span></a></li>
      {% endif %}
 {% else %}
-     <li class="nav-home {% if page.image %}has-cover{% endif %} {% if page.url == site.baseurl %}active{% endif %}" ><a href="{{ site.url }}"><span>Home</span></a></li>
+     <li class="nav-home {% if page.image %}has-cover{% endif %} {% if page.url == site.baseurl %}active{% endif %}" ><a href="{{ site.url }}"><span>FM</span></a></li>
 {% endif %}
-     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/author/fabio' %}active{% endif %}" ><a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/author/fabio"><span>About</span></a></li>
+{% if page.url contains '/author' %}
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/author' %}active{% endif %}" >
+          <a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/author/{{ page.author }}"><span>About</span></a>
+     </li>
+{% endif %}
+{% if page.url contains '/tag' %}
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/tag' %}active{% endif %}" >
+          <a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}{{ page.url }}"><span>{{ page.tag | Capitalise }}</span></a>
+     </li>
+{% endif %}
+{% if page.url contains '/policies' %}
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/policies' %}active{% endif %}" >
+          <a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/policies/"><span>Policies</span></a>
+     </li>
+{% endif %}
+{% if page.url contains '/terms' %}
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/terms' %}active{% endif %}" >
+          <a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/terms/"><span>Terms</span></a>
+     </li>
+{% endif %}
+{% if page.url contains '/privacy' %}
+     <li class="nav-about {% if page.image %}has-cover{% endif %} {% if page.url contains '/privacy' %}active{% endif %}" >
+          <a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/privacy/"><span>Privacy</span></a>
+     </li>
+{% endif %}
 </ul>
