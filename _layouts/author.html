@@ -69,7 +69,7 @@ label: Author
 				<aside class="post-tags" style="max-width:100%">
 					<span class="post-info-label">Topics</span>
 					{% for tag in site.tags %}
-					<a href="{{ site.baseurl }}tag/{{ tag[0] | slugify: 'latin' }}/">{{ tag[0] }}</a>
+					<a href="{{ site.baseurl }}tag/{{ tag[0] | slugify: 'latin' }}/">{{ tag[0] }}: {{ tag[1].size }}</a>
 					{% endfor %}
 				</aside>
 			</div>
