@@ -9,7 +9,7 @@
     <title>{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}assets/images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/style.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -105,9 +105,9 @@
 			<nav class="nav-wrapper" aria-label="Footer">
 				<span class="nav-copy">{{ site.title }}.{{ site.domain }} &copy; {{  site.time | date: '%Y' }}
 					&bull;
-					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/policies/">Blog policies and disclaimers</a>
+					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}policies">Blog policies and disclaimers</a>
 					&bull;
-					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}/feed.xml"
+					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}feed.xml"
 						target="_blank">
 						Subscribe <i class="fa-solid fa-rss"></i></a>
 				</span>

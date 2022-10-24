@@ -9,7 +9,7 @@ subclass: 'post page'
 ---
 
 This privacy policy (“Privacy Policy”) describes how Fabio Madeira's Blog ("this blog", “biomadeira.github.io”, 
-"biom.dev", "I", "my", "we", "us" or "our") collects, uses, and discloses, transfers, and 
+"I", "my", "we", "us" or "our") collects, uses, and discloses, transfers, and 
 otherwise processes and handles (collectively, “Processes”) your personal data. By accessing or 
 using our website and services, or otherwise interacting with us, you are deemed to have read, 
 understood and agreed to our Processing of your personal data as outlined in this Privacy Policy.

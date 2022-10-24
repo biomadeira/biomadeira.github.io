@@ -15,7 +15,7 @@ of these terms, so you know what you're agreeing to.
 The following terms and conditions govern all use of this blog website (the “Website”) and 
 all content, services and products available at or through the Website, (collectively, the “Services”). 
 The Services are owned and operated by the Fabio Madeira's Blog ("this blog", “biomadeira.github.io”,
-"biom.dev", "I", "my", "we", "us" or "our"). The Services are offered subject to your acceptance 
+"I", "my", "we", "us" or "our"). The Services are offered subject to your acceptance 
 without modification of all of the terms and conditions contained herein and all other operating 
 rules, policies (including, without limitation, this blog's privacy policy and Data 
 Processing Agreement under the European General Data Protection Regulation) and procedures 
