@@ -23,7 +23,7 @@ This Privacy Statement explains our practices regarding the collection, use, and
 of your data, including any personal data we collect and 
 process in connection with our website and any applications, software, products, and services
 provided by this blog (collectively “Service”). Please read the [Privacy Policy]({{ site.url }}{{ site.baseurl | remove_first: '/' }}privacy), 
-including the [Cookies Policy]({{ site.url }}{{ site.baseurl | remove_first: '/' }}/privacy/#cookies) notice carefully.
+including the [Cookies Policy]({{ site.url }}{{ site.baseurl | remove_first: '/' }}privacy#cookies) notice carefully.
 
 ## Disclaimers
 
