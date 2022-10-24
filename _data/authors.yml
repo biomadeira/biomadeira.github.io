@@ -1,9 +1,9 @@
-fabio:
-  username: fabio
+biomadeira:
+  username: biomadeira
   name: Fábio Madeira
   url_full: http://biomadeira.github.io/
   url: biomadeira.github.io/
-  bio: Technical Project Lead at EMBL-EBI working on EBI Tools and APIs
+  bio: Technical Project Lead at EMBL-EBI
   picture: assets/images/fabio.jpeg
   github: biomadeira
   twitter: biomadeira

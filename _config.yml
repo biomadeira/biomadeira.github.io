@@ -3,12 +3,13 @@
 highlighter: rouge
 markdown: kramdown
 port: 3000
-paginate: 5 # it will paginate after this number
-per_page: 5
+paginate: 7 # it will paginate after this number
+per_page: 7
 language: 'en-uk'
 words_per_minute: 200
 color_scheme: Light #Dark #Light 
 darkmode_accent_color: "#ff6633"
+future: true
 search: False
 
 ###############################################################################
@@ -31,8 +32,8 @@ feed:
 baseurl: /
 url: http://biomadeira.github.io/
 author: Fábio Madeira
-title: biom
-domain: dev
+title: biomadeira
+domain: github.io
 description: Bioinformatics and other digressions
 image: assets/images/mckayla-crump-3OR-XFzKSBo-unsplash.jpg
 # Contacts
