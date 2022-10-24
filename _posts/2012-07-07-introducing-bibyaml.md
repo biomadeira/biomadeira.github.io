@@ -10,9 +10,13 @@ tags:
 - Archived
 ---
 
-**BibYAML** stands for Bibliographic YAML, and aims to be a new standard for managing, formatting and storing bibliographies. Inheriting the advantages of [BibTeX](http://www.bibtex.org/) and [YAML](http://yaml.org/), it provides human and machine readable bibliographic records that can populate your database and documents. Let's see how it works!
+**BibYAML** stands for Bibliographic YAML, and aims to be a new standard for managing, formatting and
+storing bibliographies. Inheriting the advantages of [BibTeX](http://www.bibtex.org/) and [YAML](http://yaml.org/), 
+it provides human and machine readable bibliographic records that can populate your database and documents. 
+Let's see how it works!
 
-As a simple tool I provide a naive BibTeX parser for converting between the two formats. It can be accessed at [bib2yaml.appspot.com](http://bib2yaml.appspot.com/). 
+As a simple tool I provide a naive BibTeX parser for converting between the two formats.
+It can be accessed at [bib2yaml.appspot.com](http://bib2yaml.appspot.com/). 
 
 Imagine the hypotetical **BibTeX** bibliography below:
 	
@@ -49,5 +53,8 @@ the resultant **BibYAML** would be:
 	    year: 2012
 	    month: july
 
-This tool was tested for a limited set of BibTeX entries, but it seems to be working fine. It looks like the simpler BibTeX parser developed so far, though. The idea then is to start using BibYAML to populate databases or documents. Since YAML is really easy to parse, and there are YAML parsers for virtually all programming languages in use, there are obvious advantages in using it. I hope you like the idea!
+This tool was tested for a limited set of BibTeX entries, but it seems to be working fine. It looks like the 
+simpler BibTeX parser developed so far, though. The idea then is to start using BibYAML to populate databases 
+or documents. Since YAML is really easy to parse, and there are YAML parsers for virtually all programming
+languages in use, there are obvious advantages in using it. I hope you like the idea!
 
