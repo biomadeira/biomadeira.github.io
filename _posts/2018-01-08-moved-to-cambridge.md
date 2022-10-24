@@ -5,6 +5,8 @@ navigation: True
 title: Moved to Cambridge
 author: biomadeira
 tags:
+- Academia
+- News
 - Archived
 ---
 

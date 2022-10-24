@@ -5,6 +5,8 @@ navigation: True
 title: I seem to be doing good at poster sessions
 author: biomadeira
 tags:
+- Academia
+- News
 - Archived
 ---
 

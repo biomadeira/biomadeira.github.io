@@ -5,6 +5,8 @@ navigation: True
 title: ANIA paper is finally out in Database Journal!
 author: biomadeira
 tags:
+- Bioinformatics
+- Academia
 - Archived
 ---
 

@@ -5,6 +5,8 @@ navigation: True
 title: Moved to Dundee, Scotland
 author: biomadeira
 tags:
+- Academia
+- News
 - Archived
 ---
 

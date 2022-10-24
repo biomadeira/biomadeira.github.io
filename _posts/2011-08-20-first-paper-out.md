@@ -5,6 +5,8 @@ navigation: True
 title: My first ever paper is out!!
 author: biomadeira
 tags:
+- Bioinformatics
+- Academia
 - Archived
 ---
 

@@ -5,6 +5,8 @@ navigation: True
 title: The PiCLS symposium 2014 was a success
 author: biomadeira
 tags:
+- Academia
+- News
 - Archived
 ---
 

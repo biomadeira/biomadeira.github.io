@@ -5,6 +5,7 @@ navigation: True
 title: Protein Interaction Databases and Web Tools
 author: biomadeira
 tags:
+- Bioinformatics
 - Archived
 ---
 

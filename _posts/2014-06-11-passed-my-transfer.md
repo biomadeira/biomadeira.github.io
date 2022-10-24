@@ -2,9 +2,11 @@
 layout: post
 image: False
 navigation: True
-title: I am now officially a PhD student in Bioinformatics 
+title: I am now officially a PhD student in Bioinformatics
 author: biomadeira
 tags:
+- Academia
+- News
 - Archived
 ---
 

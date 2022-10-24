@@ -5,6 +5,7 @@ navigation: True
 title: Participated with IntelliGene in BiotechYES competition
 author: biomadeira
 tags:
+- Academia
 - Archived
 ---
 

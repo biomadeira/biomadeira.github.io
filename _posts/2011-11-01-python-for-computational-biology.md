@@ -5,6 +5,8 @@ navigation: True
 title: Python for Computational Biology
 author: biomadeira
 tags:
+- Python
+- Bioinformatics
 - Archived
 ---
 

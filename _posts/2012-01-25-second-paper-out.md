@@ -5,6 +5,8 @@ navigation: True
 title: Another paper out in Bioinformatics 2012
 author: biomadeira
 tags:
+- Bioinformatics
+- Academia
 - Archived
 ---
 

@@ -5,6 +5,8 @@ navigation: True
 title: Preprints of my new submitted paper available online
 author: biomadeira
 tags:
+- Bioinformatics
+- Academia
 - Archived
 ---
 

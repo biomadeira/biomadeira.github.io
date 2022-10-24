@@ -5,6 +5,8 @@ navigation: True
 title: Hello Jekyll and Github Pages!
 author: biomadeira
 tags:
+- Tech
+- News
 - Archived
 ---
 Hello folks!
