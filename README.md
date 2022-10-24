@@ -45,7 +45,7 @@ $ gulp
 
 Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
 
-## License
+## License
 
 Website content (blog posts and other pages) are released under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 
 International License. To view a copy of this license, 
