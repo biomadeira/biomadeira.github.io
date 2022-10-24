@@ -1457,7 +1457,8 @@ textarea {
 
 .archive-tags {
     position: relative;
-    top: 3.5rem;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 
 .archive .archive-links {
