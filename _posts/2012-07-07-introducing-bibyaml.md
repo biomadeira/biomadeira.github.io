@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Introducing BibYAML
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: I seem to be doing good at poster sessions
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

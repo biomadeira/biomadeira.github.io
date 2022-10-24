@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Participated with IntelliGene in BiotechYES competition
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

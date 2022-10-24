@@ -5,6 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: I am now officially a PhD student in Bioinformatics 
+author: biomadeira
 tags:
 - Archived
 ---

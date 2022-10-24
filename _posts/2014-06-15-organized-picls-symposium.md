@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: The PiCLS symposium 2014 was a success
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

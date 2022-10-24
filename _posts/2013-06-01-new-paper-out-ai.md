@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: New paper out on AI and Protein Docking
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

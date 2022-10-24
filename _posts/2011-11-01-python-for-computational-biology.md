@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Python for Computational Biology
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

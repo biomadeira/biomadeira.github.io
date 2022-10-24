@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Amino Acids in Structural Bioinformatics
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

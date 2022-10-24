@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Useful Python Modules
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

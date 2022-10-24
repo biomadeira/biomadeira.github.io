@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: Another paper out in Bioinformatics 2012
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---

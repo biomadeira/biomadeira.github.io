@@ -5,7 +5,7 @@ class: post-template
 image: False
 navigation: True
 title: ANIA paper is finally out in Database Journal!
-author: fabio
+author: biomadeira
 tags:
 - Archived
 ---
