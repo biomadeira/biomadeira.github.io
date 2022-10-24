@@ -1,5 +1,6 @@
 ---
 layout: post
+class: post-template
 image: False
 navigation: True
 title: Introducing BibYAML
