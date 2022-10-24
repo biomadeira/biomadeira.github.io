@@ -1,7 +1,5 @@
 ---
 layout: post
-current: post
-class: post-template
 image: False
 navigation: True
 title: 3D printing protein models made simple

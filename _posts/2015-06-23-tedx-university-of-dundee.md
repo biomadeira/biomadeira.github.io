@@ -1,7 +1,5 @@
 ---
 layout: post
-current: post
-class: post-template
 image: False
 navigation: True
 title: Organized the first ever TEDx University of Dundee

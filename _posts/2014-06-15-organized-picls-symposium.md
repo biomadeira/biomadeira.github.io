@@ -1,7 +1,5 @@
 ---
 layout: post
-current: post
-class: post-template
 image: False
 navigation: True
 title: The PiCLS symposium 2014 was a success
