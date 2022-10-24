@@ -21,10 +21,7 @@ to developed a webpage server enabling other researchers to use the new methods 
 The webserver was mainly developed in Python with [Flask](http://flask.pocoo.org/) and is available at
 [compbio.dundee.ac.uk/14-3-3-Pred](http://www.compbio.dundee.ac.uk/1433pred/)
 
-<blockquote class="twitter-tweet tw-align-center" lang="en"><p lang="en" dir="ltr">My paper on new methods 
-to predict 14-3-3-binding phosphosites is out now! <a href="http://t.co/yMBMkzMQmm">http://t.co/yMBMkzMQmm</a> 
-thanks <a href="https://twitter.com/gjbarton">@gjbarton</a> and <a href="https://twitter.com/CarolMacKintos1">@CarolMacKintos1</a></p>&mdash; 
-Fábio Madeira (@biomadeira) <a href="https://twitter.com/biomadeira/status/573088139968970753">March 4, 2015</a></blockquote>
+<blockquote class="twitter-tweet tw-align-center" lang="en"><p lang="en" dir="ltr">My paper on new methods to predict 14-3-3-binding phosphosites is out now! <a href="http://t.co/yMBMkzMQmm">http://t.co/yMBMkzMQmm</a> thanks <a href="https://twitter.com/gjbarton">@gjbarton</a> and <a href="https://twitter.com/CarolMacKintos1">@CarolMacKintos1</a></p>&mdash; Fábio Madeira (@biomadeira) <a href="https://twitter.com/biomadeira/status/573088139968970753">March 4, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The paper is open access and can be found at the reference below:

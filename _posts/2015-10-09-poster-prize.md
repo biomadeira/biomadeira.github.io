@@ -18,8 +18,5 @@ a poster prize by Dundee Cell Products at the SLS Poster session for 3rd year Ph
 of Life Sciences at University of Dundee. 
 
 
-<blockquote class="twitter-tweet tw-align-center" lang="en"><p lang="en" dir="ltr">Yay just got one of the poster 
-presentations award 😊<a href="https://twitter.com/UoDLifeSciences">@UoDLifeSciences</a> 
-<a href="http://t.co/fRg2ao9097">pic.twitter.com/fRg2ao9097</a></p>&mdash; Fábio Madeira (@biomadeira) 
-<a href="https://twitter.com/biomadeira/status/652467796308307968">October 9, 2015</a></blockquote>
+<blockquote class="twitter-tweet tw-align-center" lang="en"><p lang="en" dir="ltr">Yay just got one of the poster presentations award 😊<a href="https://twitter.com/UoDLifeSciences">@UoDLifeSciences</a> <a href="http://t.co/fRg2ao9097">pic.twitter.com/fRg2ao9097</a></p>&mdash; Fábio Madeira (@biomadeira) <a href="https://twitter.com/biomadeira/status/652467796308307968">October 9, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
