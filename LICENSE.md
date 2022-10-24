@@ -1,7 +1,14 @@
-The MIT License (MIT)
-=====================
+---
+layout: page
+current: MIT
+title: The MIT License (MIT)
+navigation: true
+image: False
+class: page-template
+subclass: 'post page'
+---
 
-Copyright © `2022` `Fábio Madeira`
+Copyright © 2022 Fábio Madeira
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
