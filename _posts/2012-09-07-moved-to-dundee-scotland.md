@@ -1,7 +1,7 @@
 ---
 layout: post
 class: post-template
-image: False
+image: assets/images/david_martin_nightview_2006.png
 navigation: True
 title: Moved to Dundee, Scotland
 author: biomadeira

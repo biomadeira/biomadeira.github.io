@@ -9,7 +9,8 @@ disqus: false
 	<span class="progress-bar"></span>
 </div>
 
-<header class="post-header {% if page.image %} has-cover{% endif %}">
+<!--<header class="post-header {% if page.image %} has-cover{% endif %}">-->
+<header class="post-header">
 	<div class="inner">
 		<span class="post-info">
 			<span class="post-type">Article</span>
@@ -46,8 +47,19 @@ disqus: false
 			{% else %}
 				{{ words | divided_by:words_per_minute }} min read
 			{% endif %}
-                    
 		</div>
+<!--		{% if page.image %}-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset="{{ page.image_s }} 320w,-->
+<!--                    {{ page.image_m }} 640w,-->
+<!--                    {{ page.image_l }} 960w,-->
+<!--                    {{ page.image_xl }} 1920w"-->
+<!--            src="{{ page.image_xl }}"-->
+<!--            alt="{{ page.title }}" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" />-->
+<!--		</div>-->
+<!--		{% endif %}-->
 	</div>
 </header>
 

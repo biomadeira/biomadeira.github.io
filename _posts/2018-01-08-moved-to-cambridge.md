@@ -1,7 +1,7 @@
 ---
 layout: post
 class: post-template
-image: False
+image: assets/images/IMG_2894_Original.jpg
 navigation: True
 title: Moved to Cambridge
 author: biomadeira

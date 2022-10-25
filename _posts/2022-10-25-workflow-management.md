@@ -1,7 +1,7 @@
 ---
 layout: post
 class: post-template
-image: False
+image: assets/images/Workflow_example_nextflow.png
 navigation: True
 title: Workflow management systems in Bioinformatics
 author: biomadeira

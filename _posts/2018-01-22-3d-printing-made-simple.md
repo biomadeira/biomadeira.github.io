@@ -1,7 +1,7 @@
 ---
 layout: post
 class: post-template
-image: False
+image: assets/images/3d_printing_1.jpeg
 navigation: True
 title: 3D printing protein models made simple
 author: biomadeira
