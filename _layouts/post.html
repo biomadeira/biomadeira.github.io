@@ -39,8 +39,8 @@ disqus: false
 			{% endif %}
 			{% endfor %}
 			<time datetime="{{ page.date | date:'%e %B %Y' }}">{{ page.date | date:'%e %B %Y' }}</time> &bull; 
-			{% assign words = post.content | strip_html | number_of_words %}
-			{% assign words_per_minute = site.words_per_minute | default: 200 %}
+			{% assign words = content | strip_html | split: ' ' | size %}
+			{% assign words_per_minute = site.words_per_minute | default: 180 %}
 			{% if words <= words_per_minute %}
 				1 min read
 			{% else %}

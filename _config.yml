@@ -6,7 +6,7 @@ port: 3000
 paginate: 7 # it will paginate after this number
 per_page: 7
 language: 'en-uk'
-words_per_minute: 200
+words_per_minute: 180
 color_scheme: Light #Dark #Light 
 darkmode_accent_color: "#ff6633"
 future: true
