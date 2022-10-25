@@ -24,4 +24,4 @@ Big thanks to everyone involved!
 
 I have compiled a playlist with the videos of all TEDx University of Dundee talks:
 
-<iframe width="560" height="515" src="https://www.youtube.com/embed/videoseries?list=PLN918k2R1YYOTGCmqvC3bUyqGICP74e-c" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="320" src="https://www.youtube.com/embed/videoseries?list=PLN918k2R1YYOTGCmqvC3bUyqGICP74e-c" frameborder="0" allowfullscreen></iframe>
