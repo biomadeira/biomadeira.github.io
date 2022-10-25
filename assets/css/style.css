@@ -1565,7 +1565,7 @@ textarea {
     padding: 0 8rem
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .inner {
         padding: 0 4rem
     }
@@ -1580,7 +1580,7 @@ textarea {
     transition: all ease-out 0.3s
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header {
         transform: translate3d(0, -100%, 0)
     }
@@ -1601,7 +1601,7 @@ textarea {
     background: var(--color-background-overlay)
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .menu-active .nav-close {
         display: block
     }
@@ -1621,7 +1621,7 @@ textarea {
     transition: all linear 0.1s
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header .nav-wrapper-control {
         display: block
     }
@@ -1687,7 +1687,7 @@ textarea {
     overflow-y: auto
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header .nav-wrapper {
         background: #222426;
         flex-direction: column
@@ -1705,7 +1705,7 @@ textarea {
     margin-right: 3rem
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header .logo {
         display: none
     }
@@ -1732,7 +1732,7 @@ textarea {
     list-style: none
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header ul {
         flex-direction: column;
         flex-shrink: 0;
@@ -1745,7 +1745,7 @@ textarea {
     justify-content: flex-end
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header ul.nav-meta {
         width: 100%;
         flex-direction: row !important;
@@ -1771,7 +1771,7 @@ textarea {
     background: var(--ghost-accent-color)
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header li.active a:before {
         left: 0;
         top: 50%;
@@ -1794,7 +1794,7 @@ textarea {
     font-weight: 500;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header li.active a {
         color: white
     }
@@ -1814,7 +1814,7 @@ textarea {
     transition: color linear 0.1s
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-header li a {
         font-size: 2em;
         padding-left: 4rem
@@ -1839,7 +1839,7 @@ textarea {
     color: var(--color-content-main)
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
 
     .nav-header li a:focus,
     .nav-header li a:hover {
@@ -1851,7 +1851,7 @@ textarea {
     margin-right: 0
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-meta {
         display: none !important
     }
@@ -1886,14 +1886,14 @@ textarea {
     color: white
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 340px) {
     .image-active .nav-header li a {
         color: rgba(255, 255, 255, 0.8);
         border-color: rgba(255, 255, 255, 0.8)
     }
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 340px) {
 
     .image-active .nav-header li a:focus,
     .image-active .nav-header li a:hover {
@@ -1902,7 +1902,7 @@ textarea {
     }
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 340px) {
     .image-active .nav-header li.active a {
         color: white
     }
@@ -1961,7 +1961,7 @@ textarea {
     padding: 0 4rem
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-footer .nav-wrapper {
         flex-direction: column;
         text-align: center
@@ -2022,7 +2022,7 @@ textarea {
     white-space: nowrap
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 340px) {
     .nav-copy {
         margin-bottom: 3rem
     }
