@@ -17,7 +17,7 @@ disqus: false
 				<span class="archive-type">Topic</span>
 				<span class="archive-count">{% if paginator.total_posts == 0 %}No posts{% elsif paginator.total_posts == 1 %}1 Post{% else %}{{ paginator.total_posts }} Posts{% endif %}</span>
 			</span>
-			<h2 class="archive-title">{{ tag.name }}</h2>
+			<h2 class="archive-title">{{ page.tag }}</h2>
 			{% if tag_description %}
 				<span class="archive-description">{{ tag_description }}</span>
 			{% elsif page.tag %}
