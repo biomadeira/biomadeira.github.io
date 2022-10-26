@@ -46,7 +46,7 @@ The systems use custom domain-specific language (DSL) extensions of Groovy and P
 respectively. The popularity of Python among the Bioinformatics community would suggest Snakemake would be the
 most adopted option, but it turns out that Nextflow is very popular and the choice of many researchers 
 and groups. A benefit in both cases is the ability to use the underlying scripting languages beyond 
-the DSL as required. The composed workflows can be visualised as DAGs (direct acylic graphs), and both systems provide
+the DSL as required. The composed workflows can be visualised as DAGs (direct acyclic graphs), and both systems provide
 functions to generate them. See an example of a Nextflow DAG below.
 
 <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
