@@ -117,7 +117,7 @@ compliance with all applicable personal data protection laws.
 ## Disclosures required by law
 This blog third party integrations may disclose your personal data under special circumstances, 
 such as where required by any applicable law or regulation, or when your actions 
-violate the [Terms of Use]({{ site.url | remove_last: '/' }}{{ site.baseurl }}terms).
+violate the [Terms of Use]({{ site.url }}{{ site.baseurl }}terms).
 
 ## Withdrawing consent
 You may withdraw your consent to our use of your personal data at any time. 

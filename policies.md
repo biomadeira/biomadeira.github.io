@@ -10,7 +10,7 @@ subclass: 'post page'
 
 ## Terms of Use
 
-Thank you for checking out this blog! Please read the [Terms of Use]({{ site.url | remove_last: '/' }}{{ site.baseurl }}terms) agreement carefully as it 
+Thank you for checking out this blog! Please read the [Terms of Use]({{ site.url }}{{ site.baseurl }}terms) agreement carefully as it 
 constitutes an important contract between this blog and it's readers.
 
 ## Privacy Policy
@@ -22,8 +22,8 @@ Thanks for reading Fabio Madeira's blog ("this blog", “biomadeira.github.io”
 This Privacy Statement explains our practices regarding the collection, use, and disclosure 
 of your data, including any personal data we collect and 
 process in connection with our website and any applications, software, products, and services
-provided by this blog (collectively “Service”). Please read the [Privacy Policy]({{ site.url | remove_last: '/' }}{{ site.baseurl }}privacy), 
-including the [Cookies Policy]({{ site.url | remove_last: '/' }}{{ site.baseurl }}privacy#cookies) notice carefully.
+provided by this blog (collectively “Service”). Please read the [Privacy Policy]({{ site.url }}{{ site.baseurl }}privacy), 
+including the [Cookies Policy]({{ site.url }}{{ site.baseurl }}privacy#cookies) notice carefully.
 
 ## Disclaimers
 

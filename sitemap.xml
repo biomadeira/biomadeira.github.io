@@ -4,14 +4,14 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{ site.url | remove_last: '/' }}{{ site.baseurl }}</loc>
+    <loc>{{ site.url }}{{ site.baseurl }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   {% for post in site.posts %}
     <url>
-      <loc>{{ site.url | remove_last: '/' }}{{ site.baseurl }}{{ post.url | remove_first: '/' }}</loc>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ post.url | remove_first: '/' }}</loc>
       {% if post.sitemap.lastmod %}
         <lastmod>{{ post.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
       {% elsif post.date %}
@@ -33,7 +33,7 @@ layout: null
   {% endfor %}
   {% for page in site.pages %}
   <url>
-    <loc>{{ site.url | remove_last: '/' }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}</loc>
+    <loc>{{ site.url }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}</loc>
     {% if page.sitemap.lastmod %}
       <lastmod>{{ page.sitemap.lastmod | date: "%Y-%m-%d" }}</lastmod>
     {% elsif page.date %}

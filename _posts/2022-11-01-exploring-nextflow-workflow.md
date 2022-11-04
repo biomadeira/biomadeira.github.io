@@ -12,7 +12,7 @@ tags:
 ---
 
 I recently wrote about 
-[workflow management systems in bioinformatics]({{ site.url | remove_last: '/' }}{{ site.baseurl }}2022-10-25-workflow-management),
+[workflow management systems in bioinformatics]({{ site.url }}{{ site.baseurl }}2022-10-25-workflow-management),
 focusing on [Nextflow](https://www.nextflow.io/) and [Snakemake](https://snakemake.readthedocs.io/en/stable/). 
 In this post, the aim is to compose a small Bioinformatics workflow to start exploring
 the Nextflow syntax and its features. 
