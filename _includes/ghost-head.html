@@ -41,18 +41,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "{{ site.title }}",
-        "logo": "{{ site.url }}{{ site.baseurl }}{{ site.logo }}"
+        "logo": "{{ site.url | remove_last: '/' }}{{ site.baseurl }}{{ site.logo }}"
     },
-    "url": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}",
+    "url": "{{ site.url | remove_last: '/' }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}",
     "image": {
         "@type": "ImageObject",
-        "url": "{{ site.url }}{{ site.baseurl }}{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}",
+        "url": "{{ site.url | remove_last: '/' }}{{ site.baseurl }}{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ site.url }}{% if site.baseurl %}{{ site.baseurl }}{% endif %}{{ page.url | remove_first: '/' }}"
+        "@id": "{{ site.url | remove_last: '/' }}{{ site.baseurl }}{{ page.url | remove_first: '/' }}"
     },
     "description": "{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
 }

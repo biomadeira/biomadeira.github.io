@@ -15,7 +15,7 @@
 		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script>
-			var siteUrl = '{{ site.url }}';
+			var siteUrl = '{{ site.url | remove_last: '/' }}{{ site.baseurl }}';
 	</script>
 
 	<script>
@@ -58,7 +58,7 @@
 		<nav class="nav-wrapper" aria-label="Main">
 				{% if site.logo %}
 				<span class="logo">
-					<a href="{{ site.url }}" title="Home"><img src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" /></a>
+					<a href="{{ site.url | remove_last: '/' }}{{ site.baseurl }}" title="Home"><img src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" /></a>
 				</span>
 				{% endif %}
 				{% include navigation.html %}
@@ -105,9 +105,9 @@
 			<nav class="nav-wrapper" aria-label="Footer">
 				<span class="nav-copy">{{ site.title }}.{{ site.domain }} &copy; {{  site.time | date: '%Y' }}
 					&bull;
-					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}policies">Blog policies and disclaimers</a>
+					<a href="{{ site.url | remove_last: '/' }}{{ site.baseurl }}policies">Blog policies and disclaimers</a>
 					&bull;
-					<a href="{{ site.url }}{{ site.baseurl | remove_first: '/' }}feed.xml"
+					<a href="{{ site.url | remove_last: '/' }}{{ site.baseurl }}feed.xml"
 						target="_blank">
 						Subscribe <i class="fa-solid fa-rss"></i></a>
 				</span>
@@ -118,7 +118,7 @@
 		</div>
 
 	</section>
-	
+
 	<script type="text/javascript" src="{{ site.baseurl }}assets/js/script.js"></script>
 
      <!-- Add Google Analytics  -->
