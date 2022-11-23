@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Introducing BibYAML
 author: biomadeira
+hidden: true
 tags:
 - Tech
 - Archived

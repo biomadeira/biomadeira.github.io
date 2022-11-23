@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Hello Jekyll and Github Pages!
 author: biomadeira
+hidden: true
 tags:
 - Tech
 - News

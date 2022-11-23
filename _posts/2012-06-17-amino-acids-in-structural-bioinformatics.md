@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Amino Acids in Structural Bioinformatics
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - Archived

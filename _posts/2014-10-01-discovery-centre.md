@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Computational Biology now in the Discovery Centre
 author: biomadeira
+hidden: true
 tags:
 - Academia
 - Archived

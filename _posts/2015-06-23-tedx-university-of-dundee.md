@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Organized the first ever TEDx University of Dundee
 author: biomadeira
+hidden: true
 tags:
 - Academia
 - News

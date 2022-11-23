@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Bioinformatics and Protein Evolution
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - Archived

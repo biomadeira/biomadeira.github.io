@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: New paper out on AI and Protein Docking
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - AI

@@ -5,6 +5,7 @@ image: assets/images/IMG_2894_Original.jpg
 navigation: True
 title: Moved to Cambridge
 author: biomadeira
+hidden: true
 tags:
 - Academia
 - News

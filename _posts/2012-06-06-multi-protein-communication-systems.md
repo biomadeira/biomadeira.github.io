@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Multi-protein Communication Systems
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - Archived

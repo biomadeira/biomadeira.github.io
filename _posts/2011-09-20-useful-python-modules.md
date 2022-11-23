@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Useful Python Modules
 author: biomadeira
+hidden: true
 tags:
 - Python
 - Archived

@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: ANIA paper is finally out in Database Journal!
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - Academia

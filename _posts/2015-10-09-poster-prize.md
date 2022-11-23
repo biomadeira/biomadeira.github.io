@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: I seem to be doing good at poster sessions
 author: biomadeira
+hidden: true
 tags:
 - Academia
 - News

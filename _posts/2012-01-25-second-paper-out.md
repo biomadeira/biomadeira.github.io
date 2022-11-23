@@ -5,6 +5,7 @@ image: False
 navigation: True
 title: Another paper out in Bioinformatics 2012
 author: biomadeira
+hidden: true
 tags:
 - Bioinformatics
 - Academia
