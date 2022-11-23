@@ -22,4 +22,4 @@ about [Jekyll](https://jekyllrb.com/) and [GitHub Pages](https://pages.github.co
 I am still using to host this newer iteration of my homepage.
 
 No big promises, but I hope this time around I can get things rolling. I am keeping older posts 
-here for archival purposes. Feel free to have a look around!
+here for archival purposes- with the tag [Archived]({{ site.url }}{{ site.baseurl }}tag/archived/). Feel free to have a look around!
