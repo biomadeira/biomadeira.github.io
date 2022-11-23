@@ -10,7 +10,7 @@ words_per_minute: 180
 color_scheme: Light #Dark #Light 
 darkmode_accent_color: "#ff6633"
 future: true
-search: False
+search: false
 
 ###############################################################################
 # Permalinks
