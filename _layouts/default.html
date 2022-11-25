@@ -10,6 +10,7 @@
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/syntax.min.css" />
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/style.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -112,7 +113,7 @@
 			function codestyling() {
 			$('pre code').each(function(i, e) {
 			// Code highlight
-			hljs.highlightBlock(e);
+			// hljs.highlightBlock(e);
 			// No lines for plain text blocks
 			if (!$(this).hasClass('language-text')) {
 				var code = $(this);

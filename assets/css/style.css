@@ -695,10 +695,11 @@ textarea {
     padding: 4px 8px;
     font-family: monospace, sans-serif;
     font-size: 0.75em;
-    background: var(--color-background-secondary);
+    background: #2C2C2CFF;
     border: 1px solid var(--color-background-contrast);
     top: -2px;
-    white-space: pre-wrap
+    white-space: pre-wrap;
+    color: #F7F8FA;
 }
 
 .post-content pre {
@@ -708,9 +709,10 @@ textarea {
     overflow: hidden;
     font-family: monospace, sans-serif;
     white-space: pre;
-    background: var(--color-background-secondary);
+    background: #2C2C2CFF;
     border: 1px solid var(--color-background-contrast);
-    box-sizing: border-box
+    box-sizing: border-box;
+    color: #F7F8FA
 }
 
 .post-content pre .lines {
@@ -721,12 +723,12 @@ textarea {
     top: 0;
     padding: 1.33334em 0;
     border-right: 1px solid var(--color-background-contrast);
-    color: var(--color-content-secondary);
+    color: #F7F8FA;
     font-size: 0.75em;
     line-height: 2em;
     text-align: right;
     box-sizing: border-box;
-    background: var(--color-background-secondary);
+    background: #2C2C2CFF;
     user-select: none;
     -webkit-user-select: none
 }
