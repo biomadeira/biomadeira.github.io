@@ -1,7 +1,7 @@
 ---
 layout: post
 class: post-template
-image: assets/images/json-schema-process.webp
+image: assets/images/json-schema-process.jpeg
 navigation: True
 title: Data validation with JSON Schema
 author: biomadeira
@@ -150,7 +150,7 @@ The overall process of validating data using JSON Schema is illustrated in the
 diagram below:
 
 <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
-    <img src="assets/images/json-schema-process.webp" class="kg-image" alt="JSON Schema validation example">
+    <img src="assets/images/json-schema-process.jpeg" class="kg-image" alt="JSON Schema validation example">
     <figcaption>JSON Schema validation process.</figcaption>
 </figure>
 
