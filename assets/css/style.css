@@ -1402,7 +1402,7 @@ textarea {
 }
 
 .archive.archive-box {
-    padding-bottom: calc(4rem + 2vw);
+    padding-bottom: calc(4rem + 4vw);
     border-bottom: 1px solid var(--color-background-contrast)
 }
 
