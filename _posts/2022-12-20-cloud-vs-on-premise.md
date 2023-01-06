@@ -98,5 +98,5 @@ by Erik Bernhardsson (Nov 19, 2022)
 <sup>3</sup>[AWS doesn't make sense for scientific computing](https://www.noahlebovic.com/aws-doesnt-make-sense-for-scientific-computing/)
 by Noah Lebovic (Oct 7, 2022)
 
-<sup>3</sup>[Running servers (and services) well is not trivial](https://utcc.utoronto.ca/~cks/space/blog/sysadmin/RunningServersNotTrivial)
+<sup>4</sup>[Running servers (and services) well is not trivial](https://utcc.utoronto.ca/~cks/space/blog/sysadmin/RunningServersNotTrivial)
 by Chris Siebenmann (Jun 22, 2018)
