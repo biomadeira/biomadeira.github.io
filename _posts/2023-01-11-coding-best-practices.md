@@ -19,7 +19,7 @@ that have some experience working in Computational Biology and data analysis.
 The subject is vast as it touches on many aspects of software development, Open Source, Open Science, 
 reproducible research, and so on.
 I will be taking a hybrid approach, by providing some background information but also
-guiding the audience through some practical examples that hopefuly
+guiding the audience through some practical examples that hopefully
 will help them improve their coding skills.
 
 <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
@@ -120,7 +120,7 @@ Knowing how to use the command line and basic commands can be useful for tasks s
 navigating the file system, creating and editing files, and running scripts.
 UNIX skills are also important because many software development tools and technologies, 
 such as version control systems and build automation tools, are designed to be used from the command line. 
-A large portion of scientific sofware can only be executed from the command line.
+A large portion of scientific software can only be executed from the command line.
 Being able to use the command line effectively can therefore make it easier 
 to use these tools and integrate them into workflows.
 
@@ -148,7 +148,7 @@ open source libraries and frameworks.
 This means that rather than trying to recreate existing functionality from scratch, 
 developers should try to leverage these.
 This can save time and effort, and it can also help to ensure that the software is more reliable and robust.
-Python and R are popular languagues among Data Science and Computational Biology projects.
+Python and R are popular languages among Data Science and Computational Biology projects.
 Open source libraries include among others, for Python: [SciPy](https://scipy.org/), 
 [NumPy](https://numpy.org/), [Pandas](https://pandas.pydata.org/), [matplotlib](https://matplotlib.org/), 
 [iPython](https://ipython.org/); for R:
@@ -173,7 +173,7 @@ In relation to data and software distribution, follow standards and conventions 
 software such as 
 [FAIR](https://www.go-fair.org/) and [FAIR4RS](https://www.rd-alliance.org/groups/fair-research-software-fair4rs-wg).
 There are domain specific file formats used in the
-Biofinformatics (e.g. FASTA, FASTQ, GFF, VCF, S/BAM, PDB), which should be used as both researchers
+Bioinformatics (e.g. FASTA, FASTQ, GFF, VCF, S/BAM, PDB), which should be used as both researchers
 and the tools are expecting them.
 
 **Other tips and considerations**  
@@ -181,7 +181,7 @@ It is good to keep the code efficient and concise. Nevertheless, making code rea
 usually as important as writing code that is efficient.
 Developing standalone software is very different than developing analysis pipelines.
 Special considerations need to be taken into account when developing analysis pipelines, such as
-where the software will be exectuted: in single machines or high performance clusters (HPC);
+where the software will be executed: in single machines or high performance clusters (HPC);
 on premise (Slurm, SGE, LSF, etc.), or in open cloud platforms (AWS, GCP, etc.).
 If you are building workflows, various workflow management tools exist, for example 
 [Snakemake](https://snakemake.readthedocs.io/en/stable/) and [Nextflow](https://www.nextflow.io/),
@@ -210,7 +210,7 @@ It is important to include a license with the software that specifies the terms 
 but also protects the intellectual property of the software developers.
 There are a number of websites that you can use to help you choose an appropriate license for your software,
 for example: [Choose a License](https://choosealicense.com/) and the
-[Public Licence Selector](https://ufal.github.io/public-license-selector/).
+[Public License Selector](https://ufal.github.io/public-license-selector/).
 
 **Versioning**  
 Using a consistent versioning scheme, such as [Semantic versioning](https://semver.org/), 
