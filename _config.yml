@@ -39,8 +39,9 @@ image: assets/images/mckayla-crump-3OR-XFzKSBo-unsplash.jpg
 # Contacts
 email: fabiomadeira@me.com
 # Social Usernames for Twitter, Facebook, Github
-twitter: biomadeira 
-facebook: False 
+twitter: biomadeira
+mastodon: biomadeira
+facebook: False
 github: biomadeira
 
 # Social info

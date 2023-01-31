@@ -1,4 +1,12 @@
 <ul class="nav-meta">
+  {% if site.mastodon %}
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@{{ site.mastodon }}" title="{{ site.mastodon }}" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>{{ site.mastodon }}</span>
+    </a>
+  </li>
+  {% endif %}
   {% if site.twitter %}
   <li class="nav-twitter">
     <a aria-label="Twitter" href="https://twitter.com/{{ site.twitter }}" title="{{ site.twitter }}" target="_blank">
