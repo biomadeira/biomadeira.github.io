@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Using Apache Airflow to monitor data pipelines</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Using Apache Airflow to monitor data pipelines" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/2022-11-08-apache-airflow-ui" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/Airflow_screenshot_4.png" />
+    
+    <meta property="article:tag" content="Apache Airflow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Using Apache Airflow to monitor data pipelines" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/2022-11-08-apache-airflow-ui" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/Airflow_screenshot_4.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Apache Airflow" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/2022-11-08-apache-airflow-ui",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/Airflow_screenshot_4.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/2022-11-08-apache-airflow-ui"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Using Apache Airflow to monitor data pipelines" href="/feed.xml" />
+
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     <li class="nav-home has-cover " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<!--<header class="post-header  has-cover">-->
+<header class="post-header">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			
+			<span class="post-count"><a href="/tag/apache-airflow/">Apache Airflow</a></span>
+			
+
+		</span>
+		<h1 class="post-title">Using Apache Airflow to monitor data pipelines</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				
+                    
+					<figure class="post-meta-avatar avatar">
+						
+						<a href="/author/biomadeira" class="author-avatar">
+								<img class="author-profile-image" src="/assets/images/fabio.jpeg" alt="biomadeira" />
+						</a>
+						
+					</figure>
+					
+                
+			</div>
+			
+			
+			<h4 class="post-meta-author"><a href="/author/biomadeira">Fábio Madeira</a></h4>
+			
+			
+			<time datetime=" 8 November 2022"> 8 November 2022</time> &bull; 
+			
+			
+			
+				6 min read
+			
+		</div>
+<!--		-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset=" 320w,-->
+<!--                     640w,-->
+<!--                     960w,-->
+<!--                     1920w"-->
+<!--            src=""-->
+<!--            alt="Using Apache Airflow to monitor data pipelines" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="/assets/images/Airflow_screenshot_4.png" alt="Using Apache Airflow to monitor data pipelines" />-->
+<!--		</div>-->
+<!--		-->
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="">
+		<div class="inner">
+
+			<section class="post-content">
+				<p><a href="https://airflow.apache.org/">Apache Airflow</a> is a popular open-source platform for developing, scheduling, 
+and monitoring workflows. 
+Airflow is developed in Python and enables the development of batch-oriented workflows, that are dynamic,
+extensible and flexible, as they are configured as Python code.
+Airflow provides a rich interactive web user interface (UI) that helps manage the state of workflow execution.
+In addition to all of these, Airflow connects to a variety of different technologies, through a
+very extensive list of integrations, for email, monitoring,
+logging, deployment, security, and many others. 
+Despite being widely adopted in the industry by big players in Machine Learning and Big Data, 
+Airflow’s adoption by the Bioinformatics community is not as widespread.</p>
+
+<blockquote>
+  <p>Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.</p>
+</blockquote>
+
+<p>Airflow can be deployed in many ways, varying from a single process on your laptop to a 
+distributed setup to support very large workflows.
+Airflow provides local and remote <em>executors</em> (e.g. Celery, Dask and Kubernetes) out of the box.
+Task instances can run sequentially or in parallel.</p>
+
+<p>At the core of the Airflow execution are the DAGs (direct acyclic graphs), 
+which are the blueprints of the various tasks and processes that compose workflows.
+Airflow has been designed and developed to orchestrate all aspects of the DAG execution.
+While this is why Airflow is so popular and useful, there is a use case 
+for which I could not find much information about.</p>
+
+<p>Imagine a simple sequential workflow, with the following steps:</p>
+
+<ol>
+  <li>Perform data processing if new data is available : <code class="language-plaintext highlighter-rouge">run_data_update</code></li>
+  <li>Perform deployment of the processed data to the development environment: <code class="language-plaintext highlighter-rouge">run_dev_deployment</code></li>
+  <li>Perform deployment of the processed data to the production environment: <code class="language-plaintext highlighter-rouge">run_prod_deployment</code></li>
+  <li>Generate some data statistics: <code class="language-plaintext highlighter-rouge">generate_data_stats</code></li>
+</ol>
+
+<p>Dependending on the complexity of each task, 
+we could use one of the various operators that Airflow provides out of the box.
+For example, the <code class="language-plaintext highlighter-rouge">BashOperator</code> or the <code class="language-plaintext highlighter-rouge">PythonOperator</code>.
+This basic DAG could be put together, glancing over some details, as shown below:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+
+<span class="k">def</span> <span class="nf">generate_generic_dag</span><span class="p">(</span><span class="n">dag_id</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">dag_config</span><span class="p">,</span> <span class="n">default_args</span><span class="p">,</span> <span class="n">schedule</span><span class="p">):</span>
+    <span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+        <span class="n">dag_id</span><span class="p">,</span>
+        <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="n">dag_config</span><span class="p">[</span><span class="s">"description"</span><span class="p">],</span>
+        <span class="n">schedule_interval</span><span class="o">=</span><span class="n">schedule</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="o">=</span><span class="n">config</span><span class="p">.</span><span class="n">STARTDATE</span><span class="p">,</span>
+        <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="n">dag</span><span class="p">:</span>
+        <span class="c1"># using PythonOperator 
+</span>        <span class="n">task_run_data_update</span> <span class="o">=</span> <span class="n">run_data_update_python</span><span class="p">(</span><span class="n">dag_id</span><span class="o">=</span><span class="n">dag_id</span><span class="p">,</span>
+                                                      <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+                                                      <span class="n">dag_config</span><span class="o">=</span><span class="n">dag_config</span><span class="p">)</span>
+        <span class="n">task_dev_data_deployment</span> <span class="o">=</span> <span class="n">run_generic_deployment_python</span><span class="p">(</span><span class="n">dag_id</span><span class="o">=</span><span class="n">dag_id</span><span class="p">,</span>
+                                                                 <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+                                                                 <span class="n">dag_config</span><span class="o">=</span><span class="n">dag_config</span><span class="p">,</span>
+                                                                 <span class="n">deployment</span><span class="o">=</span><span class="s">"dev"</span><span class="p">)</span>
+        <span class="n">task_prod_data_deployment</span> <span class="o">=</span> <span class="n">run_generic_deployment_python</span><span class="p">(</span><span class="n">dag_id</span><span class="o">=</span><span class="n">dag_id</span><span class="p">,</span>
+                                                                  <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+                                                                  <span class="n">dag_config</span><span class="o">=</span><span class="n">dag_config</span><span class="p">,</span>
+                                                                  <span class="n">deployment</span><span class="o">=</span><span class="s">"prod"</span><span class="p">)</span>
+        <span class="n">task_generate_data_stats</span> <span class="o">=</span> <span class="n">generate_data_stats_python</span><span class="p">(</span><span class="n">dag_id</span><span class="o">=</span><span class="n">dag_id</span><span class="p">,</span>
+                                                              <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+                                                              <span class="n">dag_config</span><span class="o">=</span><span class="n">dag_config</span><span class="p">)</span>
+
+        <span class="c1"># dag generation with the bit shift operator
+</span>        <span class="n">task_run_data_update</span> <span class="o">&gt;&gt;</span> \
+            <span class="n">task_dev_data_deployment</span> <span class="o">&gt;&gt;</span> \
+                <span class="n">task_dev_data_deployment</span> <span class="o">&gt;&gt;</span> \
+                    <span class="n">task_generate_data_stats</span>
+    <span class="k">return</span> <span class="n">dag</span>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">()</span>
+<span class="c1"># iterate over of a collection of dags
+</span><span class="k">for</span> <span class="n">dag_id</span> <span class="ow">in</span> <span class="n">config</span><span class="p">.</span><span class="n">DAGS</span><span class="p">:</span>
+    <span class="n">dag_config</span> <span class="o">=</span> <span class="n">load_db_config</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dag_id</span><span class="p">)</span>
+    <span class="n">default_args</span> <span class="o">=</span> <span class="n">load_default_args</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dag_config</span><span class="p">)</span>
+    <span class="n">schedule</span> <span class="o">=</span> <span class="n">load_schedule</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dag_config</span><span class="p">)</span>
+    <span class="nb">globals</span><span class="p">()[</span><span class="n">dag_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_generic_dag</span><span class="p">(</span><span class="n">dag_id</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">dag_config</span><span class="p">,</span> <span class="n">default_args</span><span class="p">,</span> <span class="n">schedule</span><span class="p">)</span></code></pre></figure>
+
+<p>While Airflow has been developed to schedule and execute the four tasks listed
+above, essentially, I wanted to let existing software lead the orchestration and execution of my analysis pipelines,
+but wanted the benefit of the <a href="https://airflow.apache.org/docs/apache-airflow/stable/ui.html">Airflow UI</a>, 
+with all the great logging and execution metrics that it provides. 
+I also wanted to use Airflow integrations that would, for example, let me send Slack notifications upon 
+completion.</p>
+
+<blockquote>
+  <p>The Airflow UI makes it easy to monitor and troubleshoot your data pipelines.</p>
+</blockquote>
+
+<p>As mentioned, I wanted the scheduling and execution process to be handled by a different application.
+The trick here is to implement an Airflow DAG that only logs the progress and status of the tasks handled by
+the other application.
+One could extend Airflow with a custom operator, but for this purpose 
+the solution is to use <code class="language-plaintext highlighter-rouge">PythonSensor</code> together with the Airflow API.</p>
+
+<p>The tasks above therefore need to be converted from <code class="language-plaintext highlighter-rouge">PythonOperator</code> to <code class="language-plaintext highlighter-rouge">PythonSensor</code>. 
+The snippet for one of the tasks could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">run_data_update_sensor</span><span class="p">(</span><span class="n">dag_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">dag_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="s">"run_data_update"</span>
+    <span class="n">task_description</span> <span class="o">=</span> <span class="s">"{deployment.capitalize()} Deployment"</span>
+    <span class="n">task_description_md</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s">"""</span><span class="se">\
+</span><span class="s">        ### </span><span class="si">{</span><span class="n">task_description</span><span class="si">}</span><span class="s">
+        Run the actual dataset updating... 
+        """</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">PythonSensor</span><span class="p">(</span><span class="n">python_callable</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                        <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
+                        <span class="n">doc</span><span class="o">=</span><span class="n">task_description</span><span class="p">,</span>
+                        <span class="n">doc_md</span><span class="o">=</span><span class="n">task_description_md</span><span class="p">)</span>        </code></pre></figure>
+
+<p>A key point here is that DAG IDs and task IDs need to be static, 
+so that we can send a signal to Airflow to say that a particular DAG and 
+task execution have been initiated. 
+Each DAG run will have a unique run ID, which we can set ourselves. 
+For example, it could be the <code class="language-plaintext highlighter-rouge">dag_id</code> plus some kind of hash or date. 
+We can then hit the Airflow API with for example <code class="language-plaintext highlighter-rouge">curl</code> as shown below:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">data</span><span class="o">=</span><span class="s1">'{"dag_run_id": "'</span><span class="k">${</span><span class="nv">dag_run_id</span><span class="k">}</span><span class="s1">'"}'</span>
+curl <span class="nt">-X</span> POST <span class="k">${</span><span class="nv">AirflowHostname</span><span class="k">}</span>/api/v1/dags/<span class="k">${</span><span class="nv">dag_id</span><span class="k">}</span>/dagRuns <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s2">"</span><span class="k">${</span><span class="nv">data</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+<span class="nt">--user</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AirflowUser</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">AirflowPass</span><span class="k">}</span><span class="s2">"</span></code></pre></figure>
+
+<p>This tells Airflow that a new DAG run with <code class="language-plaintext highlighter-rouge">dag_run_id</code> has started.
+We need to post the status of the execution for each of the four tasks in the DAG.
+For example, we could signal that task execution 
+was successful, or it failed…</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">data</span><span class="o">=</span><span class="s1">'{"dag_run_id": "'</span><span class="k">${</span><span class="nv">dag_run_id</span><span class="k">}</span><span class="s1">'", "task_id": "run_data_update", "new_state": "success"}'</span>
+<span class="c"># or</span>
+<span class="nv">data</span><span class="o">=</span><span class="s1">'{"dag_run_id": "'</span><span class="k">${</span><span class="nv">dag_run_id</span><span class="k">}</span><span class="s1">'", "task_id": "run_data_update", "new_state": "failed"}'</span></code></pre></figure>
+
+<p>…by making a new POST request to the Airflow API.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="nt">-X</span> POST <span class="k">${</span><span class="nv">AirflowHostname</span><span class="k">}</span>/api/v1/dags/<span class="k">${</span><span class="nv">dag_id</span><span class="k">}</span>/updateTaskInstancesState <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s2">"</span><span class="k">${</span><span class="nv">data</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+<span class="nt">--user</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AirflowUser</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">AirflowPass</span><span class="k">}</span><span class="s2">"</span></code></pre></figure>
+
+<p>When we have posted the status of all four tasks, the DAG appears as completed. 
+We successfully logged the execution of our DAG without Airflow ever controlling it.
+For this simple four-task example, the Airflow UI looks like as shown below:</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/Airflow_screenshot_1.png" class="kg-image" alt="Airflow Example - Graph view" />
+    <figcaption>Basic Airflow example showing a completed DAG.</figcaption>
+</figure>
+
+<p>With this approach, Apache Airflow provides a full-featured web interface 
+client to your backend workflow manager. 
+The Airflow UI provides both in-depth views of pipelines and individual tasks,
+and an overview of pipelines execution over time. 
+The views include Calendar, Task Duration graph, Gantt graph and others.
+In fact, Airflow allows you to inspect all the logging it produces, 
+ranging from DAG runs, jobs, task instances, and so on and so forward.</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/Airflow_screenshot_2.png" class="kg-image" alt="Airflow Example - Grid view" />
+    <figcaption>Basic Airflow example - Grid view.</figcaption>
+</figure>
+
+<p>As shown in the Airflow DAGs image below, you would typically see some scheduled DAG run, but with this
+approach no DAG is scheduled as the execution is triggered and controlled by the external application.</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/Airflow_screenshot_3.png" class="kg-image" alt="Airflow Example - DAGs view" />
+    <figcaption>Basic Airflow example - DAGs view.</figcaption>
+</figure>
+
+<p>Airflow is a powerful workflow management platform for data analysis pipelines with a great potential in
+Bioinformatics.
+This application of Apache Airflow can pose an interesting solution,
+especially for when you already have a workflow manager, such as
+<a href="https://www.nextflow.io/">Nextflow</a> and <a href="https://snakemake.readthedocs.io/en/stable/">Snakemake</a>,
+orchestrating your workflow execution.</p>
+
+<p>While this works for simple workflows, I have not yet tested this approach when tasks are executed in parallel,
+or when some task retry is performed.
+Importantly, if the decoupled application fails to reach the step of posting
+to the Airflow API, the DAG could be “hanging” in a running state forever.
+A solution for that could be to set a time limit after which the task would be declared failed.</p>
+
+<p>There are tons of other useful Airflow features that are worth exploring.
+Hopefully this post inspires you to give Airflow a try and explore its huge list of
+available integrations and plugins.
+Do you run Apache Airflow yourself? What do you think about this approach?
+Your experiences and feedback are much appreciated!</p>
+
+<hr />
+
+<p>Thanks to Prasad Basutkar for the interesting discussions and his extensive exploration of the Airflow API.</p>
+
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=&url=https://biomadeira.github.io/2022-11-08-apache-airflow-ui" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://biomadeira.github.io/2022-11-08-apache-airflow-ui" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://biomadeira.github.io/2022-11-08-apache-airflow-ui&amp;title=Using Apache Airflow to monitor data pipelines" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Using Apache Airflow to monitor data pipelines&amp;body=https://biomadeira.github.io/2022-11-08-apache-airflow-ui">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					
+						<a href="/tag/apache-airflow/">Apache Airflow</a>
+					
+						<a href="/tag/workflows/">Workflows</a>
+					
+						<a href="/tag/tech/">Tech</a>
+					
+				</aside>
+				
+
+			</section>
+
+			
+
+	  
+
+
+			<aside class="post-nav">
+
+				
+					<a class="post-nav-next" href="/2022-11-23-user-friendly-clis">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Building user-friendly CLIs with Click</h2>
+							<p class="post-nav-excerpt">In software development, we use command line interface (CLI) applications all the&hellip;</p>
+							<p class="post-nav-meta"><time datetime="23 November 2022">23 November 2022</time></p>
+						</section>
+					</a>
+				
+
+				
+					<a class="post-nav-prev" href="/2022-11-01-exploring-nextflow-workflow">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Exploring Nextflow with a small bioinformatics workflow</h2>
+							<p class="post-nav-excerpt">I recently wrote about workflow management systems in bioinformatics, focusing on Nextflow&hellip;</p>
+							<p class="post-nav-meta"><time datetime=" 1 November 2022"> 1 November 2022</time></p>
+						</section>
+					</a>
+				
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+	<script>
+	$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+		post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+			$('pre code').each(function(i, e) {
+			// Code highlight
+			// hljs.highlightBlock(e);
+			// No lines for plain text blocks
+			if (!$(this).hasClass('language-text')) {
+				var code = $(this);
+						// Calculate amount of lines
+				var lines = code.html().split(/\n(?!$)/g).length;
+				var numbers = [];
+				if (lines > 1) {
+				lines++;
+				}
+				for (i = 1; i < lines; i++) {
+				numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+				}
+				code.parent().append('<div class="lines">' + numbers + '</div>');
+			}
+			});
+		}
+		codestyling();
+			// Reading progress bar on window top
+		function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+		var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+		$('.progress-bar').css('width', progress + '%');
+		(progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+		}
+		readingProgress();
+			// Trigger reading progress
+		viewport.on({
+			'scroll': function() {
+			readingProgress();
+			},
+			'resize': function() {
+			readingProgress();
+			},
+			'orientationchange': function() {
+			readingProgress();
+			}
+		});
+
+			
+	});
+	</script>
+    
+
+
+</body>
+</html>

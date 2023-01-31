@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://biomadeira.github.io/</loc>
+    <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2023-01-11-coding-best-practices</loc>
+      
+        <lastmod>2023-01-11T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise</loc>
+      
+        <lastmod>2022-12-20T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-12-09-data-validation-jsonschema</loc>
+      
+        <lastmod>2022-12-09T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-11-23-user-friendly-clis</loc>
+      
+        <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-11-08-apache-airflow-ui</loc>
+      
+        <lastmod>2022-11-08T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow</loc>
+      
+        <lastmod>2022-11-01T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-10-25-workflow-management</loc>
+      
+        <lastmod>2022-10-25T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-10-24-back-at-blogging</loc>
+      
+        <lastmod>2022-10-24T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2022-05-06-narws-2022</loc>
+      
+        <lastmod>2022-05-06T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2019-05-02-narws-2019</loc>
+      
+        <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2018-01-22-3d-printing-made-simple</loc>
+      
+        <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2018-01-08-moved-to-cambridge</loc>
+      
+        <lastmod>2018-01-08T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2015-10-09-poster-prize</loc>
+      
+        <lastmod>2015-10-09T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2015-06-23-tedx-university-of-dundee</loc>
+      
+        <lastmod>2015-06-23T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2015-03-04-new-paper-bioinformatics</loc>
+      
+        <lastmod>2015-03-04T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2014-10-01-discovery-centre</loc>
+      
+        <lastmod>2014-10-01T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2014-06-15-organized-picls-symposium</loc>
+      
+        <lastmod>2014-06-15T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2014-06-11-passed-my-transfer</loc>
+      
+        <lastmod>2014-06-11T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2014-02-10-new-paper-out-preprints</loc>
+      
+        <lastmod>2014-02-10T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2014-02-06-new-paper-database</loc>
+      
+        <lastmod>2014-02-06T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2013-11-08-participated-in-biotechyes</loc>
+      
+        <lastmod>2013-11-08T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2013-09-08-time-to-move-on</loc>
+      
+        <lastmod>2013-09-08T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2013-06-01-new-paper-out-ai</loc>
+      
+        <lastmod>2013-06-01T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-09-07-moved-to-dundee-scotland</loc>
+      
+        <lastmod>2012-09-07T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-07-07-introducing-bibyaml</loc>
+      
+        <lastmod>2012-07-07T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-07-01-hello-world</loc>
+      
+        <lastmod>2012-07-01T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-06-17-amino-acids-in-structural-bioinformatics</loc>
+      
+        <lastmod>2012-06-17T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-06-08-bioinformatics-and-protein-evolution</loc>
+      
+        <lastmod>2012-06-08T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-06-06-multi-protein-communication-systems</loc>
+      
+        <lastmod>2012-06-06T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2012-01-25-second-paper-out</loc>
+      
+        <lastmod>2012-01-25T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2011-11-01-python-for-computational-biology</loc>
+      
+        <lastmod>2011-11-01T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2011-10-12-protein-interaction-databases-and-web-tools</loc>
+      
+        <lastmod>2011-10-12T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2011-09-20-useful-python-modules</loc>
+      
+        <lastmod>2011-09-20T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+    <url>
+      <loc>https://biomadeira.github.io/2011-08-20-first-paper-out</loc>
+      
+        <lastmod>2011-08-20T00:00:00+00:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+  
+  
+  <url>
+    <loc>https://biomadeira.github.io/404.html</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/LICENSE</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/policies</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/privacy</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/sitemap.xml</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/terms</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/bioinformatics/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/bioinformatics/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/bioinformatics/page3/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/academia/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/academia/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/academia/page3/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/archived/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/archived/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/archived/page3/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/archived/page4/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/python/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/tech/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/news/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/news/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/ai/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/3d-printing/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/workflows/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/nextflow/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/snakemake/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/apache-airflow/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/schemas/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/json/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/open-source/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/open-science/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/tag/research/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/author/biomadeira/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/author/biomadeira/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/author/biomadeira/page3/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/author/biomadeira/page4/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/author/biomadeira/page5/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/page2/</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://biomadeira.github.io/feed.xml</loc>
+    
+      <lastmod>2023-01-31T22:57:05+00:00</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+</urlset>

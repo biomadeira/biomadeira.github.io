@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Building user-friendly CLIs with Click</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Building user-friendly CLIs with Click" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/2022-11-23-user-friendly-clis" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/Click_cli_screenshot.png" />
+    
+    <meta property="article:tag" content="Python" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Building user-friendly CLIs with Click" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/2022-11-23-user-friendly-clis" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/Click_cli_screenshot.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Python" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/2022-11-23-user-friendly-clis",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/Click_cli_screenshot.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/2022-11-23-user-friendly-clis"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Building user-friendly CLIs with Click" href="/feed.xml" />
+
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     <li class="nav-home has-cover " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<!--<header class="post-header  has-cover">-->
+<header class="post-header">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			
+			<span class="post-count"><a href="/tag/python/">Python</a></span>
+			
+
+		</span>
+		<h1 class="post-title">Building user-friendly CLIs with Click</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				
+                    
+					<figure class="post-meta-avatar avatar">
+						
+						<a href="/author/biomadeira" class="author-avatar">
+								<img class="author-profile-image" src="/assets/images/fabio.jpeg" alt="biomadeira" />
+						</a>
+						
+					</figure>
+					
+                
+			</div>
+			
+			
+			<h4 class="post-meta-author"><a href="/author/biomadeira">Fábio Madeira</a></h4>
+			
+			
+			<time datetime="23 November 2022">23 November 2022</time> &bull; 
+			
+			
+			
+				10 min read
+			
+		</div>
+<!--		-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset=" 320w,-->
+<!--                     640w,-->
+<!--                     960w,-->
+<!--                     1920w"-->
+<!--            src=""-->
+<!--            alt="Building user-friendly CLIs with Click" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="/assets/images/Click_cli_screenshot.png" alt="Building user-friendly CLIs with Click" />-->
+<!--		</div>-->
+<!--		-->
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="">
+		<div class="inner">
+
+			<section class="post-content">
+				<p>In software development, we use command line interface (CLI) applications all the time,
+for example, to install software packages or to test our code.
+Creating CLIs, is a skill that we need to learn sooner or later.
+Often times we spend a lot of time thinking about
+the functionality of the application we are developing and end up neglecting the importance of designing
+usable and user-friendly CLIs.
+The <a href="https://clig.dev/">Command Line Interface Guidelines</a> is an open-source guide for designing CLIs.</p>
+
+<blockquote>
+  <p>A guide to help you write better command-line programs,
+taking traditional UNIX principles and updating them for the modern day.</p>
+</blockquote>
+
+<p>Where possible, CLIs should follow patterns that already exist as that makes using them intuitive and guessable.</p>
+<ul>
+  <li>CLIs should be easy to use: don’t make an assumption that the user knows or remembers what they should do.
+Discoverable CLIs provide a lot of help texts, examples, suggestions when there is an error.</li>
+  <li>CLIs should be robust: they should expect unexpected inputs from the user. Errors should be handled gracefully.</li>
+  <li>CLIs should provide good documentation: it is a balance between providing too much and too little information.</li>
+</ul>
+
+<p>In this article, I want to explore how we can develop user-friendly CLIs in Python using
+a popular command line toolkit.
+<a href="https://click.palletsprojects.com/">Click</a> is a Python package to create beautiful CLIs.
+It was originally developed by Armin Ronacher,
+someone that does not need an introduction within the Python community, the
+creator of the popular <a href="https://flask.palletsprojects.com/">Flask</a> web framework.
+In fact, Click was created as a supporting library for Flask.</p>
+
+<p>Click is a composable CLI toolkit that makes it easy to write full-fledged command line tools that are easy to use.
+It is highly configurable and comes with sensible defaults out of the box.
+Click automatically generates help messages and allows nesting of commands and subcommands.</p>
+
+<p>To get started with Click we can simply install it from PyPI with <code class="language-plaintext highlighter-rouge">pip install click</code>.
+A simple Click CLI could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">click</span>
+
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'-c'</span><span class="p">,</span> <span class="s">'--count'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">'Number of greetings.'</span><span class="p">)</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'-n'</span><span class="p">,</span> <span class="s">'--name'</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s">'Your name'</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">'The name of the person to greet.'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="s">"""Simple program that greets NAME for a total of COUNT times."""</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+        <span class="n">click</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s">"Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">!"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span></code></pre></figure>
+
+<p>And what it looks like when run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python cli.py <span class="nt">--count</span><span class="o">=</span>2
+Your name: Matthew
+Hello Matthew!
+Hello Matthew!</code></pre></figure>
+
+<p>It automatically generates nicely formatted help pages:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python cli.py <span class="nt">--help</span>
+Usage: cli.py <span class="o">[</span>OPTIONS]
+
+Simple program that greets NAME <span class="k">for </span>a total of COUNT times.
+
+Options:
+<span class="nt">-c</span>, <span class="nt">--count</span> INTEGER  Number of greetings.
+<span class="nt">-n</span>, <span class="nt">--name</span> TEXT      The person to greet.
+<span class="nt">--help</span>               Show this message and exit.</code></pre></figure>
+
+<p>The <strong>commands</strong> are basic building blocks of an application.
+Click defines commands through the <code class="language-plaintext highlighter-rouge">click.command</code> decorator.
+Values are passed to the commands via <strong>options</strong> or <strong>arguments</strong>.
+Options are added with the <code class="language-plaintext highlighter-rouge">click.option</code> decorator, arguments with the <code class="language-plaintext highlighter-rouge">click.argument</code>
+decorator. 
+Both options and argument names are passed to the function as a variable with the same name.</p>
+
+<h2 id="options">Options</h2>
+<p>As shown in the example above, option names are prefixed with one or two dashes.
+We can ask a user to provide a value interactively with <code class="language-plaintext highlighter-rouge">prompt='Your name'</code>.
+In the example, we have also the <code class="language-plaintext highlighter-rouge">--count</code> option which takes a number. 
+The number determines how many times greeting is printed to the console, 
+which defaults to 1 (<code class="language-plaintext highlighter-rouge">default=1</code>).
+Options can additionally be set as boolean flags with <code class="language-plaintext highlighter-rouge">is_flag=True</code>. 
+Here we need to set the default value to either <code class="language-plaintext highlighter-rouge">True</code> or <code class="language-plaintext highlighter-rouge">False</code> depending on the 
+behaviour we want from the option.</p>
+
+<h2 id="arguments">Arguments</h2>
+<p>Values in options follow the name of the option while arguments are taken positionally.
+Contrary to options, we do not prefix argument names with one or two dashes
+(e.g. <code class="language-plaintext highlighter-rouge">@click.argument('age', type=int, default=20)</code>).
+The arguments may also have default values.
+With the nargs option, we can set that an argument that takes multiple values. 
+If we set <code class="language-plaintext highlighter-rouge">nargs=-1</code>, then the argument may take variable number of values.
+For example:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">click</span>
+
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">argument</span><span class="p">(</span><span class="s">'values'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">click</span><span class="p">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s">'The sum is </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span></code></pre></figure>
+
+<p>Running this example would look like:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python cli.py 1 2 3 4 5
+The <span class="nb">sum </span>is 15</code></pre></figure>
+
+<p>As described, Click supports two types of parameters for CLIs: options and arguments.
+It is not often obvious which one we should use. 
+Options, as its name indicates, are generally optional, 
+while arguments can be optional within reason.
+Arguments are much more restricted in how optional they can be.
+Both can be set as required with the argument <code class="language-plaintext highlighter-rouge">required=True</code>, which defaults to false.
+The recommendation is to use arguments exclusively for things like passing input filenames and URLs, 
+and have everything else be an option instead.</p>
+
+<p>The key differences in Click are that arguments can do less than options. 
+For example, only options:</p>
+
+<ul>
+  <li>can automatically prompt for missing input</li>
+  <li>can act as flags (boolean or otherwise)</li>
+  <li>can pull optional values from environment variables (e.g. <code class="language-plaintext highlighter-rouge">envvar='PATH'</code>)</li>
+  <li>are fully documented in the help output</li>
+</ul>
+
+<p>On the other hand, only arguments can accept an arbitrary number of arguments. 
+Options typically only accept a single value, unless <code class="language-plaintext highlighter-rouge">multiple=True</code> is provided.
+This is useful, as in a hypothetical example, when choosing which output formats one wants to export
+<code class="language-plaintext highlighter-rouge">python cli.py &lt;args/opts&gt; --outformat 'yaml' --outformat 'json'</code>. 
+Note that the <code class="language-plaintext highlighter-rouge">--outformat</code> option is passed twice to the CLI.
+This example could possibly be better expressed as flag options instead
+<code class="language-plaintext highlighter-rouge">python cli.py &lt;args/opts&gt; --yaml --json</code>.</p>
+
+<p>We can specify the parameter types as Python types, including <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">str</code>,
+<code class="language-plaintext highlighter-rouge">bool</code>, etc. 
+Nevertheless, Click supports several parameter types out of the box, including <code class="language-plaintext highlighter-rouge">click.STRING</code>, <code class="language-plaintext highlighter-rouge">click.INT</code>, 
+<code class="language-plaintext highlighter-rouge">click.FLOAT</code> and <code class="language-plaintext highlighter-rouge">click.BOOL</code>. 
+These are useful to validate the user input. 
+<code class="language-plaintext highlighter-rouge">click.BOOL</code> is automatically used for boolean flags and magically takes values such as 
+“1”, “true”, “t”, “yes”, “y”, and “on”, converting them to True. Likewise for False.
+Other parameter types include <code class="language-plaintext highlighter-rouge">click.UUID</code>, <code class="language-plaintext highlighter-rouge">click.File</code>, 
+<code class="language-plaintext highlighter-rouge">click.Path</code>, <code class="language-plaintext highlighter-rouge">click.Choice</code>, <code class="language-plaintext highlighter-rouge">click.IntRange</code>, <code class="language-plaintext highlighter-rouge">click.FloatRange</code> and <code class="language-plaintext highlighter-rouge">click.DateTime</code>.
+Custom parameter types can be implemented by subclassing <code class="language-plaintext highlighter-rouge">click.ParamType</code>.
+You can read more about this in <a href="https://click.palletsprojects.com/en/8.1.x/parameters/">Click’s documentation</a>. 
+A quick summary of the types I have used more often is provided below:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">click.File</code> will try to lazily open a file for reading, writing, or both.</li>
+  <li><code class="language-plaintext highlighter-rouge">click.Path</code> will not open a file but perform various checks on the given parameter
+(e.g., check if the file exists, check if it is a file and not a directory, etc.)</li>
+  <li><code class="language-plaintext highlighter-rouge">click.DateTime</code> date or datetime formats that follow the <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS</code>. 
+Other formats that can be customised.</li>
+</ul>
+
+<h2 id="commands">Commands</h2>
+<p>Click commands can be added into groups. Groups are created with the <code class="language-plaintext highlighter-rouge">@click.group</code> decorator. 
+See below an example of a CLI that has two main commands.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">click</span>
+
+<span class="k">def</span> <span class="nf">add_common</span><span class="p">(</span><span class="n">options</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_add_options</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">option</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span>
+    <span class="k">return</span> <span class="n">_add_options</span>
+
+
+<span class="n">common_options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'-i'</span><span class="p">,</span> <span class="s">'--input'</span><span class="p">,</span> <span class="s">'inputfile'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">readable</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                 <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">"Input File."</span><span class="p">),</span>
+    <span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'-o'</span><span class="p">,</span> <span class="s">'--output'</span><span class="p">,</span> <span class="s">'outputfile'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">writable</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                 <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">"Output File."</span><span class="p">),</span>
+    <span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'--quiet'</span><span class="p">,</span> <span class="s">'quiet'</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                 <span class="n">multiple</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">"Disables logging."</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="n">chain</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">context_settings</span><span class="o">=</span><span class="p">{</span><span class="s">'help_option_names'</span><span class="p">:</span> <span class="p">[</span><span class="s">'-h'</span><span class="p">,</span> <span class="s">'--help'</span><span class="p">]})</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">version_option</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s">'1.2.3'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cli</span><span class="p">():</span>
+    <span class="s">"""Example CLI with two sub-commands"""</span>
+    <span class="k">pass</span>
+
+<span class="o">@</span><span class="n">cli</span><span class="p">.</span><span class="n">command</span><span class="p">(</span><span class="s">'extract'</span><span class="p">)</span>
+<span class="o">@</span><span class="n">add_common</span><span class="p">(</span><span class="n">common_options</span><span class="p">)</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">'-l'</span><span class="p">,</span> <span class="s">'--line'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="p">.</span><span class="n">INT</span><span class="p">,</span>
+              <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">'Line number.'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="n">inputfile</span><span class="p">:</span> <span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">outputfile</span><span class="p">:</span> <span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span>
+            <span class="n">line</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="s">"""Extracts some content from a file."""</span>
+    <span class="n">extract_content</span><span class="p">(</span><span class="n">inputfile</span><span class="p">,</span> <span class="n">outputfile</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">quiet</span><span class="p">)</span>
+
+
+<span class="o">@</span><span class="n">cli</span><span class="p">.</span><span class="n">command</span><span class="p">(</span><span class="s">'insert'</span><span class="p">)</span>
+<span class="o">@</span><span class="n">add_common</span><span class="p">(</span><span class="n">common_options</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">inputfile</span><span class="p">:</span> <span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">outputfile</span><span class="p">:</span> <span class="n">click</span><span class="p">.</span><span class="n">Path</span><span class="p">,</span> 
+           <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="s">"""Inserts some content to a file."""</span>
+    <span class="n">insert_content</span><span class="p">(</span><span class="n">inputfile</span><span class="p">,</span> <span class="n">outputfile</span><span class="p">,</span> <span class="n">quiet</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">cli</span><span class="p">()</span></code></pre></figure>
+
+<p>The CLI help output would look like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python cli.py <span class="nt">-h</span> 
+Usage: cli.py <span class="o">[</span>OPTIONS] COMMAND1 <span class="o">[</span>ARGS]... <span class="o">[</span>COMMAND2 <span class="o">[</span>ARGS]...]...
+
+  Example CLI with two sub-commands
+
+Options:
+  <span class="nt">--version</span>   Show the version and exit.
+  <span class="nt">-h</span>, <span class="nt">--help</span>  Show this message and exit.
+
+Commands:
+  extract  Extracts some content from a file.
+  insert   Inserts some content to a file.</code></pre></figure>
+
+<p>Note that we can then check the help also for the commands, for example, the <em>extract</em> command:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python cli.py extract <span class="nt">-h</span>
+Usage: cli.py extract <span class="o">[</span>OPTIONS]
+
+  Extracts some content from a file.
+
+Options:
+  <span class="nt">-i</span>, <span class="nt">--input</span> PATH    Input File.  <span class="o">[</span>required]
+  <span class="nt">-o</span>, <span class="nt">--output</span> PATH   Output File.  <span class="o">[</span>required]
+  <span class="nt">--quiet</span>             Disables logging.
+  <span class="nt">-l</span>, <span class="nt">--line</span> INTEGER  Line number
+  <span class="nt">-h</span>, <span class="nt">--help</span>          Show this message and exit.</code></pre></figure>
+
+<p>This example demonstrates the grouping and chaining of Click commands.
+Click adds a <code class="language-plaintext highlighter-rouge">--help</code> command by default, which provides users with an essential piece of documentation.
+Users can discover all the commands and options available,
+and can refer to it as a reference throughout their use of the CLI.
+By setting <code class="language-plaintext highlighter-rouge">context_settings={'help_option_names': ['-h', '--help']}</code> we can also get help with simply 
+typing <code class="language-plaintext highlighter-rouge">-h</code>.
+Another feature that I added in this example, which is often useful is the sharing of common options or arguments.
+Click commands can be decorated with a list of shared options, in this example, with <code class="language-plaintext highlighter-rouge">@add_common(common_options)</code>. 
+Notice how you can still decorate the commands with additional options or arguments as you would expect
+(<code class="language-plaintext highlighter-rouge">@click.option('-l', '--line', type=click.INT, ...</code>).
+This improves the reusability of your code and hopefully improves the consistency across the 
+CLI commands. 
+That being said, sometimes consistency conflicts with ease of use.</p>
+
+<h2 id="setuptools-support">Setuptools support</h2>
+
+<p>In the examples provided, we have a block at the end of the file which looks like this: 
+<code class="language-plaintext highlighter-rouge">if __name__ == '__main__':</code>. 
+This is what standalone Python files look like when we want to execute them.
+While we can continue doing that, a better approach is to use setuptools.
+The advantage is that setuptools automatically generates executable wrappers for Windows 
+so your command line utilities work on Windows too. 
+Additionally, setuptools scripts work with virtualenv on Unix without the 
+virtualenv having to be activated. 
+This is a very useful concept which allows us to bundle 
+scripts with all requirements into a virtualenv.
+For this purpose, we can define a file <code class="language-plaintext highlighter-rouge">setup.py</code>, that tells setuptools how to package the CLI.
+A key argument in the <code class="language-plaintext highlighter-rouge">setup()</code> are the <code class="language-plaintext highlighter-rouge">entry_points</code>. 
+Once installed, the CLI could be called in the console simply as <code class="language-plaintext highlighter-rouge">examplecli --help</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"README.md"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">long_description</span> <span class="o">=</span> <span class="n">fh</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"requirements.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">requirements</span> <span class="o">=</span> <span class="n">fh</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">'example_cli'</span><span class="p">,</span>
+    <span class="n">version</span> <span class="o">=</span> <span class="s">'1.2.3'</span><span class="p">,</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="s">'Foo Bar'</span><span class="p">,</span>
+    <span class="n">author_email</span> <span class="o">=</span> <span class="s">'foo@bar.com'</span><span class="p">,</span>
+    <span class="n">license</span> <span class="o">=</span> <span class="s">'&lt;the license you chose&gt;'</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">'&lt;short description for the tool&gt;'</span><span class="p">,</span>
+    <span class="n">long_description</span> <span class="o">=</span> <span class="n">long_description</span><span class="p">,</span>
+    <span class="n">long_description_content_type</span> <span class="o">=</span> <span class="s">"text/markdown"</span><span class="p">,</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'&lt;github url where the tool code will remain&gt;'</span><span class="p">,</span>
+    <span class="n">py_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s">'example_cli'</span><span class="p">,</span> <span class="s">'app'</span><span class="p">],</span>
+    <span class="n">packages</span> <span class="o">=</span> <span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">install_requires</span> <span class="o">=</span> <span class="p">[</span><span class="n">requirements</span><span class="p">],</span>
+    <span class="n">python_requires</span><span class="o">=</span><span class="s">'&gt;=3.9'</span><span class="p">,</span>
+    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+        <span class="s">"Programming Language :: Python :: 3.9"</span><span class="p">,</span>
+        <span class="s">"Operating System :: OS Independent"</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="s">'''
+        [console_scripts]
+        examplecli=cli:cli
+    '''</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>One last topic, I think it is worth mentioning is that Click provides the <code class="language-plaintext highlighter-rouge">click.testing</code> module,
+which provides test functionality that helps you invoke command line applications and check their behavior.
+More information about testing is provided in 
+<a href="https://click.palletsprojects.com/en/8.1.x/testing/">Click’s documentation</a>.</p>
+
+<p>Click is a pretty cool CLI package which ticks a lot of the functionality boxes.
+All the parameters can be configured via decorators which help keep the CLI code clean.
+There is a lot more to Click that was not demonstrated in this post.
+Click provides many developer-friendly utilities such as callback functions and other utility functions.
+There are many alternatives to Click, the obvious ones being <code class="language-plaintext highlighter-rouge">optparse</code> and <code class="language-plaintext highlighter-rouge">argparse</code> 
+from the Python standard library. 
+The problem with most of them is that they are not easier to use, nor do they provide any extra 
+functionality. Personally, I don’t use anything else these days.</p>
+
+<p>I hope this was useful to you! Share your experiences and your thoughts about designing and developing
+command line applications and about Click!</p>
+
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=&url=https://biomadeira.github.io/2022-11-23-user-friendly-clis" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://biomadeira.github.io/2022-11-23-user-friendly-clis" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://biomadeira.github.io/2022-11-23-user-friendly-clis&amp;title=Building user-friendly CLIs with Click" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Building user-friendly CLIs with Click&amp;body=https://biomadeira.github.io/2022-11-23-user-friendly-clis">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					
+						<a href="/tag/python/">Python</a>
+					
+						<a href="/tag/tech/">Tech</a>
+					
+				</aside>
+				
+
+			</section>
+
+			
+
+	  
+
+
+			<aside class="post-nav">
+
+				
+					<a class="post-nav-next" href="/2022-12-09-data-validation-jsonschema">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Data validation with JSON Schema</h2>
+							<p class="post-nav-excerpt">[JSON Schema](https://json-schema.org/) is a declarative language that allows annotation and validation of&hellip;</p>
+							<p class="post-nav-meta"><time datetime=" 9 December 2022"> 9 December 2022</time></p>
+						</section>
+					</a>
+				
+
+				
+					<a class="post-nav-prev" href="/2022-11-08-apache-airflow-ui">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Using Apache Airflow to monitor data pipelines</h2>
+							<p class="post-nav-excerpt">Apache Airflow is a popular open-source platform for developing, scheduling, and monitoring&hellip;</p>
+							<p class="post-nav-meta"><time datetime=" 8 November 2022"> 8 November 2022</time></p>
+						</section>
+					</a>
+				
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+	<script>
+	$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+		post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+			$('pre code').each(function(i, e) {
+			// Code highlight
+			// hljs.highlightBlock(e);
+			// No lines for plain text blocks
+			if (!$(this).hasClass('language-text')) {
+				var code = $(this);
+						// Calculate amount of lines
+				var lines = code.html().split(/\n(?!$)/g).length;
+				var numbers = [];
+				if (lines > 1) {
+				lines++;
+				}
+				for (i = 1; i < lines; i++) {
+				numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+				}
+				code.parent().append('<div class="lines">' + numbers + '</div>');
+			}
+			});
+		}
+		codestyling();
+			// Reading progress bar on window top
+		function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+		var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+		$('.progress-bar').css('width', progress + '%');
+		(progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+		}
+		readingProgress();
+			// Trigger reading progress
+		viewport.on({
+			'scroll': function() {
+			readingProgress();
+			},
+			'resize': function() {
+			readingProgress();
+			},
+			'orientationchange': function() {
+			readingProgress();
+			}
+		});
+
+			
+	});
+	</script>
+    
+
+
+</body>
+</html>

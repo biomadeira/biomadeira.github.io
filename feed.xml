@@ -1,0 +1,1632 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://biomadeira.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://biomadeira.github.io/" rel="alternate" type="text/html" /><updated>2023-01-31T22:57:05+00:00</updated><id>https://biomadeira.github.io/feed.xml</id><title type="html">biomadeira</title><subtitle>Bioinformatics and other digressions</subtitle><author><name>Fábio Madeira</name></author><entry><title type="html">Coding best practices for researchers</title><link href="https://biomadeira.github.io/2023-01-11-coding-best-practices" rel="alternate" type="text/html" title="Coding best practices for researchers" /><published>2023-01-11T00:00:00+00:00</published><updated>2023-01-11T00:00:00+00:00</updated><id>https://biomadeira.github.io/coding-best-practices</id><content type="html" xml:base="https://biomadeira.github.io/2023-01-11-coding-best-practices">&lt;p&gt;I have recently been invited to deliver a training session on an upcoming course at 
+&lt;a href=&quot;https://www.ebi.ac.uk/training/materials/computational-biology-training-in-hematology-2023-module1/&quot;&gt;EMBL-EBI&lt;/a&gt;.
+The session is about &lt;em&gt;good coding practices&lt;/em&gt; and is aimed at researchers and clinicians
+that have some experience working in Computational Biology and data analysis.
+The subject is vast as it touches on many aspects of software development, Open Source, Open Science, 
+reproducible research, and so on.
+I will be taking a hybrid approach, by providing some background information but also
+guiding the audience through some practical examples that hopefully
+will help them improve their coding skills.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/pair-programming-concept-illustration_114360-2170.jpg&quot; class=&quot;kg-image&quot; alt=&quot;Illustration of two people working on a computer&quot; /&gt;
+    &lt;figcaption&gt;Coding best practices illustration&lt;sup&gt;1&lt;/sup&gt;.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The main broad topics covered in this training session are expanded below. I am not including the 
+code snippets here, but those can be found in or linked from the 
+&lt;a href=&quot;https://docs.google.com/presentation/d/1l9Gm9_jywRbvdqf4yiXU2RfngVtShcZCoWy5EWVcWEM/edit?usp=sharing&quot;&gt;presentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;software-development-life-cycle-sdlc&quot;&gt;Software development life cycle (SDLC)&lt;/h2&gt;
+
+&lt;p&gt;SDLC is a framework that provides general guidelines and a structure for understanding the 
+phases of the software development process. 
+The phases are not rigid and it is possible to move between them as needed.
+Although this framework has little resemblance with the reality of software development within research 
+labs, the general concepts and guidelines are still useful to have in mind.
+The six phases of the SDLC are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Planning and Analysis&lt;/strong&gt;: This phase involves defining the project goals and objectives, 
+as well as determining the project scope, budget, and resources.
+The requirements for the software are gathered and analyzed. 
+This may include interviews with stakeholders, analysis of existing systems, and the development of user stories.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Design&lt;/strong&gt;: During this phase, the software and system architectures are created. 
+This typically includes identifying the modules and components that will make up the system, 
+and determining how they will interact with each other.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Implementation&lt;/strong&gt;: In this phase, the actual code for the software is written. 
+This may include writing custom code, integrating third-party libraries or frameworks, 
+and integrating with other systems.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Testing and Integration&lt;/strong&gt;: This phase involves verifying that the software functions as intended and meets the 
+requirements specified in the Planning and Analysis phase. 
+This may include unit testing, integration testing, and acceptance testing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: This phase involves delivering the software to end users and making it available for use. 
+It includes activities such as packaging the software, installing it on the target environment, 
+configuring it, testing the deployment and monitoring it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Maintenance&lt;/strong&gt;: After the software has been released, it will need to be maintained to fix bugs, 
+add new features, and make performance improvements.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;developers-toolbox&quot;&gt;Developers’ toolbox&lt;/h2&gt;
+
+&lt;p&gt;The development environment typically requires a set of tools and technologies that are used to 
+develop, test, and maintain software.
+The main tools that we should consider for our toolbox include:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Software package management (SPM)&lt;/strong&gt;&lt;br /&gt;
+SPM systems provide tools that help developers manage and 
+deploy software packages and their dependencies. 
+Some popular software package management systems include: &lt;a href=&quot;https://brew.sh/&quot;&gt;Homebrew&lt;/a&gt;,
+&lt;a href=&quot;https://conda.io/&quot;&gt;conda&lt;/a&gt;, 
+&lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;,
+&lt;a href=&quot;https://spack.io/&quot;&gt;Spack&lt;/a&gt;, 
+&lt;a href=&quot;http://yum.baseurl.org/&quot;&gt;Yum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;br /&gt;
+A terminal application (a.k.a command line prompt) provides a number of features that can be useful 
+for developers, including customization, search, split panes, autocompletion and integration with other tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Terminal editor&lt;/strong&gt;&lt;br /&gt;
+It is useful to get familiar with at least one text editor. 
+These are run from the command line, rather than within a graphical user interface (GUI).
+Popular terminal editors include: &lt;a href=&quot;https://www.vim.org/&quot;&gt;Vim&lt;/a&gt;, &lt;a href=&quot;https://www.gnu.org/s/emacs/&quot;&gt;GNU Emacs&lt;/a&gt;, 
+&lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt;, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Text editor&lt;/strong&gt;&lt;br /&gt;
+A lightweight GUI text editor is used to write and edit code.
+Some popular text editors include &lt;a href=&quot;https://wiki.gnome.org/Apps/Gedit&quot;&gt;Gedit&lt;/a&gt; and 
+&lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;Sublime Text&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Integrated development environment (IDE)&lt;/strong&gt;&lt;br /&gt;
+An IDE is a software application that provides a 
+comprehensive set of tools for software development.
+It includes a GUI text editor packed with extra features, such as: compiler, debugger, testing tools, building tools, and others.
+It also provides integration with version control systems, syntax highlighting and spell-checking.
+Some popular IDEs include &lt;a href=&quot;https://www.eclipse.org/downloads/&quot;&gt;Eclipse&lt;/a&gt;, 
+&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;, and &lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;IntelliJ IDEA&lt;/a&gt;.
+For Data Science and Computational Biology work, there are also 
+IDEs and platforms such as &lt;a href=&quot;https://posit.co/&quot;&gt;Rstudio&lt;/a&gt; and &lt;a href=&quot;https://jupyter.org/&quot;&gt;Jupyter Notebooks/JupyterLab&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;managing-your-codebase&quot;&gt;Managing your codebase&lt;/h2&gt;
+
+&lt;p&gt;Code management and version control are important practices in software development that help 
+developers keep track of changes to the source code of a project. 
+Developers can easily view the history of changes made to the codebase,
+revert back to previous versions if necessary, and collaborate with others by merging changes and resolving conflicts.
+There are several tools for version control, for example &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, 
+which is a popular distributed version control system.
+Using these tools, developers can push their codebase to a central repository to store the code and 
+track changes made to it, making it easier to collaborate and maintain the codebase over time.
+&lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; and &lt;a href=&quot;https://about.gitlab.com/&quot;&gt;GitLab&lt;/a&gt; are two popular cloud-based repository 
+hosting services, that allow you to manage your Git repositories.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-importance-of-unix-skills&quot;&gt;The importance of UNIX skills&lt;/h2&gt;
+
+&lt;p&gt;UNIX skills are important since the majority of scientific software runs on UNIX-based operating systems
+(e.g. Linux and MacOS).
+Knowing how to use the command line and basic commands can be useful for tasks such as 
+navigating the file system, creating and editing files, and running scripts.
+UNIX skills are also important because many software development tools and technologies, 
+such as version control systems and build automation tools, are designed to be used from the command line. 
+A large portion of scientific software can only be executed from the command line.
+Being able to use the command line effectively can therefore make it easier 
+to use these tools and integrate them into workflows.&lt;/p&gt;
+
+&lt;p&gt;Software Carpentry runs a set of lessons about the &lt;a href=&quot;http://swcarpentry.github.io/shell-novice&quot;&gt;Unix Shell&lt;/a&gt;,
+which I would highly recommend for those unfamiliar with UNIX commands and the terminal.&lt;/p&gt;
+
+&lt;h2 id=&quot;best-practices&quot;&gt;Best practices&lt;/h2&gt;
+
+&lt;p&gt;There are several good practices that developers should follow when they are developing new software. 
+These include:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code styling and conventions&lt;/strong&gt;&lt;br /&gt;
+Code styling and coding conventions are important practices in software development because they help to improve 
+the readability and understandability of the code. These also help to improve collaboration among team members.
+Code styling refers to the way in which the code is written, 
+including code layout, indentation, whitespace, comments, line breaks, etc.
+Coding conventions refer to the naming and organization of code elements, such as variables, functions, and files.
+Popular code styling guides include &lt;a href=&quot;https://peps.python.org/pep-0008/&quot;&gt;PEP-8&lt;/a&gt;, 
+which is a set of guidelines for writing Python code, and the 
+&lt;a href=&quot;https://style.tidyverse.org/&quot;&gt;tidyverse style guide&lt;/a&gt;, which is a style guide for writing R code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t reinvent the wheel&lt;/strong&gt;&lt;br /&gt;
+Many fundamental scientific algorithms, methods and data structures have already been implemented in
+open source libraries and frameworks.
+This means that rather than trying to recreate existing functionality from scratch, 
+developers should try to leverage these.
+This can save time and effort, and it can also help to ensure that the software is more reliable and robust.
+Python and R are popular languages among Data Science and Computational Biology projects.
+Open source libraries include among others, for Python: &lt;a href=&quot;https://scipy.org/&quot;&gt;SciPy&lt;/a&gt;, 
+&lt;a href=&quot;https://numpy.org/&quot;&gt;NumPy&lt;/a&gt;, &lt;a href=&quot;https://pandas.pydata.org/&quot;&gt;Pandas&lt;/a&gt;, &lt;a href=&quot;https://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt;, 
+&lt;a href=&quot;https://ipython.org/&quot;&gt;iPython&lt;/a&gt;; for R:
+&lt;a href=&quot;https://cran.r-project.org/package=data.table/vignettes/datatable-intro.html&quot;&gt;data.table&lt;/a&gt;, 
+&lt;a href=&quot;https://dplyr.tidyverse.org/&quot;&gt;dplyr&lt;/a&gt;, &lt;a href=&quot;https://tidyr.tidyverse.org/&quot;&gt;tidyr&lt;/a&gt;, 
+&lt;a href=&quot;https://ggplot2.tidyverse.org/&quot;&gt;ggplot2&lt;/a&gt;, &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;shiny&lt;/a&gt;; for Bioinformatics: 
+&lt;a href=&quot;https://biopython.org/&quot;&gt;Biopython&lt;/a&gt;, &lt;a href=&quot;https://bioperl.org/&quot;&gt;BioPerl&lt;/a&gt;, &lt;a href=&quot;https://biojulia.net/&quot;&gt;BioJulia&lt;/a&gt;, 
+&lt;a href=&quot;https://www.bioconductor.org/&quot;&gt;Bioconductor&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t repeat yourself&lt;/strong&gt;&lt;br /&gt;
+Software systems should be designed in a way that avoids duplication of information and functionality. 
+The goal is to reduce complexity, improve maintainability, and increase the reusability of code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Single Responsibility&lt;/strong&gt;&lt;br /&gt;
+A class or module should have a single, well-defined responsibility. This means that it should have a clear 
+and specific purpose, and all of its functionality should be related to that purpose.
+This helps to create more modular and maintainable code, as it reduces the complexity of individual 
+classes and makes it easier to understand and change the codebase.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Standards and interoperability&lt;/strong&gt;&lt;br /&gt;
+In relation to data and software distribution, follow standards and conventions for open data and open
+software such as 
+&lt;a href=&quot;https://www.go-fair.org/&quot;&gt;FAIR&lt;/a&gt; and &lt;a href=&quot;https://www.rd-alliance.org/groups/fair-research-software-fair4rs-wg&quot;&gt;FAIR4RS&lt;/a&gt;.
+There are domain specific file formats used in the
+Bioinformatics (e.g. FASTA, FASTQ, GFF, VCF, S/BAM, PDB), which should be used as both researchers
+and the tools are expecting them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Other tips and considerations&lt;/strong&gt;&lt;br /&gt;
+It is good to keep the code efficient and concise. Nevertheless, making code readable is
+usually as important as writing code that is efficient.
+Developing standalone software is very different than developing analysis pipelines.
+Special considerations need to be taken into account when developing analysis pipelines, such as
+where the software will be executed: in single machines or high performance clusters (HPC);
+on premise (Slurm, SGE, LSF, etc.), or in open cloud platforms (AWS, GCP, etc.).
+If you are building workflows, various workflow management tools exist, for example 
+&lt;a href=&quot;https://snakemake.readthedocs.io/en/stable/&quot;&gt;Snakemake&lt;/a&gt; and &lt;a href=&quot;https://www.nextflow.io/&quot;&gt;Nextflow&lt;/a&gt;,
+that can help with achieving scalability and interoperability of the software.&lt;/p&gt;
+
+&lt;h2 id=&quot;releasing-your-software&quot;&gt;Releasing your software&lt;/h2&gt;
+
+&lt;p&gt;Important aspects to consider when releasing new software are:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;README&lt;/strong&gt;&lt;br /&gt;
+You should provide a README file. This acts as an entry point to your repository 
+and should include a description of the software, installation instructions,
+and any other important information.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;br /&gt;
+It is important to provide clear documentation for the software, including installation instructions,
+usage guidelines, and API references. This will help users understand how to use the software and
+will also make it easier for other developers to contribute to the project.
+Commenting your code is also important as it helps guiding developers through the logic that
+you implemented.
+For example, &lt;a href=&quot;https://readthedocs.org/&quot;&gt;Read the Docs&lt;/a&gt; and &lt;a href=&quot;https://www.mkdocs.org/&quot;&gt;MkDocs&lt;/a&gt;, 
+are two popular platforms that simplify generation, building and hosting of technical documentation for your software.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;License&lt;/strong&gt;&lt;br /&gt;
+It is important to include a license with the software that specifies the terms of use and distribution,
+but also protects the intellectual property of the software developers.
+There are a number of websites that you can use to help you choose an appropriate license for your software,
+for example: &lt;a href=&quot;https://choosealicense.com/&quot;&gt;Choose a License&lt;/a&gt; and the
+&lt;a href=&quot;https://ufal.github.io/public-license-selector/&quot;&gt;Public License Selector&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Versioning&lt;/strong&gt;&lt;br /&gt;
+Using a consistent versioning scheme, such as &lt;a href=&quot;https://semver.org/&quot;&gt;Semantic versioning&lt;/a&gt;, 
+is also a good practice.
+Semantic versioning is a convention for versioning software releases
+that follows a specific format: &lt;em&gt;major.minor.patch&lt;/em&gt;.
+When releasing software, it is often useful to work with multiple branches,
+for example: feature branches, release branches and hotfix branches.
+This can help to isolate changes and ensure that the software is stable before it is released.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Testing&lt;/strong&gt;&lt;br /&gt;
+It is important to thoroughly test the software before releasing it to ensure that it is stable and
+as much bug-free as possible.
+This may involve conducting various types of testing, such as unit testing, integration testing,
+and acceptance testing.
+In addition to software testing, code reviewing and pair-programming are important practices
+that can help to improve the quality of code and increase collaboration among team members.&lt;/p&gt;
+
+&lt;h2 id=&quot;concluding-remarks&quot;&gt;Concluding remarks&lt;/h2&gt;
+
+&lt;p&gt;With all this being said, do not forget to be simple, be transparent and be your own best user&lt;sup&gt;3&lt;/sup&gt;,
+when developing and releasing new software.
+Also, do not forget to take credit for your work (e.g. publishing about your software in the
+&lt;a href=&quot;https://joss.theoj.org/&quot;&gt;Journal of Open Source Software&lt;/a&gt;). 
+Above all, don’t forget that &lt;strong&gt;better software leads to better research&lt;/strong&gt;, and that is what matters the most.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt;Pair-programming illustration from
+&lt;a href=&quot;https://www.invensis.net/blog/best-practices-for-software-development-team&quot;&gt;invensis’s&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt;Git reference sheet from 
+&lt;a href=&quot;https://support.nesi.org.nz/hc/en-gb/articles/360001508515-Git-Reference-Sheet&quot;&gt;NeSI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;3&lt;/sup&gt;Prlić A, Procter JB. Ten simple rules for the open development of scientific software. 
+&lt;em&gt;PLoS Comput Biol&lt;/em&gt;. 2012;8(12):e1002802.&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Tech" /><category term="Open Source" /><category term="Open Science" /><category term="Research" /><summary type="html">I have recently been invited to deliver a training session on an upcoming course at EMBL-EBI. The session is about good coding practices and is aimed at researchers and clinicians that have some experience working in Computational Biology and data analysis. The subject is vast as it touches on many aspects of software development, Open Source, Open Science, reproducible research, and so on. I will be taking a hybrid approach, by providing some background information but also guiding the audience through some practical examples that hopefully will help them improve their coding skills.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/pair-programming-concept-illustration_114360-2170.jpg" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/pair-programming-concept-illustration_114360-2170.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Running scientific workflows: public cloud vs on-premise</title><link href="https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise" rel="alternate" type="text/html" title="Running scientific workflows: public cloud vs on-premise" /><published>2022-12-20T00:00:00+00:00</published><updated>2022-12-20T00:00:00+00:00</updated><id>https://biomadeira.github.io/cloud-vs-on-premise</id><content type="html" xml:base="https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise">&lt;p&gt;In recent years, there has been a growing trend among scientific researchers and institutions to move their
+scientific workflows to public cloud platforms.
+This shift has been driven by a number of factors, including the increased availability of cloud computing resources
+that can be easily scaled up or down as needed,
+the ability to easily collaborate and share data with other researchers,
+and the desire to reduce the costs and complexity of on-premises data centers.&lt;/p&gt;
+
+&lt;p&gt;Running scientific workflows on public cloud platforms has several disavantages as well, 
+such as concerns about security and data privacy, challenges around data transfer and network connectivity,
+and importantly the cost of data ingress and egress.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/cloud-vs-on-premise.png&quot; class=&quot;kg-image&quot; alt=&quot;Cloud vs on-premise&quot; /&gt;
+    &lt;figcaption&gt;Running Bioinformatics Scientific Workflows: public cloud vs on-premise&lt;sup&gt;1&lt;/sup&gt;.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I have recently read two very interesting blog post exactly about this topic: 
+&lt;strong&gt;running software and workflows on public cloud &lt;em&gt;versus&lt;/em&gt; on-premise&lt;/strong&gt;. 
+Both articles provide valid but opposing views, 
+which I think are entirely relevant for the discussion,
+particularly interesting for me in relation to running Bioinformatics workflows.&lt;/p&gt;
+
+&lt;p&gt;In one of the articles, the author describes why he thinks we should run software in the cloud&lt;sup&gt;2&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The cloud has significantly changed the way technology is built and has contributed to the 
+evolution of software development in recent years.&lt;/li&gt;
+  &lt;li&gt;While the cloud has the potential to offer infinite scalability, less time spent on infrastructure, 
+fewer constraints, and lower costs, it has not yet fully delivered on these promises.&lt;/li&gt;
+  &lt;li&gt;There are still improvements to be made in terms of feedback loops, environment differences, 
+and utilizing new technologies like Docker to their full potential.&lt;/li&gt;
+  &lt;li&gt;The cloud is still in its early stages and there is potential for further evolution and development, 
+similar to the shifts seen in the music industry with the transition to streaming services.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the other article, the author describes why he thinks open clould platforms are
+not cost-effective in particular for running scientific workflows&lt;sup&gt;3&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Generic cloud computing platforms like AWS may not be cost-effective for scientific 
+computing due to their infrastructural complexity and pricing model.&lt;/li&gt;
+  &lt;li&gt;Scientific computing has different needs than web and mobile apps, including different availability 
+requirements, networking needs, load profiles, and latency tolerance.&lt;/li&gt;
+  &lt;li&gt;It may be more cost-effective for organizations such as universities, research institutes, and biotech companies 
+to build their own scientific computing infrastructure rather than using a cloud computing platform.&lt;/li&gt;
+  &lt;li&gt;AWS, Azure, and GCP all have high data egress charges, making it more expensive to transfer 
+large amounts of data out of their platforms.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;running-scientific-workflows-flexibility-is-key&quot;&gt;Running scientific workflows: flexibility is key&lt;/h3&gt;
+
+&lt;p&gt;One main problem which we need to bring into considerantion, is that a large portion of the scientific
+work is funded by the public, throught public funding agencies, government grants, etc.
+The projects are typically funded for a defined period of time and subject to renewal, 
+successful grant applications, and so on.
+The case for on-premise infrastructure is strong if we think about the life-cycle of most resarch projects.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What happens when the project runs out of money, or is no longer funded?&lt;/li&gt;
+  &lt;li&gt;What happens when you can affort to ingest the data and run some computation but the cost of 
+egress is so high that you can no longer exit the platform?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I suppose similar drawbacks can be pointed for on-premise, but generally speaking having 
+infrastructure that you can manage yourself provides ultimate &lt;em&gt;flexility&lt;/em&gt; for what and for 
+how long you run the projects and keep data.
+Managing an IT infrastructure with clear policies for data storage and computation, 
+is very challenging though&lt;sup&gt;4&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;The trend towards running scientific workflows on public cloud platforms is 
+likely to continue due to its benefits and despite the drawbacks.
+It is important to carefully consider the costs and benefits of building your own
+infrastructure versus using a cloud computing platform, as each situation will be unique.
+Overall, it is an exciting time to be in tech,
+and the next decade is likely to bring many exciting developments in the field of computing,
+and in particular considering the current AI advances.&lt;/p&gt;
+
+&lt;p&gt;Have you consider moving your workflows to the cloud? or perhaps have done it and
+are now considering moving them back to local infrastructure? 
+Share your experiences and feedback!&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt;On-cloud versus on-premises diagram adapted from &lt;a href=&quot;https://setplex.com/blog/in-cloud-vs-on-prem/&quot;&gt;setplex’s&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;a href=&quot;https://erikbern.com/2022/10/19/we-are-still-early-with-the-cloud.html&quot;&gt;We are still early with the cloud: why software development is overdue for a change&lt;/a&gt;
+by Erik Bernhardsson (Nov 19, 2022)&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;a href=&quot;https://www.noahlebovic.com/aws-doesnt-make-sense-for-scientific-computing/&quot;&gt;AWS doesn’t make sense for scientific computing&lt;/a&gt;
+by Noah Lebovic (Oct 7, 2022)&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;a href=&quot;https://utcc.utoronto.ca/~cks/space/blog/sysadmin/RunningServersNotTrivial&quot;&gt;Running servers (and services) well is not trivial&lt;/a&gt;
+by Chris Siebenmann (Jun 22, 2018)&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Workflows" /><category term="Bioinformatics" /><category term="Tech" /><summary type="html">In recent years, there has been a growing trend among scientific researchers and institutions to move their scientific workflows to public cloud platforms. This shift has been driven by a number of factors, including the increased availability of cloud computing resources that can be easily scaled up or down as needed, the ability to easily collaborate and share data with other researchers, and the desire to reduce the costs and complexity of on-premises data centers.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/cloud-vs-on-premise.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/cloud-vs-on-premise.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Data validation with JSON Schema</title><link href="https://biomadeira.github.io/2022-12-09-data-validation-jsonschema" rel="alternate" type="text/html" title="Data validation with JSON Schema" /><published>2022-12-09T00:00:00+00:00</published><updated>2022-12-09T00:00:00+00:00</updated><id>https://biomadeira.github.io/data-validation-jsonschema</id><content type="html" xml:base="https://biomadeira.github.io/2022-12-09-data-validation-jsonschema">&lt;p&gt;&lt;a href=&quot;https://json-schema.org/&quot;&gt;JSON Schema&lt;/a&gt; is a declarative language that allows annotation and 
+validation of JSON documents. 
+The benefits of JSON Schema are that it can fully describe existing data formats, and it provides clear
+human and machine-readable documentation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;JSON Schema enables the confident and reliable use of the JSON data format.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The document containing the formal description or definiton is called the schema. 
+The term &lt;em&gt;Schema&lt;/em&gt; is well known within computer programming, particularly in regards to relational databases.
+In that context, the schema describes the structure and rules of a database and the relationships 
+between data elements.
+In a broader sense, a schema refers to any structured document with a set rules and restrictions.
+The JSON document being validated or described is usually called the instance.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started-with-json-schema&quot;&gt;Getting started with JSON Schema&lt;/h2&gt;
+
+&lt;p&gt;The most basic schema is a blank JSON object &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;, 
+which allows any data structure but unfortunately it is not very useful as it does not describe
+anything in particular.&lt;/p&gt;
+
+&lt;p&gt;From the &lt;a href=&quot;https://json-schema.org/learn/getting-started-step-by-step.html&quot;&gt;JSON Schema Getting started guide&lt;/a&gt;,
+to start a JSON Schema definition, we need to add a few properties called &lt;strong&gt;keywords&lt;/strong&gt;,
+which are expressed as JSON keys:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://json-schema.org/draft/2020-12/schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://example.com/product.schema.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A product in the catalog&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$schema&lt;/code&gt; keyword states that this schema is written according to a specific draft of the
+standard and used for a variety of reasons, primarily version control.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$id&lt;/code&gt; keyword defines a URI for the schema, and the base URI that other URI references within 
+the schema are resolved against.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;description&lt;/code&gt; annotation keywords are descriptive only. 
+They do not add constraints to the data being validated. 
+The intent of the schema is stated with these two keywords.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt; validation keyword defines the first constraint on our JSON data and in this case 
+it has to be a JSON Object.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then we need to define the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;properties&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;required&lt;/code&gt; validation keywords.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://json-schema.org/draft/2020-12/schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://example.com/product.schema.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A product from the catalog&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;productId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;The unique identifier for a product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;productName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Name of the product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;The price of the product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;exclusiveMinimum&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Tags for the product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;array&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;items&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;minItems&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;uniqueItems&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;productId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;productName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The validation keywords are useful to restrict the datatypes the properties can take.
+The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt; keyword can be used to restrict an instance to an 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;array&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;integer&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boolean&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;.
+JSON Schema provides many additional datatype-specific keywords, as shown for example
+for the “tags” &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;array&lt;/code&gt; type: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;items&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uniqueItems&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;minItems&lt;/code&gt;, etc.&lt;/p&gt;
+
+&lt;p&gt;With object and array types we can produce nested data structures.
+For example, the “dimensions” key is of type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;. We can then use the properties validation keyword 
+to define the nested data structure as shown below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://json-schema.org/draft/2020-12/schema&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://example.com/product.schema.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Product&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A product from the catalog&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$comment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;(...) example truncated for brevity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dimensions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;length&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;width&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;height&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;length&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;width&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;height&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dimensions&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Another neat feature is that JSON Schema allows sharing the  schema across many data structures 
+for reuse, readability and maintainability.
+This can be achieved with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ref&lt;/code&gt; keyword. 
+In our previous example, we could have an externally referenced shema &lt;em&gt;geolocation.shema.json&lt;/em&gt; 
+defining a part of our data.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;warehouseLocation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Coordinates of the warehouse where the product is located.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$ref&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://example.com/geolocation.schema.json&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The overall process of validating data using JSON Schema is illustrated in the 
+diagram below:&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/json-schema-process.jpeg&quot; class=&quot;kg-image&quot; alt=&quot;JSON Schema validation example&quot; /&gt;
+    &lt;figcaption&gt;JSON Schema validation process.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;JSON Schema is hypermedia ready, and can be used for annotating existing JSON-based HTTP APIs.
+In fact, the &lt;a href=&quot;https://swagger.io/specification/&quot;&gt;OpenAPI Specification&lt;/a&gt; (formerly known as Swagger Specification),
+which is a popular language-agnostic interface description for HTTP APIs, 
+is based on an extended subset of JSON Schema.&lt;/p&gt;
+
+&lt;p&gt;JSON Schema is primarily used for describing large sets of self-contained data, 
+used as a data descriptor. JSON data can be expanded, though, with linked data, and that is where
+&lt;a href=&quot;https://json-ld.org/&quot;&gt;JSON-LD&lt;/a&gt; comes into the picture. 
+JSON-LD is a common &lt;a href=&quot;https://schema.org/&quot;&gt;Schema.org&lt;/a&gt; markup format. 
+It is a lightweight &lt;em&gt;linked data&lt;/em&gt; format 
+which helps creating a network of standards-based, machine-readable data across web sites.
+It is an ideal data format for programming environments and REST web services, as it
+allows an application to start at one piece of linked data, and follow embedded links
+to other pieces of linked data that are hosted on different sites across the web.&lt;/p&gt;
+
+&lt;h2 id=&quot;working-with-json-schema-in-python&quot;&gt;Working with JSON Schema in Python&lt;/h2&gt;
+
+&lt;p&gt;In addition to other &lt;a href=&quot;https://json-schema.org/implementations.html#schema-linter&quot;&gt;linters and validators&lt;/a&gt; 
+that can be used to check schemas themselves, 
+one can validate data against a schema with &lt;a href=&quot;https://python-jsonschema.readthedocs.io/en/stable/&quot;&gt;jsonschema&lt;/a&gt;,
+which is an implementation of the JSON Schema specification for Python.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jsonschema&lt;/code&gt; can be installed locally with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install jsonschema&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The snippet below shows a small validator that uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jsonschema&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/env python
+# -*- coding: utf-8
+&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;easyargs&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jsonschema&lt;/span&gt;
+
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;easyargs&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;validate_schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schema_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;schema_obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schema_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;data_obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jsonschema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schema_obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsonschema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Draft7Validator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;JSON '&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' validated against JSON schema '&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' ...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Validated - JSON has all the required fields and expected data types!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;validate_schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This small comman-line tool (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;validate_schema.py&lt;/code&gt;) could be executed as 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python validate_schema.py example.schema.json example.data.json&lt;/code&gt;.
+Alternatively, one could simply run
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jsonschema --validator Draft7Validator -i example.schema.json example.data.json&lt;/code&gt;.
+Note that we are using the &lt;em&gt;Draft7Validator&lt;/em&gt;, but other schema versions could be used.&lt;/p&gt;
+
+&lt;h2 id=&quot;json-schema-in-bioinformatics&quot;&gt;JSON Schema in Bioinformatics&lt;/h2&gt;
+
+&lt;p&gt;JSON Schema has great potential application in Bioinformatics and in other scientific fields. 
+Particularly, in projects that rely on user submission and deposition of data. 
+There might be many examples that could illustrate a good use of JSON Schema in existing projects,
+but I named a couple below which are closer to my heart.&lt;/p&gt;
+
+&lt;p&gt;The Protein Data Bank in Europe – Knowledge Base (&lt;a href=&quot;https://www.ebi.ac.uk/pdbe/pdbe-kb/&quot;&gt;PDBe-KB&lt;/a&gt;) has developed 
+the &lt;a href=&quot;https://github.com/PDBe-KB/funpdbe-schema&quot;&gt;FunPDBe Data Exchange Format&lt;/a&gt;, 
+which powers the Community-driven enrichment of PDB data, FunPDBe.
+This is essentially JSON Schema, which specifies all the details of the data exchange format that is used by FunPDBe.
+In addition to the schema specification, the project provides a format validation tool
+(&lt;a href=&quot;https://gitlab.ebi.ac.uk/pdbe-kb/funpdbe/funpdbe-validator&quot;&gt;funpdbe-validator&lt;/a&gt;).
+This is a Python package that checks overall data sanity and whether the data are valid against the schema.&lt;/p&gt;
+
+&lt;p&gt;Another example, is the &lt;a href=&quot;https://github.com/ebi-jdispatcher/sss_json_schema&quot;&gt;SSS JSON Schema&lt;/a&gt;
+project.
+This is a JSON Schema for standardising EMBL-EBI’s Job Dispatcher 
+&lt;a href=&quot;https://www.ebi.ac.uk/Tools/sss/&quot;&gt;Sequence Similarity Search (SSS)&lt;/a&gt; bioinformatics tool outputs. 
+Tool outputs from NCBI BLAST+, FASTA, PSI-BLAST, PSI-SEARCH and others are converted into a JSON format,
+that is then validated against the developed schema. 
+Examples are also provided on how to validate the outputs against the SSS JSON Schema.&lt;/p&gt;
+
+&lt;h2 id=&quot;concluding-remarks&quot;&gt;Concluding remarks&lt;/h2&gt;
+
+&lt;p&gt;JSON Schema is a lightweight data interchange format that generates human and machine-readable documentation, 
+making validation and testing easier. 
+It is used extensively for data validaion and to describe the structure of JSON documents.
+There are many alternatives out there, for example, 
+&lt;a href=&quot;https://typeschema.org/&quot;&gt;TypeSchema&lt;/a&gt;, which focus more on the definition of data models.
+Specifically focusing on data validation, a great JSON Schema alternative for Python is
+&lt;a href=&quot;https://docs.pydantic.dev/&quot;&gt;Pydantic&lt;/a&gt;.
+Pydantic uses Python type annotations and it is very popular for data validation and settings management.
+It allows auto creation of JSON schemas from models and the generated JSON is 
+compliant with the both JSON Schema and OpenAPI specifications.&lt;/p&gt;
+
+&lt;p&gt;The main benefit of JSON Schema, for me, is that it can be used to validate data used in automated testing
+and, importantly, to validate user or client submitted data.
+Do you use JSON Schema? Share your experiences and your feedback!&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Image taken from &lt;a href=&quot;https://www.asyncapi.com/blog/json-schema-beyond-validation&quot;&gt;https://www.asyncapi.com/blog/json-schema-beyond-validation&lt;/a&gt;&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Schemas" /><category term="JSON" /><category term="Python" /><category term="Bioinformatics" /><category term="Tech" /><summary type="html">JSON Schema is a declarative language that allows annotation and validation of JSON documents. The benefits of JSON Schema are that it can fully describe existing data formats, and it provides clear human and machine-readable documentation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/json-schema-process.jpeg" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/json-schema-process.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Building user-friendly CLIs with Click</title><link href="https://biomadeira.github.io/2022-11-23-user-friendly-clis" rel="alternate" type="text/html" title="Building user-friendly CLIs with Click" /><published>2022-11-23T00:00:00+00:00</published><updated>2022-11-23T00:00:00+00:00</updated><id>https://biomadeira.github.io/user-friendly-clis</id><content type="html" xml:base="https://biomadeira.github.io/2022-11-23-user-friendly-clis">&lt;p&gt;In software development, we use command line interface (CLI) applications all the time,
+for example, to install software packages or to test our code.
+Creating CLIs, is a skill that we need to learn sooner or later.
+Often times we spend a lot of time thinking about
+the functionality of the application we are developing and end up neglecting the importance of designing
+usable and user-friendly CLIs.
+The &lt;a href=&quot;https://clig.dev/&quot;&gt;Command Line Interface Guidelines&lt;/a&gt; is an open-source guide for designing CLIs.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A guide to help you write better command-line programs,
+taking traditional UNIX principles and updating them for the modern day.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Where possible, CLIs should follow patterns that already exist as that makes using them intuitive and guessable.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CLIs should be easy to use: don’t make an assumption that the user knows or remembers what they should do.
+Discoverable CLIs provide a lot of help texts, examples, suggestions when there is an error.&lt;/li&gt;
+  &lt;li&gt;CLIs should be robust: they should expect unexpected inputs from the user. Errors should be handled gracefully.&lt;/li&gt;
+  &lt;li&gt;CLIs should provide good documentation: it is a balance between providing too much and too little information.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this article, I want to explore how we can develop user-friendly CLIs in Python using
+a popular command line toolkit.
+&lt;a href=&quot;https://click.palletsprojects.com/&quot;&gt;Click&lt;/a&gt; is a Python package to create beautiful CLIs.
+It was originally developed by Armin Ronacher,
+someone that does not need an introduction within the Python community, the
+creator of the popular &lt;a href=&quot;https://flask.palletsprojects.com/&quot;&gt;Flask&lt;/a&gt; web framework.
+In fact, Click was created as a supporting library for Flask.&lt;/p&gt;
+
+&lt;p&gt;Click is a composable CLI toolkit that makes it easy to write full-fledged command line tools that are easy to use.
+It is highly configurable and comes with sensible defaults out of the box.
+Click automatically generates help messages and allows nesting of commands and subcommands.&lt;/p&gt;
+
+&lt;p&gt;To get started with Click we can simply install it from PyPI with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install click&lt;/code&gt;.
+A simple Click CLI could look like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;click&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--count'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Number of greetings.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Your name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The name of the person to greet.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Simple program that greets NAME for a total of COUNT times.&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And what it looks like when run:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python cli.py &lt;span class=&quot;nt&quot;&gt;--count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2
+Your name: Matthew
+Hello Matthew!
+Hello Matthew!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;It automatically generates nicely formatted help pages:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python cli.py &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;
+Usage: cli.py &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS]
+
+Simple program that greets NAME &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;a total of COUNT times.
+
+Options:
+&lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--count&lt;/span&gt; INTEGER  Number of greetings.
+&lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; TEXT      The person to greet.
+&lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;               Show this message and exit.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The &lt;strong&gt;commands&lt;/strong&gt; are basic building blocks of an application.
+Click defines commands through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.command&lt;/code&gt; decorator.
+Values are passed to the commands via &lt;strong&gt;options&lt;/strong&gt; or &lt;strong&gt;arguments&lt;/strong&gt;.
+Options are added with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.option&lt;/code&gt; decorator, arguments with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.argument&lt;/code&gt;
+decorator. 
+Both options and argument names are passed to the function as a variable with the same name.&lt;/p&gt;
+
+&lt;h2 id=&quot;options&quot;&gt;Options&lt;/h2&gt;
+&lt;p&gt;As shown in the example above, option names are prefixed with one or two dashes.
+We can ask a user to provide a value interactively with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prompt='Your name'&lt;/code&gt;.
+In the example, we have also the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--count&lt;/code&gt; option which takes a number. 
+The number determines how many times greeting is printed to the console, 
+which defaults to 1 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default=1&lt;/code&gt;).
+Options can additionally be set as boolean flags with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;is_flag=True&lt;/code&gt;. 
+Here we need to set the default value to either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt; depending on the 
+behaviour we want from the option.&lt;/p&gt;
+
+&lt;h2 id=&quot;arguments&quot;&gt;Arguments&lt;/h2&gt;
+&lt;p&gt;Values in options follow the name of the option while arguments are taken positionally.
+Contrary to options, we do not prefix argument names with one or two dashes
+(e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@click.argument('age', type=int, default=20)&lt;/code&gt;).
+The arguments may also have default values.
+With the nargs option, we can set that an argument that takes multiple values. 
+If we set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nargs=-1&lt;/code&gt;, then the argument may take variable number of values.
+For example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;click&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'values'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nargs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The sum is &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Running this example would look like:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python cli.py 1 2 3 4 5
+The &lt;span class=&quot;nb&quot;&gt;sum &lt;/span&gt;is 15&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As described, Click supports two types of parameters for CLIs: options and arguments.
+It is not often obvious which one we should use. 
+Options, as its name indicates, are generally optional, 
+while arguments can be optional within reason.
+Arguments are much more restricted in how optional they can be.
+Both can be set as required with the argument &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;required=True&lt;/code&gt;, which defaults to false.
+The recommendation is to use arguments exclusively for things like passing input filenames and URLs, 
+and have everything else be an option instead.&lt;/p&gt;
+
+&lt;p&gt;The key differences in Click are that arguments can do less than options. 
+For example, only options:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;can automatically prompt for missing input&lt;/li&gt;
+  &lt;li&gt;can act as flags (boolean or otherwise)&lt;/li&gt;
+  &lt;li&gt;can pull optional values from environment variables (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;envvar='PATH'&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;are fully documented in the help output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On the other hand, only arguments can accept an arbitrary number of arguments. 
+Options typically only accept a single value, unless &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multiple=True&lt;/code&gt; is provided.
+This is useful, as in a hypothetical example, when choosing which output formats one wants to export
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python cli.py &amp;lt;args/opts&amp;gt; --outformat 'yaml' --outformat 'json'&lt;/code&gt;. 
+Note that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--outformat&lt;/code&gt; option is passed twice to the CLI.
+This example could possibly be better expressed as flag options instead
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python cli.py &amp;lt;args/opts&amp;gt; --yaml --json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can specify the parameter types as Python types, including &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bool&lt;/code&gt;, etc. 
+Nevertheless, Click supports several parameter types out of the box, including &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.STRING&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.INT&lt;/code&gt;, 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.FLOAT&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.BOOL&lt;/code&gt;. 
+These are useful to validate the user input. 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.BOOL&lt;/code&gt; is automatically used for boolean flags and magically takes values such as 
+“1”, “true”, “t”, “yes”, “y”, and “on”, converting them to True. Likewise for False.
+Other parameter types include &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.UUID&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.File&lt;/code&gt;, 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.Path&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.Choice&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.IntRange&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.FloatRange&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.DateTime&lt;/code&gt;.
+Custom parameter types can be implemented by subclassing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.ParamType&lt;/code&gt;.
+You can read more about this in &lt;a href=&quot;https://click.palletsprojects.com/en/8.1.x/parameters/&quot;&gt;Click’s documentation&lt;/a&gt;. 
+A quick summary of the types I have used more often is provided below:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.File&lt;/code&gt; will try to lazily open a file for reading, writing, or both.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.Path&lt;/code&gt; will not open a file but perform various checks on the given parameter
+(e.g., check if the file exists, check if it is a file and not a directory, etc.)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.DateTime&lt;/code&gt; date or datetime formats that follow the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD HH:MM:SS&lt;/code&gt;. 
+Other formats that can be customised.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;commands&quot;&gt;Commands&lt;/h2&gt;
+&lt;p&gt;Click commands can be added into groups. Groups are created with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@click.group&lt;/code&gt; decorator. 
+See below an example of a CLI that has two main commands.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;click&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_common&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_add_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;reversed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_add_options&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;common_options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-i'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--input'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'inputfile'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input File.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-o'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--output'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'outputfile'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Output File.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'--quiet'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'quiet'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_flag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;multiple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Disables logging.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context_settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'help_option_names'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-h'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--help'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]})&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'1.2.3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Example CLI with two sub-commands&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'extract'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_common&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;common_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-l'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--line'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Line number.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quiet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Extracts some content from a file.&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;extract_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quiet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'insert'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_common&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;common_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+           &lt;span class=&quot;n&quot;&gt;quiet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Inserts some content to a file.&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;insert_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quiet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The CLI help output would look like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python cli.py &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; 
+Usage: cli.py &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS] COMMAND1 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ARGS]... &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;COMMAND2 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ARGS]...]...
+
+  Example CLI with two sub-commands
+
+Options:
+  &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;   Show the version and exit.
+  &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;  Show this message and exit.
+
+Commands:
+  extract  Extracts some content from a file.
+  insert   Inserts some content to a file.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Note that we can then check the help also for the commands, for example, the &lt;em&gt;extract&lt;/em&gt; command:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python cli.py extract &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
+Usage: cli.py extract &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS]
+
+  Extracts some content from a file.
+
+Options:
+  &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--input&lt;/span&gt; PATH    Input File.  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;required]
+  &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; PATH   Output File.  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;required]
+  &lt;span class=&quot;nt&quot;&gt;--quiet&lt;/span&gt;             Disables logging.
+  &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--line&lt;/span&gt; INTEGER  Line number
+  &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;, &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;          Show this message and exit.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This example demonstrates the grouping and chaining of Click commands.
+Click adds a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--help&lt;/code&gt; command by default, which provides users with an essential piece of documentation.
+Users can discover all the commands and options available,
+and can refer to it as a reference throughout their use of the CLI.
+By setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context_settings={'help_option_names': ['-h', '--help']}&lt;/code&gt; we can also get help with simply 
+typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-h&lt;/code&gt;.
+Another feature that I added in this example, which is often useful is the sharing of common options or arguments.
+Click commands can be decorated with a list of shared options, in this example, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@add_common(common_options)&lt;/code&gt;. 
+Notice how you can still decorate the commands with additional options or arguments as you would expect
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@click.option('-l', '--line', type=click.INT, ...&lt;/code&gt;).
+This improves the reusability of your code and hopefully improves the consistency across the 
+CLI commands. 
+That being said, sometimes consistency conflicts with ease of use.&lt;/p&gt;
+
+&lt;h2 id=&quot;setuptools-support&quot;&gt;Setuptools support&lt;/h2&gt;
+
+&lt;p&gt;In the examples provided, we have a block at the end of the file which looks like this: 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if __name__ == '__main__':&lt;/code&gt;. 
+This is what standalone Python files look like when we want to execute them.
+While we can continue doing that, a better approach is to use setuptools.
+The advantage is that setuptools automatically generates executable wrappers for Windows 
+so your command line utilities work on Windows too. 
+Additionally, setuptools scripts work with virtualenv on Unix without the 
+virtualenv having to be activated. 
+This is a very useful concept which allows us to bundle 
+scripts with all requirements into a virtualenv.
+For this purpose, we can define a file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup.py&lt;/code&gt;, that tells setuptools how to package the CLI.
+A key argument in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup()&lt;/code&gt; are the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;entry_points&lt;/code&gt;. 
+Once installed, the CLI could be called in the console simply as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;examplecli --help&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;setuptools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_packages&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;README.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;requirements.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;requirements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'example_cli'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'1.2.3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Foo Bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;author_email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'foo@bar.com'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;license&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&amp;lt;the license you chose&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&amp;lt;short description for the tool&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;long_description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;long_description_content_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;text/markdown&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'&amp;lt;github url where the tool code will remain&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;py_modules&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'example_cli'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'app'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;packages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;install_requires&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;requirements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;python_requires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'&amp;gt;=3.9'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;classifiers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;Programming Language :: Python :: 3.9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;Operating System :: OS Independent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;entry_points&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'''
+        [console_scripts]
+        examplecli=cli:cli
+    '''&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;One last topic, I think it is worth mentioning is that Click provides the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;click.testing&lt;/code&gt; module,
+which provides test functionality that helps you invoke command line applications and check their behavior.
+More information about testing is provided in 
+&lt;a href=&quot;https://click.palletsprojects.com/en/8.1.x/testing/&quot;&gt;Click’s documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click is a pretty cool CLI package which ticks a lot of the functionality boxes.
+All the parameters can be configured via decorators which help keep the CLI code clean.
+There is a lot more to Click that was not demonstrated in this post.
+Click provides many developer-friendly utilities such as callback functions and other utility functions.
+There are many alternatives to Click, the obvious ones being &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;optparse&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;argparse&lt;/code&gt; 
+from the Python standard library. 
+The problem with most of them is that they are not easier to use, nor do they provide any extra 
+functionality. Personally, I don’t use anything else these days.&lt;/p&gt;
+
+&lt;p&gt;I hope this was useful to you! Share your experiences and your thoughts about designing and developing
+command line applications and about Click!&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Python" /><category term="Tech" /><summary type="html">In software development, we use command line interface (CLI) applications all the time, for example, to install software packages or to test our code. Creating CLIs, is a skill that we need to learn sooner or later. Often times we spend a lot of time thinking about the functionality of the application we are developing and end up neglecting the importance of designing usable and user-friendly CLIs. The Command Line Interface Guidelines is an open-source guide for designing CLIs.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/Click_cli_screenshot.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/Click_cli_screenshot.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Apache Airflow to monitor data pipelines</title><link href="https://biomadeira.github.io/2022-11-08-apache-airflow-ui" rel="alternate" type="text/html" title="Using Apache Airflow to monitor data pipelines" /><published>2022-11-08T00:00:00+00:00</published><updated>2022-11-08T00:00:00+00:00</updated><id>https://biomadeira.github.io/apache-airflow-ui</id><content type="html" xml:base="https://biomadeira.github.io/2022-11-08-apache-airflow-ui">&lt;p&gt;&lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt; is a popular open-source platform for developing, scheduling, 
+and monitoring workflows. 
+Airflow is developed in Python and enables the development of batch-oriented workflows, that are dynamic,
+extensible and flexible, as they are configured as Python code.
+Airflow provides a rich interactive web user interface (UI) that helps manage the state of workflow execution.
+In addition to all of these, Airflow connects to a variety of different technologies, through a
+very extensive list of integrations, for email, monitoring,
+logging, deployment, security, and many others. 
+Despite being widely adopted in the industry by big players in Machine Learning and Big Data, 
+Airflow’s adoption by the Bioinformatics community is not as widespread.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Airflow can be deployed in many ways, varying from a single process on your laptop to a 
+distributed setup to support very large workflows.
+Airflow provides local and remote &lt;em&gt;executors&lt;/em&gt; (e.g. Celery, Dask and Kubernetes) out of the box.
+Task instances can run sequentially or in parallel.&lt;/p&gt;
+
+&lt;p&gt;At the core of the Airflow execution are the DAGs (direct acyclic graphs), 
+which are the blueprints of the various tasks and processes that compose workflows.
+Airflow has been designed and developed to orchestrate all aspects of the DAG execution.
+While this is why Airflow is so popular and useful, there is a use case 
+for which I could not find much information about.&lt;/p&gt;
+
+&lt;p&gt;Imagine a simple sequential workflow, with the following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perform data processing if new data is available : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run_data_update&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Perform deployment of the processed data to the development environment: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run_dev_deployment&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Perform deployment of the processed data to the production environment: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run_prod_deployment&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Generate some data statistics: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;generate_data_stats&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Dependending on the complexity of each task, 
+we could use one of the various operators that Airflow provides out of the box.
+For example, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BashOperator&lt;/code&gt; or the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PythonOperator&lt;/code&gt;.
+This basic DAG could be put together, glancing over some details, as shown below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;utilities&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;generate_generic_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;start_date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;STARTDATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# using PythonOperator 
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;task_run_data_update&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_data_update_python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                      &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                      &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_dev_data_deployment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_generic_deployment_python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                 &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                 &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                 &lt;span class=&quot;n&quot;&gt;deployment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dev&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_prod_data_deployment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_generic_deployment_python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                  &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                                  &lt;span class=&quot;n&quot;&gt;deployment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prod&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;task_generate_data_stats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate_data_stats_python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                              &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                                              &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# dag generation with the bit shift operator
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;task_run_data_update&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; \
+            &lt;span class=&quot;n&quot;&gt;task_dev_data_deployment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;task_dev_data_deployment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; \
+                    &lt;span class=&quot;n&quot;&gt;task_generate_data_stats&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# iterate over of a collection of dags
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DAGS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_db_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate_generic_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;While Airflow has been developed to schedule and execute the four tasks listed
+above, essentially, I wanted to let existing software lead the orchestration and execution of my analysis pipelines,
+but wanted the benefit of the &lt;a href=&quot;https://airflow.apache.org/docs/apache-airflow/stable/ui.html&quot;&gt;Airflow UI&lt;/a&gt;, 
+with all the great logging and execution metrics that it provides. 
+I also wanted to use Airflow integrations that would, for example, let me send Slack notifications upon 
+completion.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Airflow UI makes it easy to monitor and troubleshoot your data pipelines.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As mentioned, I wanted the scheduling and execution process to be handled by a different application.
+The trick here is to implement an Airflow DAG that only logs the progress and status of the tasks handled by
+the other application.
+One could extend Airflow with a custom operator, but for this purpose 
+the solution is to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PythonSensor&lt;/code&gt; together with the Airflow API.&lt;/p&gt;
+
+&lt;p&gt;The tasks above therefore need to be converted from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PythonOperator&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PythonSensor&lt;/code&gt;. 
+The snippet for one of the tasks could look like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_data_update_sensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;run_data_update&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;task_description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;{deployment.capitalize()} Deployment&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;task_description_md&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dedent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;        ### &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_description&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;
+        Run the actual dataset updating... 
+        &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PythonSensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;python_callable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;doc_md&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_description_md&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;        &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A key point here is that DAG IDs and task IDs need to be static, 
+so that we can send a signal to Airflow to say that a particular DAG and 
+task execution have been initiated. 
+Each DAG run will have a unique run ID, which we can set ourselves. 
+For example, it could be the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dag_id&lt;/code&gt; plus some kind of hash or date. 
+We can then hit the Airflow API with for example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; as shown below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'{&quot;dag_run_id&quot;: &quot;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dag_run_id&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&quot;}'&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowHostname&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/api/v1/dags/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/dagRuns &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowUser&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowPass&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This tells Airflow that a new DAG run with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dag_run_id&lt;/code&gt; has started.
+We need to post the status of the execution for each of the four tasks in the DAG.
+For example, we could signal that task execution 
+was successful, or it failed…&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'{&quot;dag_run_id&quot;: &quot;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dag_run_id&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&quot;, &quot;task_id&quot;: &quot;run_data_update&quot;, &quot;new_state&quot;: &quot;success&quot;}'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# or&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'{&quot;dag_run_id&quot;: &quot;'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dag_run_id&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&quot;, &quot;task_id&quot;: &quot;run_data_update&quot;, &quot;new_state&quot;: &quot;failed&quot;}'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;…by making a new POST request to the Airflow API.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowHostname&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/api/v1/dags/&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/updateTaskInstancesState &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--user&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowUser&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;AirflowPass&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;When we have posted the status of all four tasks, the DAG appears as completed. 
+We successfully logged the execution of our DAG without Airflow ever controlling it.
+For this simple four-task example, the Airflow UI looks like as shown below:&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/Airflow_screenshot_1.png&quot; class=&quot;kg-image&quot; alt=&quot;Airflow Example - Graph view&quot; /&gt;
+    &lt;figcaption&gt;Basic Airflow example showing a completed DAG.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;With this approach, Apache Airflow provides a full-featured web interface 
+client to your backend workflow manager. 
+The Airflow UI provides both in-depth views of pipelines and individual tasks,
+and an overview of pipelines execution over time. 
+The views include Calendar, Task Duration graph, Gantt graph and others.
+In fact, Airflow allows you to inspect all the logging it produces, 
+ranging from DAG runs, jobs, task instances, and so on and so forward.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/Airflow_screenshot_2.png&quot; class=&quot;kg-image&quot; alt=&quot;Airflow Example - Grid view&quot; /&gt;
+    &lt;figcaption&gt;Basic Airflow example - Grid view.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;As shown in the Airflow DAGs image below, you would typically see some scheduled DAG run, but with this
+approach no DAG is scheduled as the execution is triggered and controlled by the external application.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/Airflow_screenshot_3.png&quot; class=&quot;kg-image&quot; alt=&quot;Airflow Example - DAGs view&quot; /&gt;
+    &lt;figcaption&gt;Basic Airflow example - DAGs view.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Airflow is a powerful workflow management platform for data analysis pipelines with a great potential in
+Bioinformatics.
+This application of Apache Airflow can pose an interesting solution,
+especially for when you already have a workflow manager, such as
+&lt;a href=&quot;https://www.nextflow.io/&quot;&gt;Nextflow&lt;/a&gt; and &lt;a href=&quot;https://snakemake.readthedocs.io/en/stable/&quot;&gt;Snakemake&lt;/a&gt;,
+orchestrating your workflow execution.&lt;/p&gt;
+
+&lt;p&gt;While this works for simple workflows, I have not yet tested this approach when tasks are executed in parallel,
+or when some task retry is performed.
+Importantly, if the decoupled application fails to reach the step of posting
+to the Airflow API, the DAG could be “hanging” in a running state forever.
+A solution for that could be to set a time limit after which the task would be declared failed.&lt;/p&gt;
+
+&lt;p&gt;There are tons of other useful Airflow features that are worth exploring.
+Hopefully this post inspires you to give Airflow a try and explore its huge list of
+available integrations and plugins.
+Do you run Apache Airflow yourself? What do you think about this approach?
+Your experiences and feedback are much appreciated!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Thanks to Prasad Basutkar for the interesting discussions and his extensive exploration of the Airflow API.&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Apache Airflow" /><category term="Workflows" /><category term="Tech" /><summary type="html">Apache Airflow is a popular open-source platform for developing, scheduling, and monitoring workflows. Airflow is developed in Python and enables the development of batch-oriented workflows, that are dynamic, extensible and flexible, as they are configured as Python code. Airflow provides a rich interactive web user interface (UI) that helps manage the state of workflow execution. In addition to all of these, Airflow connects to a variety of different technologies, through a very extensive list of integrations, for email, monitoring, logging, deployment, security, and many others. Despite being widely adopted in the industry by big players in Machine Learning and Big Data, Airflow’s adoption by the Bioinformatics community is not as widespread.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/Airflow_screenshot_4.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/Airflow_screenshot_4.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Exploring Nextflow with a small bioinformatics workflow</title><link href="https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow" rel="alternate" type="text/html" title="Exploring Nextflow with a small bioinformatics workflow" /><published>2022-11-01T00:00:00+00:00</published><updated>2022-11-01T00:00:00+00:00</updated><id>https://biomadeira.github.io/exploring-nextflow-workflow</id><content type="html" xml:base="https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow">&lt;p&gt;I recently wrote about 
+&lt;a href=&quot;https://biomadeira.github.io/2022-10-25-workflow-management&quot;&gt;workflow management systems in bioinformatics&lt;/a&gt;,
+focusing on &lt;a href=&quot;https://www.nextflow.io/&quot;&gt;Nextflow&lt;/a&gt; and &lt;a href=&quot;https://snakemake.readthedocs.io/en/stable/&quot;&gt;Snakemake&lt;/a&gt;. 
+In this post, the aim is to compose a small Bioinformatics workflow to start exploring
+the Nextflow syntax and its features. 
+The Nextflow &lt;a href=&quot;https://www.nextflow.io/docs/latest/index.html&quot;&gt;documentation&lt;/a&gt; 
+is extensive and provides many examples that are a helpful start.
+Nevertheless, it is still challenging to go from the snippets provided to developing your own workflows.&lt;/p&gt;
+
+&lt;h2 id=&quot;basic-concepts&quot;&gt;Basic concepts&lt;/h2&gt;
+
+&lt;p&gt;Nextflow is a reactive workflow framework and a programming DSL designed for writing data-intensive computational
+pipelines. Nextflow adds the ability to define complex program interactions and a high-level parallel 
+computational environment based on the dataflow programming model.&lt;/p&gt;
+
+&lt;p&gt;Workflows are composed by joining together different processes. 
+These define the basic processing units of the work that need to be executed and can be written in a variety of
+scripting languages (Bash, Python, etc.). 
+Processes typically are executed as a single task or, if appropriate,
+executed as multiple tasks, as many times as required in parallel
+(e.g. processing multiple files).&lt;/p&gt;
+
+&lt;p&gt;Processes are isolated from each other, and the only communication between them is through &lt;em&gt;channels&lt;/em&gt;.
+Any process can define one or more channels as input or output.
+Unless explicitly declared with the DSL 2 workflow definition &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow {...}&lt;/code&gt;, 
+the workflow is implicitly defined by these input and output declarations.&lt;/p&gt;
+
+&lt;h2 id=&quot;bioinformatics-workflow&quot;&gt;Bioinformatics workflow&lt;/h2&gt;
+
+&lt;p&gt;Developing a bioinformatics workflow with Nextflow presents a good opportunity to
+explore Nextflow and see some its features in action.
+The workflow we are developing here is very simple but a good place to start.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download SwissProt sequence dataset&lt;/li&gt;
+  &lt;li&gt;Generate a SwissProt NCBI Blast database&lt;/li&gt;
+  &lt;li&gt;Perform a sequence search with a sequence of interest against the SwissProt database&lt;/li&gt;
+  &lt;li&gt;Extract the complete sequences of the BLAST top hits&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The first consideration to make is whether we should go for Nextflow &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DSL 2&lt;/code&gt; or default to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DSL 1&lt;/code&gt;.
+Looking forward, the likelihood is that DSL version 2 will be the default and therefore, in this example, we should 
+set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nextflow.enable.dsl=2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this example, we need to run a few of the BLAST commands. For that, we can install blast locally with Conda, 
+simply by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda install -c bioconda blast==2.12.0&lt;/code&gt;. 
+In the Nextflow script file, we can include paths to these 
+tools, so we can use them in the processes later on. We should also add other parameters, 
+which makes changing them easier later on, rather than having them hard coded.&lt;/p&gt;
+
+&lt;p&gt;The beginning of our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow_example.nf&lt;/code&gt; script should look like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Declare syntax version&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nextflow&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enable&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dsl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Script parameters&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// BLAST commands&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;makeblastdb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/Users/username/miniconda3/envs/py39/bin/makeblastdb&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blastp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/Users/username/miniconda3/envs/py39/bin/blastp&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blastdbcmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/Users/username/miniconda3/envs/py39/bin/blastdbcmd&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// SwissProt EBI FTP URL&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ftp_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;https://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Work directory&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workdir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/Users/username/tmp/&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Query sequence&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_fasta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/Users/username/tmp/query.fasta&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// (optional) SwissProt database name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;swissprot&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now we need to start adding the workflow processes to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow_example.nf&lt;/code&gt; file. 
+The first process &lt;em&gt;1&lt;/em&gt; is about downloading the SwissProt dataset. For that we need to specify the 
+expected output &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;path&lt;/code&gt;, which we can define as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;swissprot.fasta&quot;&lt;/code&gt;, for example. 
+Since we need this dataset in the next process, we can emit it, explicitly as &lt;em&gt;swissprot&lt;/em&gt;, or we could 
+simply use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;swissprot.fasta&quot;&lt;/code&gt; as an expected input of the next process. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt; component of the process
+simply is taking care of downloading the compressed dataset and then uncompressing it.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// downloads the SwissProt dataset from the EBI's FTP&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;downloadSwissProt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;swissprot.fasta&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprot&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+    wget ${params.ftp_url} -O swissprot.fasta.gz
+    gzip -d swissprot.fasta.gz
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the next process &lt;em&gt;2&lt;/em&gt;, we take the SwissProt dataset and generate a BLAST database. We take the emitted file and 
+expect several files to be generated by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;makeblastdb&lt;/code&gt; command. Note how we are using the parameters in the 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt; part of the process. Here, we are explicitly emitting the &lt;em&gt;swissprotdb&lt;/em&gt; files.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Builds the SwissProt BLAST database&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeBlastDb&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprot&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;swissprot*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprotdb&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+    ${params.makeblastdb} -dbtype 'prot' \
+    -in ${swissprot} -out ${params.dbname} \
+    -input_type 'fasta' -blastdb_version 5 -parse_seqids
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the next process &lt;em&gt;3&lt;/em&gt;, we take the BLAST database and a query sequence of interest and perform sequence searching.
+We then process the BLAST output, and generate a temporary list of the 10 top hits (i.e. the hits with smaller e-values,
+or hits believed to be the closest homologs in the database).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Performs a BLASTP sequence search and captures the 10 top Hits&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blastSearch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprotdb&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;top_hits.txt&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+    ${params.blastp} -db ${params.dbname} -query ${query} -outfmt 6 &amp;gt; blast_result
+    cat blast_result | head -n 10 | cut -f 2 &amp;gt; top_hits.txt
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finally, in &lt;em&gt;4&lt;/em&gt;, we take those 10 hits and extract the complete sequences in &lt;em&gt;fasta&lt;/em&gt; format using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blastdbcmd&lt;/code&gt;
+command. Note the addition of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;publishDir params.workdir&lt;/code&gt; as we want the &lt;em&gt;top_hits.fasta&lt;/em&gt; file to be available 
+in our work directory, so we can continue working on the hit sequences. The same can be done on any of the 
+other processes, for example, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;makeBlastDb&lt;/code&gt; process, where we generate the SwissProt BLAST database, and 
+might want to store it more permanently outside the Nextflow &lt;em&gt;work&lt;/em&gt; directories.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Extracts top Hit sequences in fasta format&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extractTopHits&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;publishDir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workdir&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top_hits&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprotdb&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;top_hits.fasta&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+    ${params.blastdbcmd} -db ${params.dbname} -entry_batch ${top_hits} &amp;gt; top_hits.fasta
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The processes are defined, and now we need to define the workflow. With DSL 2, we can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow&lt;/code&gt;, which, for this
+example, could be as shown below. Note that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blastSearch&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extractTopHits&lt;/code&gt; are using the outputs from the 
+previous processes, which is the same for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;makeBlastDb&lt;/code&gt;. The difference in the latter is that we are simply 
+piping (i.e. chaining) the commands together.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// workflow definition&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;workflow&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nf&quot;&gt;downloadSwissProt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeBlastDb&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Channel&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;fromPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_fasta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;nf&quot;&gt;blastSearch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeBlastDb&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;nf&quot;&gt;extractTopHits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blastSearch&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeBlastDb&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow_example.nf&lt;/code&gt; file is now complete and ready to use. We could simply run
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nextflow run example_worflow.nf&lt;/code&gt; and use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-resume&lt;/code&gt; flag to re-run it if we modified some processes.
+Nextflow has functions to generate DAG graphs (as exampled below), but also to produce several reports,
+for resource usage, tasks, timeline, trace report, etc.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/nexflow_workflow_mermaid.png&quot; class=&quot;kg-image&quot; alt=&quot;Nextflow Example workflow&quot; /&gt;
+    &lt;figcaption&gt;Nextflow workflow diagram produced by the Mermaid Live Editor.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The beauty of Nextflow is that we can execute this locally in our own machine, but likewise we can run it on a
+high-performance computing (HPC), without much modification. 
+For example, we could set a couple of profiles as shown below and simply call
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nextflow run example_worflow.nf -profile hpc&lt;/code&gt;, passing the profile we want from the config.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;profiles&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;executor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;hpc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;executor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;lsf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;standard&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For that we need to save the profiles config as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.nextflow/config&lt;/code&gt; on our work directory.
+Alternatively, we could add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;executor&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clusterOptions&lt;/code&gt; directive declarations to the processes as required. 
+For example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Performs a BLASTP sequence search and captures the 10 top Hits&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blastSearch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;executor&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'lsf'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'standard'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swissprotdb&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;top_hits.txt&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;
+    (...)
+    &quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In addition to these, there are a plethora of other directives we could use, for example, to specify
+CPU other requirements: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cpus&lt;/code&gt; , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;memory&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;disk&lt;/code&gt;. 
+There are directives &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;afterScript&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;beforeScript&lt;/code&gt; scripts,
+for retrying and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;errorStrategy&lt;/code&gt;, for caching, for Conda and containers, and the list goes on.&lt;/p&gt;
+
+&lt;p&gt;This is just touching the surface of what we can do with Nextflow. 
+Let me know if this was useful! 
+Share your experiences and your thoughts about Nextflow!&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Nextflow" /><category term="Workflows" /><category term="Bioinformatics" /><summary type="html">I recently wrote about workflow management systems in bioinformatics, focusing on Nextflow and Snakemake. In this post, the aim is to compose a small Bioinformatics workflow to start exploring the Nextflow syntax and its features. The Nextflow documentation is extensive and provides many examples that are a helpful start. Nevertheless, it is still challenging to go from the snippets provided to developing your own workflows.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/nexflow_workflow_mermaid.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/nexflow_workflow_mermaid.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Workflow management systems in Bioinformatics</title><link href="https://biomadeira.github.io/2022-10-25-workflow-management" rel="alternate" type="text/html" title="Workflow management systems in Bioinformatics" /><published>2022-10-25T00:00:00+00:00</published><updated>2022-10-25T00:00:00+00:00</updated><id>https://biomadeira.github.io/workflow-management</id><content type="html" xml:base="https://biomadeira.github.io/2022-10-25-workflow-management">&lt;p&gt;Several alternative scientific workflow systems typically referred to as workflow management platforms are 
+used to run data pipelines (e.g. SNP calling and performing ETL). Among the most popular workflow managers are 
+&lt;a href=&quot;https://www.nextflow.io/&quot;&gt;Nextflow&lt;/a&gt; and &lt;a href=&quot;https://snakemake.readthedocs.io/en/stable/&quot;&gt;Snakemake&lt;/a&gt;. These were
+conceived in Bioinformatics labs but essentially try to address similar reproducibility and scalability
+issues that other general-purpose systems try to solve, for example, &lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt; and 
+&lt;a href=&quot;https://luigi.readthedocs.io/en/stable/&quot;&gt;Luigi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Both Nextflow and Snakemake were launched almost 10 years ago, stemming from the need for processing increasing 
+quantities of scientific data, namely Next-Generation Sequencing (NGS) data. These projects provide extensive 
+documentation and examples. Both systems promise easy learning and adoption, as well as workflow reproducibility 
+and scalability. From their homepages, one can read:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Nextflow&lt;/strong&gt; enables scalable and reproducible scientific workflows using software containers.
+It allows the adaptation of pipelines written in the most common scripting languages.
+Its fluent DSL simplifies the implementation and the deployment of complex parallel and
+reactive workflows on clouds and clusters.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Snakemake&lt;/strong&gt; (…) is a tool to create reproducible and scalable data analyses. Workflows are 
+described via a human readable, Python based language. They can be seamlessly scaled to server, cluster, grid and 
+cloud environments, without the need to modify the workflow definition. Finally, Snakemake workflows can entail a
+description of required software, which will be automatically deployed to any execution environment.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;The approach taken by both systems is to break down the pipelines into tasks or processes and link them into workflows 
+through inputs and outputs. Tasks or processes are executed when inputs are received, but both inputs and 
+outputs typically need to be defined explicitly for the workflows to be validated and executed.&lt;/p&gt;
+
+&lt;p&gt;The systems use custom domain-specific language (DSL) extensions of Groovy and Python, for Nextflow and Snakemake, 
+respectively. The popularity of Python among the Bioinformatics community would suggest Snakemake would be the
+most adopted option, but it turns out that Nextflow is very popular and the choice of many researchers 
+and groups. A benefit in both cases is the ability to use the underlying scripting languages beyond 
+the DSL as required. The composed workflows can be visualised as DAGs (direct acyclic graphs), and both systems provide
+functions to generate them. See an example of a Nextflow DAG below.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/Workflow_example_nextflow.png&quot; class=&quot;kg-image&quot; alt=&quot;Nextflow Example DAG&quot; /&gt;
+    &lt;figcaption&gt;Nextflow example DAG from 
+&lt;a href=&quot;https://github.com/nextflow-io/nextflow/issues/1056&quot;&gt;https://github.com/nextflow-io/nextflow/issues/1056&lt;/a&gt;.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Both systems enable the automatic parallelization of jobs and enable automatic retrying of failed jobs. Nextflow provides
+high-performance computing (HPC) executors out of the box, supporting traditional HPC,
+running Slurm, IBM LSF, SGE and others, but also supports execution on public cloud providers, 
+such as Amazon AWS, Google Cloud and Microsoft Azure. Snakemake can similarly be executed in such environments 
+via profiles. Additionally, both workflow management systems support cloud execution via Kubernetes. 
+Both systems also enable the portability of the workflows by supporting execution
+on different computing environments (e.g. Conda environments) and container technology
+(e.g. Docker, Singularity, etc.).
+Snakemake allows &lt;em&gt;dry-run&lt;/em&gt; execution testing, which the Nextlow command-line interface
+(CLI) only supports on selected commands (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nextflow clean ...&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;These workflow systems provide a great way for researchers to make reproducible data pipelines. 
+The &lt;a href=&quot;https://nf-co.re/&quot;&gt;nf-core&lt;/a&gt; community effort, for instance, provides a curated set of analysis pipelines built 
+with Nextflow that anyone can re-use.&lt;/p&gt;
+
+&lt;p&gt;Nextflow and Snakemake constitute solid choices for developing scientific workflows. Some particular features might be
+what makes you pick one of them over the other, but overall either are very capable. 
+One could use both systems side by side if that fits a particular user requirement.&lt;/p&gt;
+
+&lt;p&gt;I am not going to declare a winner or pick a favourite, but do let me know over on Twitter which you use and why!&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Workflows" /><category term="Nextflow" /><category term="Snakemake" /><category term="Bioinformatics" /><summary type="html">Several alternative scientific workflow systems typically referred to as workflow management platforms are used to run data pipelines (e.g. SNP calling and performing ETL). Among the most popular workflow managers are Nextflow and Snakemake. These were conceived in Bioinformatics labs but essentially try to address similar reproducibility and scalability issues that other general-purpose systems try to solve, for example, Apache Airflow and Luigi.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/Workflow_example_nextflow.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/Workflow_example_nextflow.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Back at blogging in 2022</title><link href="https://biomadeira.github.io/2022-10-24-back-at-blogging" rel="alternate" type="text/html" title="Back at blogging in 2022" /><published>2022-10-24T00:00:00+00:00</published><updated>2022-10-24T00:00:00+00:00</updated><id>https://biomadeira.github.io/back-at-blogging</id><content type="html" xml:base="https://biomadeira.github.io/2022-10-24-back-at-blogging">&lt;p&gt;After a few attempts at blogging over the last decade or so, it is the time to get back at it again!&lt;/p&gt;
+
+&lt;p&gt;I was trying to remember when I started blogging, and I believe it was in around 2008. I started blogging 
+on &lt;a href=&quot;https://www.tumblr.com&quot;&gt;Tumblr&lt;/a&gt; about things that were interesting to me at the time. Music and such things, but 
+unfortunately those posts are forever lost. I can’t find any of my login details nor can I even recall the blog’s name!&lt;/p&gt;
+
+&lt;p&gt;Around 2011, I then move to write on &lt;a href=&quot;https://www.blogger.com/&quot;&gt;Blogger&lt;/a&gt; about topics related to what I was 
+studying and my first encounters with programming. I started on &lt;a href=&quot;https://wordpress.com/&quot;&gt;Wordpress&lt;/a&gt; a few times, 
+and then found 
+about &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; and &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;. The very same blogging platform 
+I am still using to host this newer iteration of my homepage.&lt;/p&gt;
+
+&lt;p&gt;No big promises, but I hope this time around I can get things rolling. I am keeping older posts 
+here for archival purposes- with the tag &lt;a href=&quot;https://biomadeira.github.io/tag/archived/&quot;&gt;Archived&lt;/a&gt;. Feel free to have a look around!&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="News" /><summary type="html">After a few attempts at blogging over the last decade or so, it is the time to get back at it again!</summary></entry><entry><title type="html">Our last service update article has been published in NARWS</title><link href="https://biomadeira.github.io/2022-05-06-narws-2022" rel="alternate" type="text/html" title="Our last service update article has been published in NARWS" /><published>2022-05-06T00:00:00+00:00</published><updated>2022-05-06T00:00:00+00:00</updated><id>https://biomadeira.github.io/narws-2022</id><content type="html" xml:base="https://biomadeira.github.io/2022-05-06-narws-2022">&lt;p&gt;Our latest service update article titled 
+&lt;a href=&quot;https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkac240/6567472&quot;&gt;Search and sequence analysis tools services from EMBL-EBI in 2022&lt;/a&gt; 
+has been published in &lt;em&gt;Nucleic Acids Research&lt;/em&gt;, Web Server Issue.&lt;/p&gt;
+
+&lt;p&gt;In this paper we update the community on the latest developments in both Job Dispatcher sequence 
+analysis services as well as EBI Search. 
+We describe recent improvements to these services and updates made to accommodate the increasing 
+data requirements during the COVID-19 pandemic.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/NARWS_2022_visual_abstract.png&quot; class=&quot;kg-image&quot; alt=&quot;Visual Abstract&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For those not so familiar with Job Dispatcher and EBI Search, the abstract should give a good idea what these are about:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The EMBL-EBI search and sequence analysis tools frameworks provide integrated access to EMBL-EBI’s data resources and core bioinformatics analytical tools. 
+EBI Search (https://www.ebi.ac.uk/ebisearch) provides a full-text search engine across nearly 5 billion entries, while the 
+Job Dispatcher tools framework (https://www.ebi.ac.uk/services) enables the scientific community to perform a diverse range of sequence analysis
+using popular bioinformatics applications. Both allow users to interact through user-friendly web applications, as well as via RESTful and SOAP-based APIs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A good summary of all the bioinformatics applications available through JD in 2022 is provided below:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Tools&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/msa/&quot;&gt;Multiple Sequence Alignment&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Clustal Omega, Kalign, MAFFT, MUSCLE, T-Coffee, MView, WebPrank&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/psa/&quot;&gt;Pairwise Sequence Alignment&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Needle, Stretcher, Water, Matcher, LALIGN, GeneWise, GGSEARCH2SEQ, SSEARCH2SEQ&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/phylogeny/&quot;&gt;Phylogeny Analysis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Simple Phylogeny&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/pfa/&quot;&gt;Protein Functional Analysis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;InterProScan 5, PfamScan, Phobius, Pratt, RADAR, HMMER3 phmmer, HMMER3 hmmscan&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/rna/&quot;&gt;RNA Analysis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Infernal cmscan, MapMi, R2DT&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/sss/&quot;&gt;Sequence Similarity Search&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;NCBI BLAST+, PSI-BLAST, FASTA, SSEARCH, FASTM/S/F, GGSEARCH, GLSEARCH, PSI-Search, PSI-Search2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/seqstats/&quot;&gt;Sequence Statistics&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;SAPS, Pepinfo, Pepstats, Pepwindow, Cpgplot, Newcpgreport, Isochore, Dotmatcher, Dottup, Dotpath, Polydot&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/st/&quot;&gt;Sequence Translation&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Transeq, Sixpack, Backtranseq, Backtranambig&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/sfc/&quot;&gt;Sequence Format Conversion&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Seqret, MView&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/so/&quot;&gt;Sequence Operation&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Seqcksum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/emboss/&quot;&gt;EMBOSS Suite&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Needle, Stretcher, Water, Matcher, Transeq, Sixpack, Backtranseq, Backtranambig, Pepinfo, Pepstats, Pepwindow, Cpgplot, Newcpgreport, Isochore, Dotmatcher, Dottup, Dotpath, Polydot, Seqret&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/dbfetch/&quot;&gt;Dbfetch&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Dbfetch (fetching data from 57 domains)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Sequence datasets available through JD in 2022 are also provided below:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Data&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UniProtKB protein sequences&lt;/td&gt;
+      &lt;td&gt;UniProtKB, SwissProt, SwissProt Isoforms, TrEMBL, UniProtKB Taxonomic Subsets (13 subgroups, including: bacteria, archaea, eukaryota, SARS-CoV-2, etc.), Reference Proteomes, Representative Proteomes (15, 35, 55, 75), UniProt Reference (UniRef 50, 90 and 100), UniParc, Unimes, UniProtKB-PDB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Patent protein sequences&lt;/td&gt;
+      &lt;td&gt;EPO, JPO, KIPO, UPSPTO&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Structures of protein sequences&lt;/td&gt;
+      &lt;td&gt;PDBe, AlphaFold DB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Protein families&lt;/td&gt;
+      &lt;td&gt;Pfam, TIGRFAM, Superfamily, Gene3D, PIRSF, TreeFam, Pfam SARS-CoV-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Other protein sequences&lt;/td&gt;
+      &lt;td&gt;Enzyme Portal, IntAct, IPD-IMGT/HLA, IPD-KIR, IPD-MHC, MEROPS (MP, MPEP and MPRO), ChEMBL, Quest for Orthologs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ENA nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;ENA sequences for Coding, Non-coding, Barcode, Geospatial, Ribosomal RNA and others (10 subgroups, including: Expressed Sequence Tag, Genome Survey Sequence, etc.)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ensembl Genomes sequences&lt;/td&gt;
+      &lt;td&gt;Genomes from Bacteria, Fungi, Plants, Metazoa, Protists, WormBase Parasite, SARS-CoV-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Structures of nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;PDBe&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Other nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;IMGT/LIGM-DB, IMGT/HLA (CDS and genomic), IPD-KIR (CDS and genomic), IPD-NHKIR (CDS and genomic), IPD-MHC (CDS and genomic)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Additional entries available via Dbfetch&lt;/td&gt;
+      &lt;td&gt;EMDB, PDBe-KB, MEDLINE, NCBI Taxonomy, EDAM ontology, HGNC&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;This post is a reproduction of the post originally made on the &lt;a href=&quot;https://ebi-jdispatcher.github.io/blog/2022-05-06-narws-2022&quot;&gt;Job Dispatcher Blog&lt;/a&gt;&lt;/p&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Bioinformatics" /><category term="Academia" /><category term="News" /><category term="Archived" /><summary type="html">Our latest service update article titled Search and sequence analysis tools services from EMBL-EBI in 2022 has been published in Nucleic Acids Research, Web Server Issue.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/NARWS_2022_visual_abstract.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/NARWS_2022_visual_abstract.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">New paper published in Nucleic Acids Research, Web Server Issue</title><link href="https://biomadeira.github.io/2019-05-02-narws-2019" rel="alternate" type="text/html" title="New paper published in Nucleic Acids Research, Web Server Issue" /><published>2019-05-02T00:00:00+00:00</published><updated>2019-05-02T00:00:00+00:00</updated><id>https://biomadeira.github.io/narws-2019</id><content type="html" xml:base="https://biomadeira.github.io/2019-05-02-narws-2019">&lt;p&gt;Our latest service update article titled
+&lt;a href=&quot;https://academic.oup.com/nar/article/47/W1/W636/5446251&quot;&gt;The EMBL-EBI search and sequence analysis tools APIs in 2019&lt;/a&gt; 
+has been published in &lt;em&gt;Nucleic Acids Research&lt;/em&gt;, Web Server Issue.&lt;/p&gt;
+
+&lt;p&gt;In this paper, we describe the various enhancements made recently to EBI Saerch and Job Dispatcher services. 
+Additionally, examples of integration between the resources are provided, 
+which aim to demonstrate the ‘Software as a Service’ (SaaS) capabilities of the APIs.&lt;/p&gt;
+
+&lt;figure class=&quot;kg-card kg-image-card kg-width-wide kg-card-hascaption&quot;&gt;
+    &lt;img src=&quot;assets/images/NARWS_2019_visual_abstract.png&quot; class=&quot;kg-image&quot; alt=&quot;Visual Abstract&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For those not so familiar with Job Dispatcher and EBI Search, the abstract should give a good idea what these are about:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The EMBL-EBI provides free access to popular bioinformatics sequence analysis applications 
+as well as to a full-featured text search engine with powerful cross-referencing and data
+retrieval capabilities. Access to these services is provided via user-friendly web interfaces 
+and via established RESTful and SOAP Web Services APIs 
+(https://www.ebi.ac.uk/seqdb/confluence/display/JDSAT/EMBL-EBI+Web+Services+APIs+-+Data+Retrieval).
+Both systems have been developed with the same core principles that allow them to 
+integrate an ever-increasing volume of biological data, making them an integral 
+part of many popular data resources provided at the EMBL-EBI. Here, we describe
+the latest improvements made to the frameworks which enhance the interconnectivity 
+between public EMBL-EBI resources and ultimately enhance biological data 
+discoverability, accessibility, interoperability and reusability.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;New and updated bioinformatics tools available through Job Dispatcher in 2019. 
+The OpenAPI user interface for these tools is available from: 
+https://www.ebi.ac.uk/Tools/common/tools/help&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Tools&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/msa/&quot;&gt;Multiple Sequence Alignment&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Clustal Omega, Kalign, MAFFT, MUSCLE, T-Coffee, MView and WebPRANK&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/psa/&quot;&gt;Pairwise Sequence Alignment&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Needle, Stretcher, Water, Matcher, LALIGN, and GeneWise&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/phylogeny/&quot;&gt;Phylogeny Analysis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Simple Phylogeny&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[Protein Functional]Analysis (https://www.ebi.ac.uk/Tools/pfa/)&lt;/td&gt;
+      &lt;td&gt;InterProScan 5, PfamScan, Phobius, Pratt, RADAR, HMMER3 phmmer and HMMER3 hmmscan&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/rna/&quot;&gt;RNA Analysis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Infernal cmscan and MapMi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/sfc/&quot;&gt;Sequence Format Conversion&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Seqret and MView&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/so/&quot;&gt;Sequence Operation&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Seqcksum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[Sequence Similarity]Search (https://www.ebi.ac.uk/Tools/sss/)&lt;/td&gt;
+      &lt;td&gt;NCBI BLAST+, PSI-BLAST, FASTA, SSEARCH, FASTM/S/F, GGSEARCH, GLSEARCH, PSI-Search and PSI-Search2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/seqstats/&quot;&gt;Sequence Statistics&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;SAPS, Pepinfo, Pepstats, Pepwindow, Cpgplot, Newcpgreport, Isochore, Dotmatcher, Dottup, Dotpath and Polydot&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.ebi.ac.uk/Tools/st/&quot;&gt;Sequence Translation&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Transeq, Sixpack, Backtranseq and Backtranambig&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;New and Updated Data resources available through Job Dispatcher in 2019.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Datasets&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UniProtKB protein sequences&lt;/td&gt;
+      &lt;td&gt;UniProtKB, SwissProt, SwissProt Isoforms, TrEMBL, UniProtKB Taxonomic Subsets (13 subgroups, including: bacteria, archaea, eukaryota, etc.), Reference Proteomes, Representative Proteomes (15, 35, 55, 75), UniProt Reference (UniRef 50, 90 and 100), UniParc, Unimes and UniProtKB-PDB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Patent protein sequences&lt;/td&gt;
+      &lt;td&gt;EPO, JPO, KIPO, UPSPTO&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Structures protein sequences&lt;/td&gt;
+      &lt;td&gt;PDBe and PSI structure targets&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Protein families&lt;/td&gt;
+      &lt;td&gt;Pfam, TIGRFAM, Superfamily, Gene3D, PIRSF and TreeFam&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Other protein sequences&lt;/td&gt;
+      &lt;td&gt;Enzyme Portal, IntAct, IPD-IMGT/HLA, IPD-KIR, IPD-MHC, MEROPS (MP, MPEP and MPRO), ChEMBL and Quest for Orthologs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ENA nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;ENA sequence releases and updates for Coding, Non-coding, Barcode, Geospatial and others (10 subgroups, including: Expressed Sequence Tag, Genome Survey Sequence, etc.)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ensembl Genomes sequences&lt;/td&gt;
+      &lt;td&gt;Genomes from Bacteria, Fungi, Plants, Metazoa and Protists&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Structures of nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;PDBe&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Other nucleotide sequences&lt;/td&gt;
+      &lt;td&gt;IMGT/LIGM-DB, IMGT/HLA (CDS and genomic), IPD-KIR (CDS and genomic) and IPD-MHC (CDS and genomic)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Fábio Madeira</name><email>fabiomadeira@me.com</email></author><category term="Bioinformatics" /><category term="Academia" /><category term="News" /><category term="Archived" /><summary type="html">Our latest service update article titled The EMBL-EBI search and sequence analysis tools APIs in 2019 has been published in Nucleic Acids Research, Web Server Issue.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://biomadeira.github.io/assets/images/NARWS_2019_visual_abstract.png" /><media:content medium="image" url="https://biomadeira.github.io/assets/images/NARWS_2019_visual_abstract.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

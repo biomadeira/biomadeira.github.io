@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Coding best practices for researchers</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Coding best practices for researchers" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/2023-01-11-coding-best-practices" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/pair-programming-concept-illustration_114360-2170.jpg" />
+    
+    <meta property="article:tag" content="Tech" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Coding best practices for researchers" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/2023-01-11-coding-best-practices" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/pair-programming-concept-illustration_114360-2170.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Tech" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/2023-01-11-coding-best-practices",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/pair-programming-concept-illustration_114360-2170.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/2023-01-11-coding-best-practices"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Coding best practices for researchers" href="/feed.xml" />
+
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     <li class="nav-home has-cover " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<!--<header class="post-header  has-cover">-->
+<header class="post-header">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			
+			<span class="post-count"><a href="/tag/tech/">Tech</a></span>
+			
+
+		</span>
+		<h1 class="post-title">Coding best practices for researchers</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				
+                    
+					<figure class="post-meta-avatar avatar">
+						
+						<a href="/author/biomadeira" class="author-avatar">
+								<img class="author-profile-image" src="/assets/images/fabio.jpeg" alt="biomadeira" />
+						</a>
+						
+					</figure>
+					
+                
+			</div>
+			
+			
+			<h4 class="post-meta-author"><a href="/author/biomadeira">Fábio Madeira</a></h4>
+			
+			
+			<time datetime="11 January 2023">11 January 2023</time> &bull; 
+			
+			
+			
+				10 min read
+			
+		</div>
+<!--		-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset=" 320w,-->
+<!--                     640w,-->
+<!--                     960w,-->
+<!--                     1920w"-->
+<!--            src=""-->
+<!--            alt="Coding best practices for researchers" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="/assets/images/pair-programming-concept-illustration_114360-2170.jpg" alt="Coding best practices for researchers" />-->
+<!--		</div>-->
+<!--		-->
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="">
+		<div class="inner">
+
+			<section class="post-content">
+				<p>I have recently been invited to deliver a training session on an upcoming course at 
+<a href="https://www.ebi.ac.uk/training/materials/computational-biology-training-in-hematology-2023-module1/">EMBL-EBI</a>.
+The session is about <em>good coding practices</em> and is aimed at researchers and clinicians
+that have some experience working in Computational Biology and data analysis.
+The subject is vast as it touches on many aspects of software development, Open Source, Open Science, 
+reproducible research, and so on.
+I will be taking a hybrid approach, by providing some background information but also
+guiding the audience through some practical examples that hopefully
+will help them improve their coding skills.</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/pair-programming-concept-illustration_114360-2170.jpg" class="kg-image" alt="Illustration of two people working on a computer" />
+    <figcaption>Coding best practices illustration<sup>1</sup>.</figcaption>
+</figure>
+
+<p>The main broad topics covered in this training session are expanded below. I am not including the 
+code snippets here, but those can be found in or linked from the 
+<a href="https://docs.google.com/presentation/d/1l9Gm9_jywRbvdqf4yiXU2RfngVtShcZCoWy5EWVcWEM/edit?usp=sharing">presentation</a>.</p>
+
+<h2 id="software-development-life-cycle-sdlc">Software development life cycle (SDLC)</h2>
+
+<p>SDLC is a framework that provides general guidelines and a structure for understanding the 
+phases of the software development process. 
+The phases are not rigid and it is possible to move between them as needed.
+Although this framework has little resemblance with the reality of software development within research 
+labs, the general concepts and guidelines are still useful to have in mind.
+The six phases of the SDLC are:</p>
+
+<ol>
+  <li><strong>Planning and Analysis</strong>: This phase involves defining the project goals and objectives, 
+as well as determining the project scope, budget, and resources.
+The requirements for the software are gathered and analyzed. 
+This may include interviews with stakeholders, analysis of existing systems, and the development of user stories.</li>
+  <li><strong>Design</strong>: During this phase, the software and system architectures are created. 
+This typically includes identifying the modules and components that will make up the system, 
+and determining how they will interact with each other.</li>
+  <li><strong>Implementation</strong>: In this phase, the actual code for the software is written. 
+This may include writing custom code, integrating third-party libraries or frameworks, 
+and integrating with other systems.</li>
+  <li><strong>Testing and Integration</strong>: This phase involves verifying that the software functions as intended and meets the 
+requirements specified in the Planning and Analysis phase. 
+This may include unit testing, integration testing, and acceptance testing.</li>
+  <li><strong>Deployment</strong>: This phase involves delivering the software to end users and making it available for use. 
+It includes activities such as packaging the software, installing it on the target environment, 
+configuring it, testing the deployment and monitoring it.</li>
+  <li><strong>Maintenance</strong>: After the software has been released, it will need to be maintained to fix bugs, 
+add new features, and make performance improvements.</li>
+</ol>
+
+<h2 id="developers-toolbox">Developers’ toolbox</h2>
+
+<p>The development environment typically requires a set of tools and technologies that are used to 
+develop, test, and maintain software.
+The main tools that we should consider for our toolbox include:</p>
+
+<p><strong>Software package management (SPM)</strong><br />
+SPM systems provide tools that help developers manage and 
+deploy software packages and their dependencies. 
+Some popular software package management systems include: <a href="https://brew.sh/">Homebrew</a>,
+<a href="https://conda.io/">conda</a>, 
+<a href="https://www.docker.com/">Docker</a>,
+<a href="https://spack.io/">Spack</a>, 
+<a href="http://yum.baseurl.org/">Yum</a>.</p>
+
+<p><strong>Terminal</strong><br />
+A terminal application (a.k.a command line prompt) provides a number of features that can be useful 
+for developers, including customization, search, split panes, autocompletion and integration with other tools.</p>
+
+<p><strong>Terminal editor</strong><br />
+It is useful to get familiar with at least one text editor. 
+These are run from the command line, rather than within a graphical user interface (GUI).
+Popular terminal editors include: <a href="https://www.vim.org/">Vim</a>, <a href="https://www.gnu.org/s/emacs/">GNU Emacs</a>, 
+<a href="https://www.nano-editor.org/">nano</a>, etc.</p>
+
+<p><strong>Text editor</strong><br />
+A lightweight GUI text editor is used to write and edit code.
+Some popular text editors include <a href="https://wiki.gnome.org/Apps/Gedit">Gedit</a> and 
+<a href="https://www.sublimetext.com/">Sublime Text</a>.</p>
+
+<p><strong>Integrated development environment (IDE)</strong><br />
+An IDE is a software application that provides a 
+comprehensive set of tools for software development.
+It includes a GUI text editor packed with extra features, such as: compiler, debugger, testing tools, building tools, and others.
+It also provides integration with version control systems, syntax highlighting and spell-checking.
+Some popular IDEs include <a href="https://www.eclipse.org/downloads/">Eclipse</a>, 
+<a href="https://code.visualstudio.com/">Visual Studio Code</a>, and <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>.
+For Data Science and Computational Biology work, there are also 
+IDEs and platforms such as <a href="https://posit.co/">Rstudio</a> and <a href="https://jupyter.org/">Jupyter Notebooks/JupyterLab</a>.</p>
+
+<h2 id="managing-your-codebase">Managing your codebase</h2>
+
+<p>Code management and version control are important practices in software development that help 
+developers keep track of changes to the source code of a project. 
+Developers can easily view the history of changes made to the codebase,
+revert back to previous versions if necessary, and collaborate with others by merging changes and resolving conflicts.
+There are several tools for version control, for example <a href="https://git-scm.com/">Git</a>, 
+which is a popular distributed version control system.
+Using these tools, developers can push their codebase to a central repository to store the code and 
+track changes made to it, making it easier to collaborate and maintain the codebase over time.
+<a href="https://github.com/">GitHub</a> and <a href="https://about.gitlab.com/">GitLab</a> are two popular cloud-based repository 
+hosting services, that allow you to manage your Git repositories.</p>
+
+<h2 id="the-importance-of-unix-skills">The importance of UNIX skills</h2>
+
+<p>UNIX skills are important since the majority of scientific software runs on UNIX-based operating systems
+(e.g. Linux and MacOS).
+Knowing how to use the command line and basic commands can be useful for tasks such as 
+navigating the file system, creating and editing files, and running scripts.
+UNIX skills are also important because many software development tools and technologies, 
+such as version control systems and build automation tools, are designed to be used from the command line. 
+A large portion of scientific software can only be executed from the command line.
+Being able to use the command line effectively can therefore make it easier 
+to use these tools and integrate them into workflows.</p>
+
+<p>Software Carpentry runs a set of lessons about the <a href="http://swcarpentry.github.io/shell-novice">Unix Shell</a>,
+which I would highly recommend for those unfamiliar with UNIX commands and the terminal.</p>
+
+<h2 id="best-practices">Best practices</h2>
+
+<p>There are several good practices that developers should follow when they are developing new software. 
+These include:</p>
+
+<p><strong>Code styling and conventions</strong><br />
+Code styling and coding conventions are important practices in software development because they help to improve 
+the readability and understandability of the code. These also help to improve collaboration among team members.
+Code styling refers to the way in which the code is written, 
+including code layout, indentation, whitespace, comments, line breaks, etc.
+Coding conventions refer to the naming and organization of code elements, such as variables, functions, and files.
+Popular code styling guides include <a href="https://peps.python.org/pep-0008/">PEP-8</a>, 
+which is a set of guidelines for writing Python code, and the 
+<a href="https://style.tidyverse.org/">tidyverse style guide</a>, which is a style guide for writing R code.</p>
+
+<p><strong>Don’t reinvent the wheel</strong><br />
+Many fundamental scientific algorithms, methods and data structures have already been implemented in
+open source libraries and frameworks.
+This means that rather than trying to recreate existing functionality from scratch, 
+developers should try to leverage these.
+This can save time and effort, and it can also help to ensure that the software is more reliable and robust.
+Python and R are popular languages among Data Science and Computational Biology projects.
+Open source libraries include among others, for Python: <a href="https://scipy.org/">SciPy</a>, 
+<a href="https://numpy.org/">NumPy</a>, <a href="https://pandas.pydata.org/">Pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, 
+<a href="https://ipython.org/">iPython</a>; for R:
+<a href="https://cran.r-project.org/package=data.table/vignettes/datatable-intro.html">data.table</a>, 
+<a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a>, 
+<a href="https://ggplot2.tidyverse.org/">ggplot2</a>, <a href="https://shiny.rstudio.com/">shiny</a>; for Bioinformatics: 
+<a href="https://biopython.org/">Biopython</a>, <a href="https://bioperl.org/">BioPerl</a>, <a href="https://biojulia.net/">BioJulia</a>, 
+<a href="https://www.bioconductor.org/">Bioconductor</a>.</p>
+
+<p><strong>Don’t repeat yourself</strong><br />
+Software systems should be designed in a way that avoids duplication of information and functionality. 
+The goal is to reduce complexity, improve maintainability, and increase the reusability of code.</p>
+
+<p><strong>Single Responsibility</strong><br />
+A class or module should have a single, well-defined responsibility. This means that it should have a clear 
+and specific purpose, and all of its functionality should be related to that purpose.
+This helps to create more modular and maintainable code, as it reduces the complexity of individual 
+classes and makes it easier to understand and change the codebase.</p>
+
+<p><strong>Standards and interoperability</strong><br />
+In relation to data and software distribution, follow standards and conventions for open data and open
+software such as 
+<a href="https://www.go-fair.org/">FAIR</a> and <a href="https://www.rd-alliance.org/groups/fair-research-software-fair4rs-wg">FAIR4RS</a>.
+There are domain specific file formats used in the
+Bioinformatics (e.g. FASTA, FASTQ, GFF, VCF, S/BAM, PDB), which should be used as both researchers
+and the tools are expecting them.</p>
+
+<p><strong>Other tips and considerations</strong><br />
+It is good to keep the code efficient and concise. Nevertheless, making code readable is
+usually as important as writing code that is efficient.
+Developing standalone software is very different than developing analysis pipelines.
+Special considerations need to be taken into account when developing analysis pipelines, such as
+where the software will be executed: in single machines or high performance clusters (HPC);
+on premise (Slurm, SGE, LSF, etc.), or in open cloud platforms (AWS, GCP, etc.).
+If you are building workflows, various workflow management tools exist, for example 
+<a href="https://snakemake.readthedocs.io/en/stable/">Snakemake</a> and <a href="https://www.nextflow.io/">Nextflow</a>,
+that can help with achieving scalability and interoperability of the software.</p>
+
+<h2 id="releasing-your-software">Releasing your software</h2>
+
+<p>Important aspects to consider when releasing new software are:</p>
+
+<p><strong>README</strong><br />
+You should provide a README file. This acts as an entry point to your repository 
+and should include a description of the software, installation instructions,
+and any other important information.</p>
+
+<p><strong>Documentation</strong><br />
+It is important to provide clear documentation for the software, including installation instructions,
+usage guidelines, and API references. This will help users understand how to use the software and
+will also make it easier for other developers to contribute to the project.
+Commenting your code is also important as it helps guiding developers through the logic that
+you implemented.
+For example, <a href="https://readthedocs.org/">Read the Docs</a> and <a href="https://www.mkdocs.org/">MkDocs</a>, 
+are two popular platforms that simplify generation, building and hosting of technical documentation for your software.</p>
+
+<p><strong>License</strong><br />
+It is important to include a license with the software that specifies the terms of use and distribution,
+but also protects the intellectual property of the software developers.
+There are a number of websites that you can use to help you choose an appropriate license for your software,
+for example: <a href="https://choosealicense.com/">Choose a License</a> and the
+<a href="https://ufal.github.io/public-license-selector/">Public License Selector</a>.</p>
+
+<p><strong>Versioning</strong><br />
+Using a consistent versioning scheme, such as <a href="https://semver.org/">Semantic versioning</a>, 
+is also a good practice.
+Semantic versioning is a convention for versioning software releases
+that follows a specific format: <em>major.minor.patch</em>.
+When releasing software, it is often useful to work with multiple branches,
+for example: feature branches, release branches and hotfix branches.
+This can help to isolate changes and ensure that the software is stable before it is released.</p>
+
+<p><strong>Testing</strong><br />
+It is important to thoroughly test the software before releasing it to ensure that it is stable and
+as much bug-free as possible.
+This may involve conducting various types of testing, such as unit testing, integration testing,
+and acceptance testing.
+In addition to software testing, code reviewing and pair-programming are important practices
+that can help to improve the quality of code and increase collaboration among team members.</p>
+
+<h2 id="concluding-remarks">Concluding remarks</h2>
+
+<p>With all this being said, do not forget to be simple, be transparent and be your own best user<sup>3</sup>,
+when developing and releasing new software.
+Also, do not forget to take credit for your work (e.g. publishing about your software in the
+<a href="https://joss.theoj.org/">Journal of Open Source Software</a>). 
+Above all, don’t forget that <strong>better software leads to better research</strong>, and that is what matters the most.</p>
+
+<hr />
+<p><sup>1</sup>Pair-programming illustration from
+<a href="https://www.invensis.net/blog/best-practices-for-software-development-team">invensis’s</a>.</p>
+
+<p><sup>2</sup>Git reference sheet from 
+<a href="https://support.nesi.org.nz/hc/en-gb/articles/360001508515-Git-Reference-Sheet">NeSI</a>.</p>
+
+<p><sup>3</sup>Prlić A, Procter JB. Ten simple rules for the open development of scientific software. 
+<em>PLoS Comput Biol</em>. 2012;8(12):e1002802.</p>
+
+
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=&url=https://biomadeira.github.io/2023-01-11-coding-best-practices" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://biomadeira.github.io/2023-01-11-coding-best-practices" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://biomadeira.github.io/2023-01-11-coding-best-practices&amp;title=Coding best practices for researchers" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Coding best practices for researchers&amp;body=https://biomadeira.github.io/2023-01-11-coding-best-practices">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					
+						<a href="/tag/tech/">Tech</a>
+					
+						<a href="/tag/open-source/">Open Source</a>
+					
+						<a href="/tag/open-science/">Open Science</a>
+					
+						<a href="/tag/research/">Research</a>
+					
+				</aside>
+				
+
+			</section>
+
+			
+
+	  
+
+
+			<aside class="post-nav">
+
+				
+
+				
+					<a class="post-nav-prev" href="/2022-12-20-cloud-vs-on-premise">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Running scientific workflows: public cloud vs on-premise</h2>
+							<p class="post-nav-excerpt">In recent years, there has been a growing trend among scientific researchers&hellip;</p>
+							<p class="post-nav-meta"><time datetime="20 December 2022">20 December 2022</time></p>
+						</section>
+					</a>
+				
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+	<script>
+	$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+		post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+			$('pre code').each(function(i, e) {
+			// Code highlight
+			// hljs.highlightBlock(e);
+			// No lines for plain text blocks
+			if (!$(this).hasClass('language-text')) {
+				var code = $(this);
+						// Calculate amount of lines
+				var lines = code.html().split(/\n(?!$)/g).length;
+				var numbers = [];
+				if (lines > 1) {
+				lines++;
+				}
+				for (i = 1; i < lines; i++) {
+				numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+				}
+				code.parent().append('<div class="lines">' + numbers + '</div>');
+			}
+			});
+		}
+		codestyling();
+			// Reading progress bar on window top
+		function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+		var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+		$('.progress-bar').css('width', progress + '%');
+		(progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+		}
+		readingProgress();
+			// Trigger reading progress
+		viewport.on({
+			'scroll': function() {
+			readingProgress();
+			},
+			'resize': function() {
+			readingProgress();
+			},
+			'orientationchange': function() {
+			readingProgress();
+			}
+		});
+
+			
+	});
+	</script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Running scientific workflows: public cloud vs on-premise</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Running scientific workflows: public cloud vs on-premise" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/cloud-vs-on-premise.png" />
+    
+    <meta property="article:tag" content="Workflows" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Running scientific workflows: public cloud vs on-premise" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/cloud-vs-on-premise.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Workflows" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/cloud-vs-on-premise.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Running scientific workflows: public cloud vs on-premise" href="/feed.xml" />
+
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     <li class="nav-home has-cover " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<!--<header class="post-header  has-cover">-->
+<header class="post-header">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			
+			<span class="post-count"><a href="/tag/workflows/">Workflows</a></span>
+			
+
+		</span>
+		<h1 class="post-title">Running scientific workflows: public cloud vs on-premise</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				
+                    
+					<figure class="post-meta-avatar avatar">
+						
+						<a href="/author/biomadeira" class="author-avatar">
+								<img class="author-profile-image" src="/assets/images/fabio.jpeg" alt="biomadeira" />
+						</a>
+						
+					</figure>
+					
+                
+			</div>
+			
+			
+			<h4 class="post-meta-author"><a href="/author/biomadeira">Fábio Madeira</a></h4>
+			
+			
+			<time datetime="20 December 2022">20 December 2022</time> &bull; 
+			
+			
+			
+				4 min read
+			
+		</div>
+<!--		-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset=" 320w,-->
+<!--                     640w,-->
+<!--                     960w,-->
+<!--                     1920w"-->
+<!--            src=""-->
+<!--            alt="Running scientific workflows: public cloud vs on-premise" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="/assets/images/cloud-vs-on-premise.png" alt="Running scientific workflows: public cloud vs on-premise" />-->
+<!--		</div>-->
+<!--		-->
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="">
+		<div class="inner">
+
+			<section class="post-content">
+				<p>In recent years, there has been a growing trend among scientific researchers and institutions to move their
+scientific workflows to public cloud platforms.
+This shift has been driven by a number of factors, including the increased availability of cloud computing resources
+that can be easily scaled up or down as needed,
+the ability to easily collaborate and share data with other researchers,
+and the desire to reduce the costs and complexity of on-premises data centers.</p>
+
+<p>Running scientific workflows on public cloud platforms has several disavantages as well, 
+such as concerns about security and data privacy, challenges around data transfer and network connectivity,
+and importantly the cost of data ingress and egress.</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/cloud-vs-on-premise.png" class="kg-image" alt="Cloud vs on-premise" />
+    <figcaption>Running Bioinformatics Scientific Workflows: public cloud vs on-premise<sup>1</sup>.</figcaption>
+</figure>
+
+<p>I have recently read two very interesting blog post exactly about this topic: 
+<strong>running software and workflows on public cloud <em>versus</em> on-premise</strong>. 
+Both articles provide valid but opposing views, 
+which I think are entirely relevant for the discussion,
+particularly interesting for me in relation to running Bioinformatics workflows.</p>
+
+<p>In one of the articles, the author describes why he thinks we should run software in the cloud<sup>2</sup>:</p>
+
+<ul>
+  <li>The cloud has significantly changed the way technology is built and has contributed to the 
+evolution of software development in recent years.</li>
+  <li>While the cloud has the potential to offer infinite scalability, less time spent on infrastructure, 
+fewer constraints, and lower costs, it has not yet fully delivered on these promises.</li>
+  <li>There are still improvements to be made in terms of feedback loops, environment differences, 
+and utilizing new technologies like Docker to their full potential.</li>
+  <li>The cloud is still in its early stages and there is potential for further evolution and development, 
+similar to the shifts seen in the music industry with the transition to streaming services.</li>
+</ul>
+
+<p>In the other article, the author describes why he thinks open clould platforms are
+not cost-effective in particular for running scientific workflows<sup>3</sup>:</p>
+
+<ul>
+  <li>Generic cloud computing platforms like AWS may not be cost-effective for scientific 
+computing due to their infrastructural complexity and pricing model.</li>
+  <li>Scientific computing has different needs than web and mobile apps, including different availability 
+requirements, networking needs, load profiles, and latency tolerance.</li>
+  <li>It may be more cost-effective for organizations such as universities, research institutes, and biotech companies 
+to build their own scientific computing infrastructure rather than using a cloud computing platform.</li>
+  <li>AWS, Azure, and GCP all have high data egress charges, making it more expensive to transfer 
+large amounts of data out of their platforms.</li>
+</ul>
+
+<h3 id="running-scientific-workflows-flexibility-is-key">Running scientific workflows: flexibility is key</h3>
+
+<p>One main problem which we need to bring into considerantion, is that a large portion of the scientific
+work is funded by the public, throught public funding agencies, government grants, etc.
+The projects are typically funded for a defined period of time and subject to renewal, 
+successful grant applications, and so on.
+The case for on-premise infrastructure is strong if we think about the life-cycle of most resarch projects.</p>
+
+<ul>
+  <li>What happens when the project runs out of money, or is no longer funded?</li>
+  <li>What happens when you can affort to ingest the data and run some computation but the cost of 
+egress is so high that you can no longer exit the platform?</li>
+</ul>
+
+<p>I suppose similar drawbacks can be pointed for on-premise, but generally speaking having 
+infrastructure that you can manage yourself provides ultimate <em>flexility</em> for what and for 
+how long you run the projects and keep data.
+Managing an IT infrastructure with clear policies for data storage and computation, 
+is very challenging though<sup>4</sup>.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>The trend towards running scientific workflows on public cloud platforms is 
+likely to continue due to its benefits and despite the drawbacks.
+It is important to carefully consider the costs and benefits of building your own
+infrastructure versus using a cloud computing platform, as each situation will be unique.
+Overall, it is an exciting time to be in tech,
+and the next decade is likely to bring many exciting developments in the field of computing,
+and in particular considering the current AI advances.</p>
+
+<p>Have you consider moving your workflows to the cloud? or perhaps have done it and
+are now considering moving them back to local infrastructure? 
+Share your experiences and feedback!</p>
+
+<hr />
+<p><sup>1</sup>On-cloud versus on-premises diagram adapted from <a href="https://setplex.com/blog/in-cloud-vs-on-prem/">setplex’s</a>.</p>
+
+<p><sup>2</sup><a href="https://erikbern.com/2022/10/19/we-are-still-early-with-the-cloud.html">We are still early with the cloud: why software development is overdue for a change</a>
+by Erik Bernhardsson (Nov 19, 2022)</p>
+
+<p><sup>3</sup><a href="https://www.noahlebovic.com/aws-doesnt-make-sense-for-scientific-computing/">AWS doesn’t make sense for scientific computing</a>
+by Noah Lebovic (Oct 7, 2022)</p>
+
+<p><sup>4</sup><a href="https://utcc.utoronto.ca/~cks/space/blog/sysadmin/RunningServersNotTrivial">Running servers (and services) well is not trivial</a>
+by Chris Siebenmann (Jun 22, 2018)</p>
+
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=&url=https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise&amp;title=Running scientific workflows: public cloud vs on-premise" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Running scientific workflows: public cloud vs on-premise&amp;body=https://biomadeira.github.io/2022-12-20-cloud-vs-on-premise">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					
+						<a href="/tag/workflows/">Workflows</a>
+					
+						<a href="/tag/bioinformatics/">Bioinformatics</a>
+					
+						<a href="/tag/tech/">Tech</a>
+					
+				</aside>
+				
+
+			</section>
+
+			
+
+	  
+
+
+			<aside class="post-nav">
+
+				
+					<a class="post-nav-next" href="/2023-01-11-coding-best-practices">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Coding best practices for researchers</h2>
+							<p class="post-nav-excerpt">I have recently been invited to deliver a training session on an&hellip;</p>
+							<p class="post-nav-meta"><time datetime="11 January 2023">11 January 2023</time></p>
+						</section>
+					</a>
+				
+
+				
+					<a class="post-nav-prev" href="/2022-12-09-data-validation-jsonschema">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Data validation with JSON Schema</h2>
+							<p class="post-nav-excerpt">JSON Schema is a declarative language that allows annotation and validation of&hellip;</p>
+							<p class="post-nav-meta"><time datetime=" 9 December 2022"> 9 December 2022</time></p>
+						</section>
+					</a>
+				
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+	<script>
+	$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+		post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+			$('pre code').each(function(i, e) {
+			// Code highlight
+			// hljs.highlightBlock(e);
+			// No lines for plain text blocks
+			if (!$(this).hasClass('language-text')) {
+				var code = $(this);
+						// Calculate amount of lines
+				var lines = code.html().split(/\n(?!$)/g).length;
+				var numbers = [];
+				if (lines > 1) {
+				lines++;
+				}
+				for (i = 1; i < lines; i++) {
+				numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+				}
+				code.parent().append('<div class="lines">' + numbers + '</div>');
+			}
+			});
+		}
+		codestyling();
+			// Reading progress bar on window top
+		function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+		var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+		$('.progress-bar').css('width', progress + '%');
+		(progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+		}
+		readingProgress();
+			// Trigger reading progress
+		viewport.on({
+			'scroll': function() {
+			readingProgress();
+			},
+			'resize': function() {
+			readingProgress();
+			},
+			'orientationchange': function() {
+			readingProgress();
+			}
+		});
+
+			
+	});
+	</script>
+    
+
+
+</body>
+</html>

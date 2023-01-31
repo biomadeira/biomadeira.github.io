@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Exploring Nextflow with a small bioinformatics workflow</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Exploring Nextflow with a small bioinformatics workflow" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/nexflow_workflow_mermaid.png" />
+    
+    <meta property="article:tag" content="Nextflow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Exploring Nextflow with a small bioinformatics workflow" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/nexflow_workflow_mermaid.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Nextflow" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/nexflow_workflow_mermaid.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Exploring Nextflow with a small bioinformatics workflow" href="/feed.xml" />
+
+</head>
+
+<body class="post-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     <li class="nav-home has-cover " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<!--<header class="post-header  has-cover">-->
+<header class="post-header">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			
+			<span class="post-count"><a href="/tag/nextflow/">Nextflow</a></span>
+			
+
+		</span>
+		<h1 class="post-title">Exploring Nextflow with a small bioinformatics workflow</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+				
+                    
+					<figure class="post-meta-avatar avatar">
+						
+						<a href="/author/biomadeira" class="author-avatar">
+								<img class="author-profile-image" src="/assets/images/fabio.jpeg" alt="biomadeira" />
+						</a>
+						
+					</figure>
+					
+                
+			</div>
+			
+			
+			<h4 class="post-meta-author"><a href="/author/biomadeira">Fábio Madeira</a></h4>
+			
+			
+			<time datetime=" 1 November 2022"> 1 November 2022</time> &bull; 
+			
+			
+			
+				6 min read
+			
+		</div>
+<!--		-->
+<!--		<div class="post-cover cover">-->
+<!--			&lt;!&ndash; <img-->
+<!--            srcset=" 320w,-->
+<!--                     640w,-->
+<!--                     960w,-->
+<!--                     1920w"-->
+<!--            src=""-->
+<!--            alt="Exploring Nextflow with a small bioinformatics workflow" /> &ndash;&gt;-->
+<!--			<img class="blog-cover cover" src="/assets/images/nexflow_workflow_mermaid.png" alt="Exploring Nextflow with a small bioinformatics workflow" />-->
+<!--		</div>-->
+<!--		-->
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="">
+		<div class="inner">
+
+			<section class="post-content">
+				<p>I recently wrote about 
+<a href="https://biomadeira.github.io/2022-10-25-workflow-management">workflow management systems in bioinformatics</a>,
+focusing on <a href="https://www.nextflow.io/">Nextflow</a> and <a href="https://snakemake.readthedocs.io/en/stable/">Snakemake</a>. 
+In this post, the aim is to compose a small Bioinformatics workflow to start exploring
+the Nextflow syntax and its features. 
+The Nextflow <a href="https://www.nextflow.io/docs/latest/index.html">documentation</a> 
+is extensive and provides many examples that are a helpful start.
+Nevertheless, it is still challenging to go from the snippets provided to developing your own workflows.</p>
+
+<h2 id="basic-concepts">Basic concepts</h2>
+
+<p>Nextflow is a reactive workflow framework and a programming DSL designed for writing data-intensive computational
+pipelines. Nextflow adds the ability to define complex program interactions and a high-level parallel 
+computational environment based on the dataflow programming model.</p>
+
+<p>Workflows are composed by joining together different processes. 
+These define the basic processing units of the work that need to be executed and can be written in a variety of
+scripting languages (Bash, Python, etc.). 
+Processes typically are executed as a single task or, if appropriate,
+executed as multiple tasks, as many times as required in parallel
+(e.g. processing multiple files).</p>
+
+<p>Processes are isolated from each other, and the only communication between them is through <em>channels</em>.
+Any process can define one or more channels as input or output.
+Unless explicitly declared with the DSL 2 workflow definition <code class="language-plaintext highlighter-rouge">workflow {...}</code>, 
+the workflow is implicitly defined by these input and output declarations.</p>
+
+<h2 id="bioinformatics-workflow">Bioinformatics workflow</h2>
+
+<p>Developing a bioinformatics workflow with Nextflow presents a good opportunity to
+explore Nextflow and see some its features in action.
+The workflow we are developing here is very simple but a good place to start.</p>
+
+<ol>
+  <li>Download SwissProt sequence dataset</li>
+  <li>Generate a SwissProt NCBI Blast database</li>
+  <li>Perform a sequence search with a sequence of interest against the SwissProt database</li>
+  <li>Extract the complete sequences of the BLAST top hits</li>
+</ol>
+
+<p>The first consideration to make is whether we should go for Nextflow <code class="language-plaintext highlighter-rouge">DSL 2</code> or default to <code class="language-plaintext highlighter-rouge">DSL 1</code>.
+Looking forward, the likelihood is that DSL version 2 will be the default and therefore, in this example, we should 
+set <code class="language-plaintext highlighter-rouge">nextflow.enable.dsl=2</code>.</p>
+
+<p>In this example, we need to run a few of the BLAST commands. For that, we can install blast locally with Conda, 
+simply by running <code class="language-plaintext highlighter-rouge">conda install -c bioconda blast==2.12.0</code>. 
+In the Nextflow script file, we can include paths to these 
+tools, so we can use them in the processes later on. We should also add other parameters, 
+which makes changing them easier later on, rather than having them hard coded.</p>
+
+<p>The beginning of our <code class="language-plaintext highlighter-rouge">workflow_example.nf</code> script should look like this:</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// Declare syntax version</span>
+<span class="n">nextflow</span><span class="mf">.</span><span class="n">enable</span><span class="mf">.</span><span class="n">dsl</span><span class="o">=</span><span class="mi">2</span>
+
+<span class="c1">// Script parameters</span>
+<span class="c1">// BLAST commands</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">makeblastdb</span> <span class="o">=</span> <span class="s2">"/Users/username/miniconda3/envs/py39/bin/makeblastdb"</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">blastp</span> <span class="o">=</span> <span class="s2">"/Users/username/miniconda3/envs/py39/bin/blastp"</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">blastdbcmd</span> <span class="o">=</span> <span class="s2">"/Users/username/miniconda3/envs/py39/bin/blastdbcmd"</span>
+
+<span class="c1">// SwissProt EBI FTP URL</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">ftp_url</span> <span class="o">=</span> <span class="err">\</span>
+<span class="s2">"https://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz"</span>
+
+<span class="c1">// Work directory</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">workdir</span> <span class="o">=</span> <span class="s2">"/Users/username/tmp/"</span>
+
+<span class="c1">// Query sequence</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">input_fasta</span> <span class="o">=</span> <span class="s2">"/Users/username/tmp/query.fasta"</span>
+
+<span class="c1">// (optional) SwissProt database name</span>
+<span class="n">params</span><span class="mf">.</span><span class="n">dbname</span> <span class="o">=</span> <span class="s2">"swissprot"</span></code></pre></figure>
+
+<p>Now we need to start adding the workflow processes to the <code class="language-plaintext highlighter-rouge">workflow_example.nf</code> file. 
+The first process <em>1</em> is about downloading the SwissProt dataset. For that we need to specify the 
+expected output <code class="language-plaintext highlighter-rouge">path</code>, which we can define as <code class="language-plaintext highlighter-rouge">"swissprot.fasta"</code>, for example. 
+Since we need this dataset in the next process, we can emit it, explicitly as <em>swissprot</em>, or we could 
+simply use <code class="language-plaintext highlighter-rouge">"swissprot.fasta"</code> as an expected input of the next process. The <code class="language-plaintext highlighter-rouge">script</code> component of the process
+simply is taking care of downloading the compressed dataset and then uncompressing it.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// downloads the SwissProt dataset from the EBI's FTP</span>
+<span class="n">process</span> <span class="n">downloadSwissProt</span> <span class="p">{</span>
+  <span class="n">output</span><span class="o">:</span>
+    <span class="n">path</span> <span class="s2">"swissprot.fasta"</span><span class="p">,</span> <span class="n">emit</span><span class="o">:</span> <span class="n">swissprot</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="s2">"""
+    wget ${params.ftp_url} -O swissprot.fasta.gz
+    gzip -d swissprot.fasta.gz
+    """</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In the next process <em>2</em>, we take the SwissProt dataset and generate a BLAST database. We take the emitted file and 
+expect several files to be generated by the <code class="language-plaintext highlighter-rouge">makeblastdb</code> command. Note how we are using the parameters in the 
+<code class="language-plaintext highlighter-rouge">script</code> part of the process. Here, we are explicitly emitting the <em>swissprotdb</em> files.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// Builds the SwissProt BLAST database</span>
+<span class="n">process</span> <span class="n">makeBlastDb</span> <span class="p">{</span>
+  <span class="n">input</span><span class="o">:</span>
+    <span class="n">path</span> <span class="n">swissprot</span>
+  <span class="n">output</span><span class="o">:</span>
+    <span class="n">path</span> <span class="s2">"swissprot*"</span><span class="p">,</span> <span class="n">emit</span><span class="o">:</span> <span class="n">swissprotdb</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="s2">"""
+    ${params.makeblastdb} -dbtype 'prot' \
+    -in ${swissprot} -out ${params.dbname} \
+    -input_type 'fasta' -blastdb_version 5 -parse_seqids
+    """</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In the next process <em>3</em>, we take the BLAST database and a query sequence of interest and perform sequence searching.
+We then process the BLAST output, and generate a temporary list of the 10 top hits (i.e. the hits with smaller e-values,
+or hits believed to be the closest homologs in the database).</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// Performs a BLASTP sequence search and captures the 10 top Hits</span>
+<span class="n">process</span> <span class="n">blastSearch</span> <span class="p">{</span>
+  <span class="n">input</span><span class="o">:</span>
+    <span class="n">path</span> <span class="n">query</span>
+    <span class="n">path</span> <span class="n">swissprotdb</span>
+  <span class="n">output</span><span class="o">:</span>
+    <span class="n">path</span> <span class="s2">"top_hits.txt"</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="s2">"""
+    ${params.blastp} -db ${params.dbname} -query ${query} -outfmt 6 &gt; blast_result
+    cat blast_result | head -n 10 | cut -f 2 &gt; top_hits.txt
+    """</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Finally, in <em>4</em>, we take those 10 hits and extract the complete sequences in <em>fasta</em> format using the <code class="language-plaintext highlighter-rouge">blastdbcmd</code>
+command. Note the addition of <code class="language-plaintext highlighter-rouge">publishDir params.workdir</code> as we want the <em>top_hits.fasta</em> file to be available 
+in our work directory, so we can continue working on the hit sequences. The same can be done on any of the 
+other processes, for example, the <code class="language-plaintext highlighter-rouge">makeBlastDb</code> process, where we generate the SwissProt BLAST database, and 
+might want to store it more permanently outside the Nextflow <em>work</em> directories.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// Extracts top Hit sequences in fasta format</span>
+<span class="n">process</span> <span class="n">extractTopHits</span> <span class="p">{</span>
+  <span class="n">publishDir</span> <span class="n">params</span><span class="mf">.</span><span class="n">workdir</span>
+  <span class="n">input</span><span class="o">:</span>
+    <span class="n">path</span> <span class="n">top_hits</span>
+    <span class="n">path</span> <span class="n">swissprotdb</span>
+  <span class="n">output</span><span class="o">:</span>
+    <span class="n">path</span> <span class="s2">"top_hits.fasta"</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="s2">"""
+    ${params.blastdbcmd} -db ${params.dbname} -entry_batch ${top_hits} &gt; top_hits.fasta
+    """</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The processes are defined, and now we need to define the workflow. With DSL 2, we can use <code class="language-plaintext highlighter-rouge">workflow</code>, which, for this
+example, could be as shown below. Note that <code class="language-plaintext highlighter-rouge">blastSearch</code> and <code class="language-plaintext highlighter-rouge">extractTopHits</code> are using the outputs from the 
+previous processes, which is the same for <code class="language-plaintext highlighter-rouge">makeBlastDb</code>. The difference in the latter is that we are simply 
+piping (i.e. chaining) the commands together.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// workflow definition</span>
+<span class="n">workflow</span> <span class="p">{</span>
+   <span class="nf">downloadSwissProt</span><span class="p">()</span> <span class="o">|</span> <span class="n">makeBlastDb</span>
+   <span class="n">def</span> <span class="n">query_ch</span> <span class="o">=</span> <span class="nc">Channel</span><span class="mf">.</span><span class="nf">fromPath</span><span class="p">(</span><span class="n">params</span><span class="mf">.</span><span class="n">input_fasta</span><span class="p">)</span>
+   <span class="nf">blastSearch</span><span class="p">(</span><span class="n">query_ch</span><span class="p">,</span> <span class="n">makeBlastDb</span><span class="mf">.</span><span class="n">out</span><span class="p">)</span>
+   <span class="nf">extractTopHits</span><span class="p">(</span><span class="n">blastSearch</span><span class="mf">.</span><span class="n">out</span><span class="p">,</span> <span class="n">makeBlastDb</span><span class="mf">.</span><span class="n">out</span><span class="p">)</span> <span class="o">|</span> <span class="n">view</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The <code class="language-plaintext highlighter-rouge">workflow_example.nf</code> file is now complete and ready to use. We could simply run
+<code class="language-plaintext highlighter-rouge">nextflow run example_worflow.nf</code> and use the <code class="language-plaintext highlighter-rouge">-resume</code> flag to re-run it if we modified some processes.
+Nextflow has functions to generate DAG graphs (as exampled below), but also to produce several reports,
+for resource usage, tasks, timeline, trace report, etc.</p>
+
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption">
+    <img src="assets/images/nexflow_workflow_mermaid.png" class="kg-image" alt="Nextflow Example workflow" />
+    <figcaption>Nextflow workflow diagram produced by the Mermaid Live Editor.</figcaption>
+</figure>
+
+<p>The beauty of Nextflow is that we can execute this locally in our own machine, but likewise we can run it on a
+high-performance computing (HPC), without much modification. 
+For example, we could set a couple of profiles as shown below and simply call
+<code class="language-plaintext highlighter-rouge">nextflow run example_worflow.nf -profile hpc</code>, passing the profile we want from the config.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">profiles</span> <span class="p">{</span>
+    <span class="k">default</span> <span class="p">{</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">executor</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">local</span><span class="dl">'</span>
+    <span class="p">}</span>
+    <span class="nx">hpc</span> <span class="p">{</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">executor</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">lsf</span><span class="dl">'</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">queue</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">standard</span><span class="dl">'</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>For that we need to save the profiles config as <code class="language-plaintext highlighter-rouge">.nextflow/config</code> on our work directory.
+Alternatively, we could add <code class="language-plaintext highlighter-rouge">executor</code> and <code class="language-plaintext highlighter-rouge">clusterOptions</code> directive declarations to the processes as required. 
+For example:</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="c1">// Performs a BLASTP sequence search and captures the 10 top Hits</span>
+<span class="n">process</span> <span class="n">blastSearch</span> <span class="p">{</span>
+  <span class="n">executor</span> <span class="s1">'lsf'</span>
+  <span class="n">queue</span> <span class="s1">'standard'</span>
+  <span class="n">input</span><span class="o">:</span>
+    <span class="n">path</span> <span class="n">query</span>
+    <span class="n">path</span> <span class="n">swissprotdb</span>
+  <span class="n">output</span><span class="o">:</span>
+    <span class="n">path</span> <span class="s2">"top_hits.txt"</span>
+  <span class="n">script</span><span class="o">:</span>
+    <span class="s2">"""
+    (...)
+    """</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In addition to these, there are a plethora of other directives we could use, for example, to specify
+CPU other requirements: <code class="language-plaintext highlighter-rouge">cpus</code> , <code class="language-plaintext highlighter-rouge">memory</code> and <code class="language-plaintext highlighter-rouge">disk</code>. 
+There are directives <code class="language-plaintext highlighter-rouge">afterScript</code> and <code class="language-plaintext highlighter-rouge">beforeScript</code> scripts,
+for retrying and <code class="language-plaintext highlighter-rouge">errorStrategy</code>, for caching, for Conda and containers, and the list goes on.</p>
+
+<p>This is just touching the surface of what we can do with Nextflow. 
+Let me know if this was useful! 
+Share your experiences and your thoughts about Nextflow!</p>
+
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=&url=https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow&amp;title=Exploring Nextflow with a small bioinformatics workflow" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Exploring Nextflow with a small bioinformatics workflow&amp;body=https://biomadeira.github.io/2022-11-01-exploring-nextflow-workflow">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					
+						<a href="/tag/nextflow/">Nextflow</a>
+					
+						<a href="/tag/workflows/">Workflows</a>
+					
+						<a href="/tag/bioinformatics/">Bioinformatics</a>
+					
+				</aside>
+				
+
+			</section>
+
+			
+
+	  
+
+
+			<aside class="post-nav">
+
+				
+					<a class="post-nav-next" href="/2022-11-08-apache-airflow-ui">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Using Apache Airflow to monitor data pipelines</h2>
+							<p class="post-nav-excerpt">[Apache Airflow](https://airflow.apache.org/) is a popular open-source platform for developing, scheduling, and monitoring&hellip;</p>
+							<p class="post-nav-meta"><time datetime=" 8 November 2022"> 8 November 2022</time></p>
+						</section>
+					</a>
+				
+
+				
+					<a class="post-nav-prev" href="/2022-10-25-workflow-management">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-right" aria-label="Previous post"></i>
+							<h2 class="post-nav-title">Workflow management systems in Bioinformatics</h2>
+							<p class="post-nav-excerpt">Several alternative scientific workflow systems typically referred to as workflow management platforms&hellip;</p>
+							<p class="post-nav-meta"><time datetime="25 October 2022">25 October 2022</time></p>
+						</section>
+					</a>
+				
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
+</main>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+	<script>
+	$(document).ready(function () {
+			var viewport = $(window);
+			var post = $('.post-content');
+			// Responsive videos with fitVids
+		post.fitVids();
+			// Format code blocks and add line numbers
+			function codestyling() {
+			$('pre code').each(function(i, e) {
+			// Code highlight
+			// hljs.highlightBlock(e);
+			// No lines for plain text blocks
+			if (!$(this).hasClass('language-text')) {
+				var code = $(this);
+						// Calculate amount of lines
+				var lines = code.html().split(/\n(?!$)/g).length;
+				var numbers = [];
+				if (lines > 1) {
+				lines++;
+				}
+				for (i = 1; i < lines; i++) {
+				numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+				}
+				code.parent().append('<div class="lines">' + numbers + '</div>');
+			}
+			});
+		}
+		codestyling();
+			// Reading progress bar on window top
+		function readingProgress() {
+				var postBottom = post.offset().top + post.height();
+				var viewportHeight = viewport.height();
+		var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+		$('.progress-bar').css('width', progress + '%');
+		(progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+		}
+		readingProgress();
+			// Trigger reading progress
+		viewport.on({
+			'scroll': function() {
+			readingProgress();
+			},
+			'resize': function() {
+			readingProgress();
+			},
+			'orientationchange': function() {
+			readingProgress();
+			}
+		});
+
+			
+	});
+	</script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Author Page</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/assets/css/syntax.min.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script>
+			var siteUrl = 'https://biomadeira.github.io/';
+	</script>
+
+	<script>
+			var localTheme = localStorage.getItem('biomadeira_attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+			
+	</script>
+
+    <style>
+		.theme-dark:root {
+			--ghost-accent-color: #ff6633;
+		}
+		.theme-light:root {
+			--ghost-accent-color: #ff6633;
+		}
+		@media (prefers-color-scheme: dark) {
+			html:not(.theme-light):root {
+			--ghost-accent-color: #ff6633;
+			}
+		}
+	</style>
+
+	<meta name="description" content="Bioinformatics and other digressions" />
+    <link rel="shortcut icon" href="https://biomadeira.github.io/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://biomadeira.github.io/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="biomadeira" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Author Page" />
+    <meta property="og:description" content="Bioinformatics and other digressions" />
+    <meta property="og:url" content="https://biomadeira.github.io/author/biomadeira/page3/" />
+    <meta property="og:image" content="https://biomadeira.github.io/assets/images/mckayla-crump-3OR-XFzKSBo-unsplash.jpg" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Author Page" />
+    <meta name="twitter:description" content="Bioinformatics and other digressions" />
+    <meta name="twitter:url" content="https://biomadeira.github.io/author/biomadeira/page3/" />
+    <meta name="twitter:image" content="https://biomadeira.github.io/assets/images/mckayla-crump-3OR-XFzKSBo-unsplash.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="biomadeira" />
+    <meta name="twitter:site" content="@biomadeira" />
+    <meta name="twitter:creator" content="@biomadeira" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="666" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "biomadeira",
+        "logo": "https://biomadeira.github.io/"
+    },
+    "url": "https://biomadeira.github.io/author/biomadeira/page3/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://biomadeira.github.io/assets/images/mckayla-crump-3OR-XFzKSBo-unsplash.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://biomadeira.github.io/author/biomadeira/page3/"
+    },
+    "description": "Bioinformatics and other digressions"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.9.2" />
+    <link rel="alternate" type="application/rss+xml" title="Author Page" href="/feed.xml" />
+
+</head>
+
+<body class="paged archive-template">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				
+				<ul>
+
+     
+     <li class="nav-page " ><a href="https://biomadeira.github.io/"><span>FM</span></a></li>
+     
+
+
+     <li class="nav-about  active" >
+          <a href="https://biomadeira.github.io/author/biomadeira"><span>About</span></a>
+     </li>
+
+
+
+
+
+</ul>
+
+                <ul class="nav-meta">
+  
+  <li class="nav-twitter">
+    <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-mastodon"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-twitter">
+    <a aria-label="Twitter" href="https://twitter.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-twitter"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  <li class="nav-github">
+    <a aria-label="GitHub" href="https://github.com/biomadeira" title="biomadeira" target="_blank">
+      <i class="fa-brands fa-github"></i>
+      <span>biomadeira</span>
+    </a>
+  </li>
+  
+  
+  
+  <li class="nav-mode">
+      <a aria-label="Mode" class="js-theme theme-icon" title="Toggle light/dark mode" href="#" data-dark="Dark theme" data-light="Light theme">
+      </a>
+  </li>
+</ul>
+
+
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+        <!-- dynamically loading backgrounds for tags,  descriptions and page titles -->
+
+
+
+<header class="blog-header ">
+	<div class="inner">
+		<div class="archive archive-author box archive-box">
+			<span class="archive-info">
+				<span class="archive-type">Author</span>
+				<span class="archive-count">34 Posts</span>
+			</span>
+			<figure class="archive-avatar avatar">
+				
+					<img src="/assets/images/fabio.jpeg" alt="biomadeira" />
+				
+			</figure>
+			<h2 class="archive-title">Fábio Madeira</h2>
+			
+<!--				<span class="archive-description">-->
+<!--					Technical Project Lead at EMBL-EBI-->
+<!--				</span>-->
+				<span class="archive-extra">
+					<p>I am a Tech Project Lead at the <a href="https://www.ebi.ac.uk/">European Bioinformatics Institute</a>,
+						in Cambridge. I am working on the EMBL-EBI's Job Dispatcher Tools and APIs.
+						I was previously a PhD candidate and Postdoctoral researcher in Geoff Barton's <a href="http://www.compbio.dundee.ac.uk/">Computational Biology
+							Group</a>
+						at the University of Dundee, Scotland.</p>
+						<p>Check out my <a href="http://github.com/biomadeira">GitHub</a>,
+						my <a href="https://scholar.google.co.uk/citations?user=BrDL99cAAAAJ">Google Scholar</a>,
+						or my <a href="https://orcid.org/0000-0001-8728-9449">ORCID profile</a>.
+						Feel free to reach me on <a aria-label="Mastodon" rel="me" href="https://fosstodon.org/@biomadeira" title="biomadeira" target="_blank">Mastodon</a>,
+						<a href="http://twitter.com/biomadeira">Twitter</a>
+						or by <a
+							href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#97;&#98;&#105;&#111;&#109;&#97;&#100;&#101;&#105;&#114;&#97;&#64;&#109;&#101;&#46;&#99;&#111;&#109;">&#69;&#109;&#97;&#105;&#108;</a>.
+					</p>
+				</span>
+			
+			<span class="archive-links">
+				<!-- 
+					<a target="_blank" href="http://biomadeira.github.io/" title="Website"><i class="icon icon-globe"></i><span>Website</span></a>
+				 -->
+				
+					<a target="_blank" href="https://fosstodon.org/@biomadeira" title="Mastodon"><i class="fa-brands fa-mastodon"></i><span>Mastodon</span></a>
+				
+				
+					<a target="_blank" href="https://twitter.com/biomadeira" title="Twitter"><i class="fa-brands fa-twitter"></i><span>Twitter</span></a>
+				
+				
+				
+					<a target="_blank" href="https://github.com/biomadeira" title="GitHub"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+				
+				
+					<a target="_blank" href="https://www.linkedin.com/in/biomadeira" title="LinkedIn"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a>
+				
+				
+					<a target="_blank" href="https://scholar.google.co.uk/citations?user=BrDL99cAAAAJ" title="Google Scholar">
+						<i class="fa-solid fa-graduation-cap"></i><span>Google Scholar</span></a>
+				
+				
+					<a target="_blank" href="https://orcid.org/0000-0001-8728-9449" title="ORCID"><i class="fa-brands fa-orcid"></i><span>ORCID</span></a>
+				
+			</span>
+			<div class="archive-tags">
+				<aside class="post-tags" style="max-width:100%">
+					<span class="post-info-label">Topics</span>
+					
+					<a href="/tag/bioinformatics/">Bioinformatics: 17</a>
+					
+					<a href="/tag/academia/">Academia: 16</a>
+					
+					<a href="/tag/archived/">Archived: 26</a>
+					
+					<a href="/tag/python/">Python: 4</a>
+					
+					<a href="/tag/tech/">Tech: 7</a>
+					
+					<a href="/tag/news/">News: 10</a>
+					
+					<a href="/tag/ai/">AI: 2</a>
+					
+					<a href="/tag/3d-printing/">3D Printing: 1</a>
+					
+					<a href="/tag/workflows/">Workflows: 4</a>
+					
+					<a href="/tag/nextflow/">Nextflow: 2</a>
+					
+					<a href="/tag/snakemake/">Snakemake: 1</a>
+					
+					<a href="/tag/apache-airflow/">Apache Airflow: 1</a>
+					
+					<a href="/tag/schemas/">Schemas: 1</a>
+					
+					<a href="/tag/json/">JSON: 1</a>
+					
+					<a href="/tag/open-source/">Open Source: 1</a>
+					
+					<a href="/tag/open-science/">Open Science: 1</a>
+					
+					<a href="/tag/research/">Research: 1</a>
+					
+				</aside>
+			</div>
+		</div>
+
+		
+	</div>
+</header>
+
+
+<div id="index" class="container">
+
+	<main class="content" role="main">
+		<!-- <div class="inner">
+			<section class="post-content">
+			</section>
+		</div> -->
+
+		<!-- <div class="extra-pagination">
+	
+		
+			<nav class="pagination" aria-label="Pagination">
+	<div class="inner">
+		<div class="box pagination-box">
+			
+                
+            <a title="Newer Posts" class="pagination-next" href="/author/biomadeira/page2/"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+                
+            
+			<span class="pagination-info">Page 3 of 5</span>
+			 
+            <a title="Older Posts" class="pagination-prev" href="/author/biomadeira/page4/"><span class="pagination-label">Older Posts</span> <i class="icon icon-arrow-right"></i></a>
+			
+		</div>
+	</div>
+</nav>
+		
+	
+</div>
+
+
+
+<article class="post tag-bioinformatics tag-ai tag-academia tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2015-03-04-new-paper-bioinformatics">Paper on new methods to predict 14-3-3-binding sites out!</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/bioinformatics/">Bioinformatics</a>
+				on
+				<time datetime=" 4 March 2015"> 4 March 2015</time>
+			</span>
+			<p class="post-excerpt">After many months of hard work, the day is here! Our new paper on methods to predict 14-3-3-binding sites is out in Bioinformatics Journal. This project originated as a collaboration between the Barton Group and the MacKintosh Group on the quest for improving the quality of predictions on 14-3-3-binding sites.&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-academia tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2014-10-01-discovery-centre">Computational Biology now in the Discovery Centre</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/academia/">Academia</a>
+				on
+				<time datetime=" 1 October 2014"> 1 October 2014</time>
+			</span>
+			<p class="post-excerpt">The day has come and we are now well settled in the brand new Discovery Centre. One of Mike Ferguson&#39;s many legacies to @DundeeUniv - new Discovery Centre opens #BalloonDrop pic.twitter.com/QB8aZF3zjJ&mdash; Gordon Simpson (@ggsimpsonrna) October 1, 2014 There were balloons, speeches and most importantly now I own a shiny new&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-academia tag-news tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2014-06-15-organized-picls-symposium">The PiCLS symposium 2014 was a success</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/academia/">Academia</a>
+				on
+				<time datetime="15 June 2014">15 June 2014</time>
+			</span>
+			<p class="post-excerpt">Together with a bunch of PhD students from the College of Life Sciences at University of Dundee I organized the PiCLS symposium 2014. My main task was to develop the website, which I did with wordpress. The event was a great success and featured several high profile scientists covering many&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-academia tag-news tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2014-06-11-passed-my-transfer">I am now officially a PhD student in Bioinformatics</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/academia/">Academia</a>
+				on
+				<time datetime="11 June 2014">11 June 2014</time>
+			</span>
+			<p class="post-excerpt">Hello folks again!
+
+I have just passed successfully my transfer from postgraduate researcher to PhD candidate! So I am now officially a 
+PhD candidate in Bioinformatics. Looking forward to do great work and publish loads of papers in the upcoming months.
+Stay tuned!
+&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-bioinformatics tag-academia tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2014-02-10-new-paper-out-preprints">Preprints of my new submitted paper available online</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/bioinformatics/">Bioinformatics</a>
+				on
+				<time datetime="10 February 2014">10 February 2014</time>
+			</span>
+			<p class="post-excerpt">Just submitted a paper to an undisclosed journal and the good news is that it has been also made available through a new preprints server for biology, bioRxiv that is. The paper is about a new approach of using coevolution data and constraint programming methods to improve protein-protein docking. If&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-bioinformatics tag-academia tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2014-02-06-new-paper-database">ANIA paper is finally out in Database Journal!</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/bioinformatics/">Bioinformatics</a>
+				on
+				<time datetime=" 6 February 2014"> 6 February 2014</time>
+			</span>
+			<p class="post-excerpt">Great news! The work I have done as part of my first rotation with Prof. Carol MacKintosh and Dr. Michele Tinti, has been published in Database Journal. My part in this work was to help Michele improving on the prediction methods he had to predict 14-3-3-binding targets as well as&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+<article class="post tag-academia tag-archived">
+	<div class="inner">
+		<div class="box post-box">
+			<h2 class="post-title"><a href="/2013-11-08-participated-in-biotechyes">Participated with IntelliGene in BiotechYES competition</a></h2>
+			<span class="post-meta">
+				By
+                    
+                        <a href="/author/biomadeira/">Fábio Madeira</a>
+                    
+                
+				in
+					<a class="post-meta-tag" href="/tag/academia/">Academia</a>
+				on
+				<time datetime=" 8 November 2013"> 8 November 2013</time>
+			</span>
+			<p class="post-excerpt">I have enjoyed every minute of the last two days where me and my friends participated in the Biotechnology YES 2013 competition hosted in the Biocity venue in Glasgow. It was a great learning experience though very stressful as well. We literally didn’t sleep finishing our business plan and presentation&hellip;</p>
+		</div>
+	</div>
+</article>
+
+
+
+
+	
+		<nav class="pagination" aria-label="Pagination">
+	<div class="inner">
+		<div class="box pagination-box">
+			
+                
+            <a title="Newer Posts" class="pagination-next" href="/author/biomadeira/page2/"><i class="icon icon-arrow-left"></i> <span class="pagination-label">Newer Posts</span></a>
+                
+            
+			<span class="pagination-info">Page 3 of 5</span>
+			 
+            <a title="Older Posts" class="pagination-prev" href="/author/biomadeira/page4/"><span class="pagination-label">Older Posts</span> <i class="icon icon-arrow-right"></i></a>
+			
+		</div>
+	</div>
+</nav>
+	
+
+ -->
+
+	</main>
+
+</div>
+
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">biomadeira.github.io &copy; 2023
+					&bull;
+					<a href="https://biomadeira.github.io/policies">Blog policies and disclaimers</a>
+					&bull;
+					<a href="https://biomadeira.github.io/feed.xml"
+						target="_blank">
+						Subscribe <i class="fa-solid fa-rss"></i></a>
+				</span>
+				<span class="nav-credits">
+					<a id="backToTop" title="Back to top" onclick="topFunction()" href="#" rel="noopener"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+				</span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="/assets/js/script.min.js"></script>
+
+     <!-- Add Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9654BB9RP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9654BB9RP');
+</script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+
+
+</body>
+</html>
